@@ -17,7 +17,7 @@ description: Victor Razuvaev, senior backend engineer. High-load PHP and Yii, di
       <a href="https://t.me/rasuvaeff">t.me/rasuvaeff</a><br>
       <a href="mailto:rasuvaeff@gmail.com">rasuvaeff@gmail.com</a><br>
       <a href="/">rasuvaeff.github.io</a><br>
-      <a class="no-print" href="/resume-en.pdf" download>Download PDF</a>
+      <a class="no-print" href="/resume-en.pdf" download="victor-razuvaev-resume-en.pdf">Download PDF</a>
     </p>
   </header>
 

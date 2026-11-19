@@ -17,7 +17,7 @@ description: "Виктор Разуваев, senior backend-разработчи
       <a href="https://t.me/rasuvaeff">t.me/rasuvaeff</a><br>
       <a href="mailto:rasuvaeff@gmail.com">rasuvaeff@gmail.com</a><br>
       <a href="/ru/">rasuvaeff.github.io</a><br>
-      <a class="no-print" href="/resume-ru.pdf" download>Скачать PDF</a>
+      <a class="no-print" href="/resume-ru.pdf" download="victor-razuvaev-resume-ru.pdf">Скачать PDF</a>
     </p>
   </header>
 

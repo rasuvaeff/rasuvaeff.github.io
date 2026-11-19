@@ -12,7 +12,7 @@ npm run docs:dev        # http://127.0.0.1:4179/
 | `npm run data` | Rebuilds `src/.vitepress/data/packages.json` from Packagist and the tagged sources on GitHub (version, description, `minMsi`, agent skill). No token needed. |
 | `npm run lint:php` | Syntax-checks every `php` code block in the pages with `php -l` (`node scripts/lint-php-blocks.mjs php83` to pick a binary). |
 | `npm run docs:build` | Builds the site into `src/.vitepress/dist`. |
-| `npm run docs:pdf` | After a build, prints `/resume` and `/ru/resume` to `resume-en.pdf` and `resume-ru.pdf` in `dist` (needs Chrome; set `CHROME` if it is not `google-chrome`). |
+| `npm run docs:pdf` | After a build, prints `/resume` and `/ru/resume` to `src/public/resume-en.pdf` and `resume-ru.pdf` (committed, so `docs:dev` serves them) and copies them into `dist` (needs Chrome; set `CHROME` if it is not `google-chrome`). |
 
 ## Deploy
 
