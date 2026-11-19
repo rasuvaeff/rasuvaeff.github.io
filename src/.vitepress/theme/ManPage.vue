@@ -4,14 +4,20 @@ import { computed, onMounted, onUnmounted } from 'vue'
 import packages from '../data/packages.json'
 import { useLocale } from './i18n'
 
-interface Pkg { slug: string; version: string; minMsi: number | null; dependents: number }
+interface Pkg { slug: string; version: string; minMsi: number | null; dependents: number; requires: string[]; releases: { tag: string; date: string }[] }
 
-const { frontmatter } = useData()
+const { frontmatter, params } = useData()
 const { ru, prefix } = useLocale()
-const slug = computed(() => String(frontmatter.value.package ?? frontmatter.value.title))
+const slug = computed(() => String(params.value?.pkg ?? frontmatter.value.package ?? frontmatter.value.title))
 const section = computed(() => String(frontmatter.value.section ?? 3))
 const pkg = computed(() => (packages as Pkg[]).find((p) => p.slug === slug.value))
 const name = computed(() => `${slug.value.toUpperCase()}(${section.value})`)
+const all = packages as Pkg[]
+const known = new Set(all.map((p) => p.slug))
+const requires = computed(() => (pkg.value?.requires ?? []).filter((s) => known.has(s)))
+const requiredBy = computed(() => all.filter((p) => p.requires.includes(slug.value)).map((p) => p.slug).sort())
+const releases = computed(() => pkg.value?.releases ?? [])
+const firstRelease = computed(() => releases.value[releases.value.length - 1])
 
 let onKey: ((e: KeyboardEvent) => void) | null = null
 let bar: HTMLFormElement | null = null
@@ -117,6 +123,19 @@ onUnmounted(() => {
   <div class="man">
     <div class="hdr"><span><b>{{ name }}</b></span><span>{{ ru ? 'Руководство по PHP-библиотекам rasuvaeff' : 'rasuvaeff PHP Library Manual' }}</span><span><b>{{ name }}</b></span></div>
     <div class="vp-doc man-body"><Content /></div>
+    <div class="vp-doc man-body man-extra">
+      <template v-if="requires.length || requiredBy.length">
+        <h2>{{ ru ? 'ЗАВИСИМОСТИ' : 'DEPENDENCIES' }}</h2>
+        <p v-if="requires.length">{{ ru ? 'требует:' : 'requires:' }} <template v-for="(s, i) in requires" :key="s"><a :href="withBase(`${prefix}/packages/${s}`)">{{ s }}</a>(3)<template v-if="i < requires.length - 1">, </template></template></p>
+        <p v-if="requiredBy.length">{{ ru ? 'от него зависят:' : 'required by:' }} <template v-for="(s, i) in requiredBy" :key="s"><a :href="withBase(`${prefix}/packages/${s}`)">{{ s }}</a>(3)<template v-if="i < requiredBy.length - 1">, </template></template></p>
+      </template>
+      <template v-if="releases.length">
+        <h2>{{ ru ? 'ИСТОРИЯ' : 'HISTORY' }}</h2>
+        <p>{{ ru ? `Первый релиз ${firstRelease.tag} — ${firstRelease.date}, всего релизов: ${releases.length}.` : `First released as ${firstRelease.tag} on ${firstRelease.date}; ${releases.length} releases in all.` }}</p>
+        <table class="history"><tbody><tr v-for="r in releases.slice(0, 10)" :key="r.tag"><td><a :href="`https://github.com/rasuvaeff/${slug}/releases/tag/${r.tag}`">{{ r.tag }}</a></td><td>{{ r.date }}</td></tr></tbody></table>
+        <p v-if="releases.length > 10" class="more">{{ ru ? `… и ещё ${releases.length - 10} раньше. ` : `… and ${releases.length - 10} earlier. ` }}<a :href="`https://github.com/rasuvaeff/${slug}/releases`">{{ ru ? 'Все релизы' : 'All releases' }}</a></p>
+      </template>
+    </div>
     <div class="ftr">
       <span>rasuvaeff/{{ slug }} {{ pkg?.version }}</span>
       <span v-if="pkg?.minMsi">{{ ru ? 'мутационный порог' : 'mutation gate' }} {{ pkg.minMsi }}%</span>

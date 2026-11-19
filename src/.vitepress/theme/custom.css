@@ -599,6 +599,18 @@ pre * {
 .man .vp-doc td:last-child {
     color: var(--soft);
 }
+.man .man-extra {
+    margin-top: 0;
+}
+.man .history td:first-child {
+    font-weight: 400;
+}
+.man .history td:last-child {
+    color: var(--dim);
+}
+.man .man-extra .more {
+    color: var(--dim);
+}
 .man .synopsis {
     margin: 0 0 12px;
     font: 15px var(--mono);
@@ -941,4 +953,60 @@ mark.hit.cur {
         transition: none !important;
         scroll-behavior: auto !important;
     }
+}
+
+/* ——— 404 ——— */
+.not-found {
+    max-width: 820px;
+    padding-top: 64px;
+}
+.not-found .nf-line {
+    font: 15px/1.6 var(--mono);
+    margin: 0 0 18px;
+}
+.not-found .apropos .q {
+    color: var(--fg);
+}
+.not-found .nf-links {
+    margin-top: 18px;
+    font: 14px var(--mono);
+}
+.not-found a {
+    color: var(--ink);
+}
+
+/* ——— CHANGES(7) ——— */
+.changes h3 {
+    font: 600 13px var(--mono);
+    color: var(--dim);
+    margin: 28px 0 6px;
+    text-transform: lowercase;
+}
+.changes .ch-row {
+    display: grid;
+    grid-template-columns: 11ch minmax(0, 1fr) auto;
+    gap: 2ch;
+    font: 14px/1.9 var(--mono);
+    border-top: 1px solid var(--rule);
+}
+.changes .ch-date {
+    color: var(--dim);
+}
+.changes a {
+    text-decoration: none !important;
+}
+.changes .ch-row a:first-of-type {
+    color: var(--fg) !important;
+}
+.changes .ch-tag {
+    color: var(--ink) !important;
+}
+.changes .more {
+    all: unset;
+    cursor: pointer;
+    font: 600 14px var(--mono);
+    border: 1px solid var(--fg);
+    padding: 6px 14px;
+    border-radius: 3px;
+    margin-top: 18px;
 }

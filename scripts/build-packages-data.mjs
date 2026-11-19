@@ -56,6 +56,8 @@ async function describe(name) {
     const infection = await text(raw('infection.json5'))
     const msi = infection?.match(/"minMsi"\s*:\s*(\d+)/)
     const skill = (await text(raw(`resources/skills/rasuvaeff-${slug}/SKILL.md`))) !== null
+    const readme = (await text(raw('README.md'))) ?? ''
+    const dev = readme.includes(`composer require --dev rasuvaeff/${slug}`)
     if (!categoryOf.has(slug)) console.log(`no category for ${slug}, using Infrastructure`)
 
     return {
@@ -65,9 +67,14 @@ async function describe(name) {
         version: tag.replace(/^v/, ''),
         minMsi: msi ? Number(msi[1]) : null,
         skill,
+        dev,
         category: categoryOf.get(slug) ?? 'Infrastructure',
         frozen: Boolean(pkg.abandoned),
+        replacement: typeof pkg.abandoned === 'string' ? pkg.abandoned.split('/')[1] : null,
         requires,
+        releases: tags
+            .map((v) => ({ tag: v, date: String(pkg.versions[v].time ?? '').slice(0, 10) }))
+            .sort((a, b) => (newer(a.tag, b.tag) ? -1 : 1)),
     }
 }
 
@@ -98,7 +105,6 @@ for (const r of rows) {
 for (const r of rows) {
     r.dependents = rows.filter((o) => o.slug !== r.slug && o.requires.includes(r.slug)).length
 }
-for (const r of rows) delete r.requires
 rows.sort((a, b) => a.slug.localeCompare(b.slug))
 
 mkdirSync(dirname(out), { recursive: true })

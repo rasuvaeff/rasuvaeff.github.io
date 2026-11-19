@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { withBase } from 'vitepress'
 import { computed, ref } from 'vue'
 import { useLocale } from './i18n'
 import deep from '../data/deep.json'
@@ -34,7 +35,7 @@ const rows = computed(() => {
         return q === '' || p.slug.includes(q) || p.description.toLowerCase().includes(q)
     })
 })
-const href = (p: Pkg) => (TOP.has(p.slug) ? `${prefix.value}/packages/${p.slug}` : `https://github.com/rasuvaeff/${p.slug}`)
+const href = (p: Pkg) => withBase(`${prefix.value}/packages/${p.slug}`)
 </script>
 
 <template>

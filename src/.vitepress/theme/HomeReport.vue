@@ -14,8 +14,7 @@ const gated = active.filter((p) => p.minMsi !== null)
 const fullGate = gated.filter((p) => p.minMsi === 100).length
 const sortedGates = gated.map((p) => p.minMsi as number).sort((a, b) => a - b)
 const median = sortedGates[Math.floor(sortedGates.length / 2)]
-const DEEP = new Set(['understudy', 'property-testing-core', 'property-testing-openapi', 'doc-exec', 'context', 'yii3-outbox', 'yii3-idempotency', 'yii3-mcp', 'pinned-http-client', 'yii3-ab-testing', 'clickhouse-toolkit', 'schema', 'resilience'])
-const href = (slug: string) => (DEEP.has(slug) ? withBase(`${prefix.value}/packages/${slug}`) : `https://github.com/rasuvaeff/${slug}`)
+const href = (slug: string) => withBase(`${prefix.value}/packages/${slug}`)
 const t = (en: string, rus: string) => (ru.value ? rus : en)
 
 // Honest-MSI audit of 2026-11-01 (docs/mutation-honest-msi.md in the monorepo): 75 packages run with --with-uncovered.

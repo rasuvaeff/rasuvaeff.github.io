@@ -1,8 +1,12 @@
+import { writeFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { defineConfig } from 'vitepress'
 import { renderAnnotatedPhp } from './annotated'
+import packages from './data/packages.json'
 
-const nav = (p: string, t: { packages: string; agents: string; resume: string; workflow: string }) => [
+const nav = (p: string, t: { packages: string; changes: string; agents: string; resume: string; workflow: string }) => [
     { text: t.packages, link: `${p}/packages` },
+    { text: t.changes, link: `${p}/changes` },
     { text: t.agents, link: `${p}/agents` },
     { text: t.resume, link: `${p}/resume` },
     { text: t.workflow, link: `${p}/workflow` },
@@ -29,6 +33,30 @@ export default defineConfig({
             }
         },
     },
+    buildEnd(siteConfig) {
+        // RSS feed of the latest releases across all packages.
+        const site = 'https://rasuvaeff.github.io'
+        const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        const items = packages
+            .flatMap((p) => p.releases.map((r) => ({ slug: p.slug, description: p.description, ...r })))
+            .filter((r) => r.date)
+            .sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug))
+            .slice(0, 50)
+            .map((r) => `<item><title>rasuvaeff/${r.slug} ${r.tag}</title><link>https://github.com/rasuvaeff/${r.slug}/releases/tag/${r.tag}</link><guid isPermaLink="false">rasuvaeff/${r.slug}@${r.tag}</guid><pubDate>${new Date(`${r.date}T00:00:00Z`).toUTCString()}</pubDate><description>${esc(r.description)}</description></item>`)
+        const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>rasuvaeff/* releases</title><link>${site}/changes</link><description>Every release of every rasuvaeff/* PHP package.</description><language>en</language>${items.join('')}</channel></rss>\n`
+        writeFileSync(join(siteConfig.outDir, 'feed.xml'), xml)
+    },
+    transformPageData(pageData) {
+        // Generated manual pages get their identity from the route parameter.
+        const slug = pageData.params?.pkg as string | undefined
+        if (!slug) return
+        const pkg = packages.find((p) => p.slug === slug)
+        pageData.title = slug
+        pageData.frontmatter.title = slug
+        pageData.frontmatter.package = slug
+        pageData.frontmatter.description = pkg?.description ?? ''
+        pageData.description = pkg?.description ?? ''
+    },
     transformHead({ pageData, siteData }) {
         const path = pageData.relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '')
         const url = `https://rasuvaeff.github.io/${path}`
@@ -52,6 +80,7 @@ export default defineConfig({
     },
     head: [
         ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+        ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'rasuvaeff/* releases', href: '/feed.xml' }],
         ['meta', { name: 'theme-color', content: '#ffffff', media: '(prefers-color-scheme: light)' }],
         ['meta', { name: 'theme-color', content: '#121417', media: '(prefers-color-scheme: dark)' }],
     ],
@@ -60,7 +89,7 @@ export default defineConfig({
             label: 'English',
             lang: 'en-US',
             themeConfig: {
-                nav: nav('', { packages: 'packages', agents: 'agents', resume: 'resume', workflow: 'workflow' }),
+                nav: nav('', { packages: 'packages', changes: 'changes', agents: 'agents', resume: 'resume', workflow: 'workflow' }),
                 outline: { label: 'On this page', level: [2, 3] },
             },
         },
@@ -71,7 +100,7 @@ export default defineConfig({
             description:
                 'Senior backend-разработчик. Высоконагруженный PHP и Yii и 89 опубликованных библиотек: дедлайны, доставка, эксперименты, shrinking, тестовые двойники.',
             themeConfig: {
-                nav: nav('/ru', { packages: 'пакеты', agents: 'агентам', resume: 'резюме', workflow: 'процесс' }),
+                nav: nav('/ru', { packages: 'пакеты', changes: 'релизы', agents: 'агентам', resume: 'резюме', workflow: 'процесс' }),
                 outline: { label: 'На этой странице', level: [2, 3] },
                 langMenuLabel: 'Язык',
                 returnToTopLabel: 'Наверх',

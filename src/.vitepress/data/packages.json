@@ -6,8 +6,52 @@
     "version": "1.4.0",
     "minMsi": 89,
     "skill": true,
+    "dev": false,
     "category": "Resilience",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "context",
+      "duration"
+    ],
+    "releases": [
+      {
+        "tag": "v1.4.0",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-09-16"
+      },
+      {
+        "tag": "v1.1.3",
+        "date": "2026-08-21"
+      },
+      {
+        "tag": "v1.1.2",
+        "date": "2026-08-21"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-07-03"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-03"
+      }
+    ],
     "family": "bulkhead",
     "dependents": 2
   },
@@ -18,8 +62,47 @@
     "version": "1.4.0",
     "minMsi": 96,
     "skill": true,
+    "dev": false,
     "category": "Resilience",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "duration"
+    ],
+    "releases": [
+      {
+        "tag": "v1.4.0",
+        "date": "2026-11-13"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-08-21"
+      },
+      {
+        "tag": "v1.1.3",
+        "date": "2026-08-21"
+      },
+      {
+        "tag": "v1.1.2",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-22"
+      }
+    ],
     "family": "circuit-breaker",
     "dependents": 2
   },
@@ -30,8 +113,87 @@
     "version": "1.12.0",
     "minMsi": 95,
     "skill": true,
+    "dev": false,
     "category": "Domain",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "context"
+    ],
+    "releases": [
+      {
+        "tag": "v1.12.0",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v1.11.1",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v1.11.0",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v1.10.1",
+        "date": "2026-10-11"
+      },
+      {
+        "tag": "v1.10.0",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v1.9.0",
+        "date": "2026-09-13"
+      },
+      {
+        "tag": "v1.8.0",
+        "date": "2026-09-11"
+      },
+      {
+        "tag": "v1.7.0",
+        "date": "2026-09-10"
+      },
+      {
+        "tag": "v1.6.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.5.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.5.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.4.0",
+        "date": "2026-07-08"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-07-08"
+      },
+      {
+        "tag": "v1.2.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.2.1",
+        "date": "2026-06-26"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-06-16"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-06-03"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-05-30"
+      }
+    ],
     "family": "clickhouse-toolkit",
     "dependents": 3
   },
@@ -42,8 +204,25 @@
     "version": "0.3.0",
     "minMsi": 90,
     "skill": true,
+    "dev": false,
     "category": "Context",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v0.3.0",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-10-11"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-10-10"
+      }
+    ],
     "family": "context",
     "dependents": 9
   },
@@ -54,8 +233,19 @@
     "version": "0.1.0",
     "minMsi": 95,
     "skill": true,
+    "dev": false,
     "category": "Context",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "context"
+    ],
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "date": "2026-10-15"
+      }
+    ],
     "family": "context",
     "dependents": 0
   },
@@ -66,8 +256,19 @@
     "version": "0.1.0",
     "minMsi": 88,
     "skill": true,
+    "dev": false,
     "category": "Context",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "context"
+    ],
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "date": "2026-10-15"
+      }
+    ],
     "family": "context",
     "dependents": 0
   },
@@ -78,8 +279,35 @@
     "version": "0.3.0",
     "minMsi": 85,
     "skill": true,
+    "dev": false,
     "category": "Context",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "context"
+    ],
+    "releases": [
+      {
+        "tag": "v0.3.0",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v0.2.2",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v0.2.1",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-10-11"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-10-10"
+      }
+    ],
     "family": "context",
     "dependents": 0
   },
@@ -90,8 +318,19 @@
     "version": "0.1.0",
     "minMsi": 95,
     "skill": true,
+    "dev": false,
     "category": "Context",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "context"
+    ],
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "date": "2026-10-15"
+      }
+    ],
     "family": "context",
     "dependents": 0
   },
@@ -102,8 +341,17 @@
     "version": "0.1.0",
     "minMsi": 89,
     "skill": false,
+    "dev": true,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-21"
+      }
+    ],
     "family": "doc-exec",
     "dependents": 0
   },
@@ -114,8 +362,62 @@
     "version": "2.0.0",
     "minMsi": 92,
     "skill": false,
+    "dev": false,
     "category": "Observability",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "circuit-breaker",
+      "duration",
+      "result",
+      "retry"
+    ],
+    "releases": [
+      {
+        "tag": "v2.0.0",
+        "date": "2026-08-15"
+      },
+      {
+        "tag": "v1.5.0",
+        "date": "2026-08-15"
+      },
+      {
+        "tag": "v1.4.0",
+        "date": "2026-07-29"
+      },
+      {
+        "tag": "v1.3.2",
+        "date": "2026-07-29"
+      },
+      {
+        "tag": "v1.3.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-07-18"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-05"
+      },
+      {
+        "tag": "v1.1.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-06-14"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-01"
+      }
+    ],
     "family": "domain-monitor",
     "dependents": 0
   },
@@ -126,8 +428,25 @@
     "version": "1.1.1",
     "minMsi": 93,
     "skill": false,
+    "dev": false,
     "category": "Resilience",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.1.1",
+        "date": "2026-08-21"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-08-21"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-30"
+      }
+    ],
     "family": "duration",
     "dependents": 6
   },
@@ -138,8 +457,25 @@
     "version": "1.0.0",
     "minMsi": 92,
     "skill": true,
+    "dev": false,
     "category": "HTTP",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.0.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-10-23"
+      }
+    ],
     "family": "json-ld",
     "dependents": 1
   },
@@ -150,8 +486,45 @@
     "version": "1.1.0",
     "minMsi": 90,
     "skill": true,
+    "dev": false,
     "category": "HTTP",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "json-ld",
+      "result",
+      "schema"
+    ],
+    "releases": [
+      {
+        "tag": "v1.1.0",
+        "date": "2026-11-13"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.1.2",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-10-23"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-10-23"
+      }
+    ],
     "family": "link-preview",
     "dependents": 0
   },
@@ -162,8 +535,33 @@
     "version": "1.2.0",
     "minMsi": 95,
     "skill": true,
+    "dev": false,
     "category": "Files",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "bulkhead",
+      "duration",
+      "retry"
+    ],
+    "releases": [
+      {
+        "tag": "v1.2.0",
+        "date": "2026-11-12"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-19"
+      }
+    ],
     "family": "media-converter",
     "dependents": 0
   },
@@ -174,8 +572,19 @@
     "version": "0.1.0",
     "minMsi": 97,
     "skill": false,
+    "dev": false,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "quality-ledger"
+    ],
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-21"
+      }
+    ],
     "family": "mutation-history",
     "dependents": 0
   },
@@ -186,8 +595,113 @@
     "version": "0.17.0",
     "minMsi": 92,
     "skill": false,
+    "dev": false,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v0.17.0",
+        "date": "2026-11-13"
+      },
+      {
+        "tag": "v0.16.2",
+        "date": "2026-11-03"
+      },
+      {
+        "tag": "v0.16.1",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v0.16.0",
+        "date": "2026-10-11"
+      },
+      {
+        "tag": "v0.15.1",
+        "date": "2026-10-08"
+      },
+      {
+        "tag": "v0.15.0",
+        "date": "2026-09-20"
+      },
+      {
+        "tag": "v0.14.0",
+        "date": "2026-09-20"
+      },
+      {
+        "tag": "v0.13.0",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.12.2",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.12.1",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.12.0",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v0.11.1",
+        "date": "2026-09-17"
+      },
+      {
+        "tag": "v0.11.0",
+        "date": "2026-09-12"
+      },
+      {
+        "tag": "v0.10.0",
+        "date": "2026-09-06"
+      },
+      {
+        "tag": "v0.9.0",
+        "date": "2026-09-06"
+      },
+      {
+        "tag": "v0.8.0",
+        "date": "2026-09-06"
+      },
+      {
+        "tag": "v0.7.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.6.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.5.1",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.2.1",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-09-01"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-29"
+      }
+    ],
     "family": "openapi-contract",
     "dependents": 1
   },
@@ -198,8 +712,21 @@
     "version": "0.2.0",
     "minMsi": 100,
     "skill": false,
+    "dev": false,
     "category": "Payments",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v0.2.0",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-19"
+      }
+    ],
     "family": "payments",
     "dependents": 1
   },
@@ -210,8 +737,23 @@
     "version": "0.1.1",
     "minMsi": 100,
     "skill": false,
+    "dev": true,
     "category": "Payments",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "payments"
+    ],
+    "releases": [
+      {
+        "tag": "v0.1.1",
+        "date": "2026-10-16"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-19"
+      }
+    ],
     "family": "payments",
     "dependents": 0
   },
@@ -222,8 +764,33 @@
     "version": "1.0.1",
     "minMsi": 95,
     "skill": true,
+    "dev": false,
     "category": "HTTP",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.0.1",
+        "date": "2026-11-19"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-10-23"
+      }
+    ],
     "family": "pinned-http-client",
     "dependents": 0
   },
@@ -234,8 +801,65 @@
     "version": "2.8.1",
     "minMsi": 90,
     "skill": true,
+    "dev": true,
     "category": "Testing",
     "frozen": true,
+    "replacement": "property-testing-testo",
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v2.8.1",
+        "date": "2026-08-08"
+      },
+      {
+        "tag": "v2.8.0",
+        "date": "2026-08-01"
+      },
+      {
+        "tag": "v2.7.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v2.7.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v2.6.0",
+        "date": "2026-07-18"
+      },
+      {
+        "tag": "v2.5.0",
+        "date": "2026-07-18"
+      },
+      {
+        "tag": "v2.4.0",
+        "date": "2026-07-11"
+      },
+      {
+        "tag": "v2.3.0",
+        "date": "2026-07-08"
+      },
+      {
+        "tag": "v2.2.0",
+        "date": "2026-07-07"
+      },
+      {
+        "tag": "v2.1.0",
+        "date": "2026-07-05"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-02"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-01"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-29"
+      }
+    ],
     "family": "property-testing",
     "dependents": 0
   },
@@ -246,8 +870,101 @@
     "version": "1.3.0",
     "minMsi": 97,
     "skill": true,
+    "dev": true,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.3.0",
+        "date": "2026-11-03"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-10-02"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-09-28"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-09-20"
+      },
+      {
+        "tag": "v0.12.0",
+        "date": "2026-09-20"
+      },
+      {
+        "tag": "v0.11.0",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.10.0",
+        "date": "2026-09-12"
+      },
+      {
+        "tag": "v0.9.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.8.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.7.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.6.1",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.6.0",
+        "date": "2026-09-02"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-09-02"
+      },
+      {
+        "tag": "v0.4.2",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v0.4.1",
+        "date": "2026-08-16"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-08-16"
+      },
+      {
+        "tag": "v0.3.1",
+        "date": "2026-08-15"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-08-15"
+      },
+      {
+        "tag": "v0.2.1",
+        "date": "2026-08-14"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-08-14"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-08-10"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-09"
+      }
+    ],
     "family": "property-testing",
     "dependents": 5
   },
@@ -258,8 +975,75 @@
     "version": "1.0.0",
     "minMsi": 100,
     "skill": false,
+    "dev": true,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "property-testing-core"
+    ],
+    "releases": [
+      {
+        "tag": "v1.0.0",
+        "date": "2026-09-20"
+      },
+      {
+        "tag": "v0.5.2",
+        "date": "2026-09-20"
+      },
+      {
+        "tag": "v0.5.1",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-09-12"
+      },
+      {
+        "tag": "v0.3.2",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.3.1",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.2.2",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.2.1",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-09-02"
+      },
+      {
+        "tag": "v0.1.3",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v0.1.2",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-13"
+      }
+    ],
     "family": "property-testing",
     "dependents": 0
   },
@@ -270,8 +1054,124 @@
     "version": "0.19.2",
     "minMsi": 91,
     "skill": false,
+    "dev": true,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "openapi-contract",
+      "property-testing-core"
+    ],
+    "releases": [
+      {
+        "tag": "v0.19.2",
+        "date": "2026-11-04"
+      },
+      {
+        "tag": "v0.19.1",
+        "date": "2026-11-04"
+      },
+      {
+        "tag": "v0.19.0",
+        "date": "2026-10-11"
+      },
+      {
+        "tag": "v0.18.0",
+        "date": "2026-09-29"
+      },
+      {
+        "tag": "v0.17.0",
+        "date": "2026-09-20"
+      },
+      {
+        "tag": "v0.16.0",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.15.2",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.15.1",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.15.0",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.14.1",
+        "date": "2026-09-17"
+      },
+      {
+        "tag": "v0.14.0",
+        "date": "2026-09-12"
+      },
+      {
+        "tag": "v0.13.1",
+        "date": "2026-09-12"
+      },
+      {
+        "tag": "v0.13.0",
+        "date": "2026-09-12"
+      },
+      {
+        "tag": "v0.12.1",
+        "date": "2026-09-12"
+      },
+      {
+        "tag": "v0.12.0",
+        "date": "2026-09-12"
+      },
+      {
+        "tag": "v0.11.0",
+        "date": "2026-09-11"
+      },
+      {
+        "tag": "v0.10.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.9.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.8.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.7.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.6.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.2.1",
+        "date": "2026-09-02"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-09-01"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-29"
+      }
+    ],
     "family": "property-testing",
     "dependents": 0
   },
@@ -282,8 +1182,99 @@
     "version": "1.1.0",
     "minMsi": 95,
     "skill": false,
+    "dev": true,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "property-testing-core"
+    ],
+    "releases": [
+      {
+        "tag": "v1.1.0",
+        "date": "2026-10-02"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-09-20"
+      },
+      {
+        "tag": "v0.10.0",
+        "date": "2026-09-20"
+      },
+      {
+        "tag": "v0.9.2",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.9.1",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.9.0",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v0.8.0",
+        "date": "2026-09-10"
+      },
+      {
+        "tag": "v0.7.1",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.7.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.6.3",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.6.2",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.6.1",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.6.0",
+        "date": "2026-09-02"
+      },
+      {
+        "tag": "v0.5.2",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v0.5.1",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-08-16"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-08-15"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-08-15"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-08-14"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-08-10"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-09"
+      }
+    ],
     "family": "property-testing",
     "dependents": 0
   },
@@ -294,8 +1285,103 @@
     "version": "1.2.0",
     "minMsi": 100,
     "skill": false,
+    "dev": true,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "property-testing-core"
+    ],
+    "releases": [
+      {
+        "tag": "v1.2.0",
+        "date": "2026-10-08"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-10-02"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-09-20"
+      },
+      {
+        "tag": "v0.12.0",
+        "date": "2026-09-20"
+      },
+      {
+        "tag": "v0.11.2",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.11.1",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.11.0",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v0.10.0",
+        "date": "2026-09-12"
+      },
+      {
+        "tag": "v0.9.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.8.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.7.3",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.7.2",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.7.1",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.7.0",
+        "date": "2026-09-02"
+      },
+      {
+        "tag": "v0.6.2",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v0.6.1",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v0.6.0",
+        "date": "2026-08-16"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-08-15"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-08-15"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-08-15"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-08-14"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-09"
+      }
+    ],
     "family": "property-testing",
     "dependents": 0
   },
@@ -306,8 +1392,21 @@
     "version": "0.2.0",
     "minMsi": 98,
     "skill": false,
+    "dev": false,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v0.2.0",
+        "date": "2026-08-21"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-21"
+      }
+    ],
     "family": "quality-ledger",
     "dependents": 1
   },
@@ -318,8 +1417,21 @@
     "version": "1.0.1",
     "minMsi": 100,
     "skill": false,
+    "dev": true,
     "category": "Infrastructure",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.0.1",
+        "date": "2026-09-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-15"
+      }
+    ],
     "family": "rector-datetime-immutable",
     "dependents": 0
   },
@@ -330,8 +1442,21 @@
     "version": "1.0.1",
     "minMsi": 100,
     "skill": false,
+    "dev": true,
     "category": "Infrastructure",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.0.1",
+        "date": "2026-09-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-11"
+      }
+    ],
     "family": "rector-named-literals",
     "dependents": 0
   },
@@ -342,8 +1467,35 @@
     "version": "0.3.0",
     "minMsi": 96,
     "skill": false,
+    "dev": false,
     "category": "Resilience",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "bulkhead",
+      "circuit-breaker",
+      "context",
+      "duration",
+      "retry"
+    ],
+    "releases": [
+      {
+        "tag": "v0.3.0",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v0.2.1",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-21"
+      }
+    ],
     "family": "resilience",
     "dependents": 0
   },
@@ -354,8 +1506,21 @@
     "version": "1.0.1",
     "minMsi": 100,
     "skill": false,
+    "dev": false,
     "category": "Resilience",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-27"
+      }
+    ],
     "family": "result",
     "dependents": 2
   },
@@ -366,8 +1531,72 @@
     "version": "1.7.0",
     "minMsi": 95,
     "skill": true,
+    "dev": false,
     "category": "Resilience",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "context",
+      "duration"
+    ],
+    "releases": [
+      {
+        "tag": "v1.7.0",
+        "date": "2026-11-13"
+      },
+      {
+        "tag": "v1.6.2",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v1.6.1",
+        "date": "2026-10-11"
+      },
+      {
+        "tag": "v1.6.0",
+        "date": "2026-10-11"
+      },
+      {
+        "tag": "v1.5.0",
+        "date": "2026-10-11"
+      },
+      {
+        "tag": "v1.4.0",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v1.2.3",
+        "date": "2026-08-21"
+      },
+      {
+        "tag": "v1.2.2",
+        "date": "2026-08-21"
+      },
+      {
+        "tag": "v1.2.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-04"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-29"
+      }
+    ],
     "family": "retry",
     "dependents": 3
   },
@@ -378,8 +1607,63 @@
     "version": "1.1.2",
     "minMsi": 85,
     "skill": false,
+    "dev": false,
     "category": "Domain",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "property-testing-core"
+    ],
+    "releases": [
+      {
+        "tag": "v1.1.2",
+        "date": "2026-11-06"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-11-06"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-11-04"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.7.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.6.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-10-11"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-10-10"
+      }
+    ],
     "family": "schema",
     "dependents": 1
   },
@@ -390,8 +1674,49 @@
     "version": "1.4.0",
     "minMsi": 85,
     "skill": true,
+    "dev": false,
     "category": "Domain",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.4.0",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v1.3.3",
+        "date": "2026-09-13"
+      },
+      {
+        "tag": "v1.3.1",
+        "date": "2026-09-13"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-09-13"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-09-12"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-26"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-05-31"
+      }
+    ],
     "family": "specification",
     "dependents": 0
   },
@@ -402,8 +1727,97 @@
     "version": "1.1.1",
     "minMsi": 92,
     "skill": true,
+    "dev": true,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.1.1",
+        "date": "2026-10-14"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-10-13"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-10-08"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-09-27"
+      },
+      {
+        "tag": "v0.12.0",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.11.0",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v0.10.0",
+        "date": "2026-09-06"
+      },
+      {
+        "tag": "v0.9.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.8.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.7.2",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.7.1",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.7.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.6.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.4.1",
+        "date": "2026-08-30"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-08-28"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-08-27"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-08-27"
+      },
+      {
+        "tag": "v0.1.2",
+        "date": "2026-08-26"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-08-25"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-25"
+      }
+    ],
     "family": "understudy",
     "dependents": 4
   },
@@ -414,8 +1828,79 @@
     "version": "1.0.1",
     "minMsi": 97,
     "skill": false,
+    "dev": true,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "understudy"
+    ],
+    "releases": [
+      {
+        "tag": "v1.0.1",
+        "date": "2026-09-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-09-27"
+      },
+      {
+        "tag": "v0.5.4",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.5.3",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v0.5.2",
+        "date": "2026-09-06"
+      },
+      {
+        "tag": "v0.5.1",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.4.1",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.2.1",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-08-28"
+      },
+      {
+        "tag": "v0.1.3",
+        "date": "2026-08-28"
+      },
+      {
+        "tag": "v0.1.2",
+        "date": "2026-08-27"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-08-27"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-25"
+      }
+    ],
     "family": "understudy",
     "dependents": 0
   },
@@ -426,8 +1911,75 @@
     "version": "1.0.0",
     "minMsi": 95,
     "skill": false,
+    "dev": true,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "understudy"
+    ],
+    "releases": [
+      {
+        "tag": "v1.0.0",
+        "date": "2026-09-27"
+      },
+      {
+        "tag": "v0.5.1",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v0.4.1",
+        "date": "2026-09-06"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.1.7",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.1.6",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.1.5",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.1.4",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.1.3",
+        "date": "2026-08-28"
+      },
+      {
+        "tag": "v0.1.2",
+        "date": "2026-08-27"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-08-27"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-25"
+      }
+    ],
     "family": "understudy",
     "dependents": 0
   },
@@ -438,8 +1990,95 @@
     "version": "1.1.0",
     "minMsi": 97,
     "skill": false,
+    "dev": true,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "understudy"
+    ],
+    "releases": [
+      {
+        "tag": "v1.1.0",
+        "date": "2026-11-06"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-09-27"
+      },
+      {
+        "tag": "v0.8.5",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.8.4",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v0.8.3",
+        "date": "2026-09-06"
+      },
+      {
+        "tag": "v0.8.2",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.8.1",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.8.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.7.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.6.1",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.6.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-08-28"
+      },
+      {
+        "tag": "v0.1.4",
+        "date": "2026-08-28"
+      },
+      {
+        "tag": "v0.1.3",
+        "date": "2026-08-27"
+      },
+      {
+        "tag": "v0.1.2",
+        "date": "2026-08-27"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-08-26"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-25"
+      }
+    ],
     "family": "understudy",
     "dependents": 0
   },
@@ -450,8 +2089,79 @@
     "version": "1.0.0",
     "minMsi": 95,
     "skill": false,
+    "dev": true,
     "category": "Testing",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "understudy"
+    ],
+    "releases": [
+      {
+        "tag": "v1.0.0",
+        "date": "2026-09-27"
+      },
+      {
+        "tag": "v0.3.5",
+        "date": "2026-09-19"
+      },
+      {
+        "tag": "v0.3.4",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v0.3.3",
+        "date": "2026-09-06"
+      },
+      {
+        "tag": "v0.3.2",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.3.1",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-09-05"
+      },
+      {
+        "tag": "v0.2.3",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.2.2",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.2.1",
+        "date": "2026-09-04"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.1.4",
+        "date": "2026-09-03"
+      },
+      {
+        "tag": "v0.1.3",
+        "date": "2026-08-28"
+      },
+      {
+        "tag": "v0.1.2",
+        "date": "2026-08-27"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-08-27"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-25"
+      }
+    ],
     "family": "understudy",
     "dependents": 0
   },
@@ -462,8 +2172,69 @@
     "version": "2.1.1",
     "minMsi": 99,
     "skill": true,
+    "dev": false,
     "category": "Experiments",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v2.1.1",
+        "date": "2026-09-02"
+      },
+      {
+        "tag": "v2.1.0",
+        "date": "2026-08-23"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-08-01"
+      },
+      {
+        "tag": "v1.6.0",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v1.5.2",
+        "date": "2026-07-29"
+      },
+      {
+        "tag": "v1.5.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.5.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.4.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.4.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.4.0",
+        "date": "2026-06-20"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-06-11"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-06-11"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-06-10"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-10"
+      }
+    ],
     "family": "yii3-ab-testing",
     "dependents": 4
   },
@@ -474,8 +2245,48 @@
     "version": "2.0.1",
     "minMsi": 100,
     "skill": true,
+    "dev": false,
     "category": "Experiments",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "clickhouse-toolkit",
+      "yii3-ab-testing"
+    ],
+    "releases": [
+      {
+        "tag": "v2.0.1",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-08-01"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v1.1.2",
+        "date": "2026-07-29"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-12"
+      }
+    ],
     "family": "yii3-ab-testing",
     "dependents": 0
   },
@@ -486,8 +2297,63 @@
     "version": "3.2.1",
     "minMsi": 99,
     "skill": true,
+    "dev": false,
     "category": "Experiments",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-ab-testing"
+    ],
+    "releases": [
+      {
+        "tag": "v3.2.1",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v3.2.0",
+        "date": "2026-09-02"
+      },
+      {
+        "tag": "v3.1.0",
+        "date": "2026-08-23"
+      },
+      {
+        "tag": "v3.0.1",
+        "date": "2026-08-04"
+      },
+      {
+        "tag": "v3.0.0",
+        "date": "2026-08-01"
+      },
+      {
+        "tag": "v2.1.1",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v2.1.0",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-07-29"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-06-20"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-12"
+      }
+    ],
     "family": "yii3-ab-testing",
     "dependents": 0
   },
@@ -498,8 +2364,64 @@
     "version": "3.0.1",
     "minMsi": 100,
     "skill": true,
+    "dev": false,
     "category": "Experiments",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-ab-testing",
+      "yii3-outbox"
+    ],
+    "releases": [
+      {
+        "tag": "v3.0.1",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v3.0.0",
+        "date": "2026-09-02"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-08-23"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-08-01"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v1.2.4",
+        "date": "2026-07-29"
+      },
+      {
+        "tag": "v1.2.3",
+        "date": "2026-07-26"
+      },
+      {
+        "tag": "v1.2.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.2.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-06-19"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-06-12"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-12"
+      }
+    ],
     "family": "yii3-ab-testing",
     "dependents": 0
   },
@@ -510,8 +2432,51 @@
     "version": "2.1.1",
     "minMsi": 98,
     "skill": true,
+    "dev": false,
     "category": "Experiments",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-ab-testing"
+    ],
+    "releases": [
+      {
+        "tag": "v2.1.1",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v2.1.0",
+        "date": "2026-08-23"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-08-01"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-07-29"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-12"
+      }
+    ],
     "family": "yii3-ab-testing",
     "dependents": 0
   },
@@ -522,8 +2487,21 @@
     "version": "1.1.0",
     "minMsi": 100,
     "skill": false,
+    "dev": false,
     "category": "HTTP",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.1.0",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-16"
+      }
+    ],
     "family": "yii3-api-problem",
     "dependents": 0
   },
@@ -534,8 +2512,33 @@
     "version": "1.2.0",
     "minMsi": 100,
     "skill": true,
+    "dev": false,
     "category": "Observability",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "1.0.0",
+        "date": "2026-06-20"
+      }
+    ],
     "family": "yii3-audit-log",
     "dependents": 2
   },
@@ -546,8 +2549,39 @@
     "version": "2.0.3",
     "minMsi": 96,
     "skill": false,
+    "dev": false,
     "category": "Observability",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-audit-log"
+    ],
+    "releases": [
+      {
+        "tag": "v2.0.3",
+        "date": "2026-08-04"
+      },
+      {
+        "tag": "v2.0.2",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-20"
+      }
+    ],
     "family": "yii3-audit-log",
     "dependents": 0
   },
@@ -558,8 +2592,29 @@
     "version": "1.1.0",
     "minMsi": 85,
     "skill": false,
+    "dev": false,
     "category": "Delivery",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.1.0",
+        "date": "2026-10-09"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-07-16"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-07-16"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-27"
+      }
+    ],
     "family": "yii3-centrifugo",
     "dependents": 0
   },
@@ -570,8 +2625,48 @@
     "version": "1.4.2",
     "minMsi": 100,
     "skill": false,
+    "dev": false,
     "category": "Domain",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "clickhouse-toolkit",
+      "context"
+    ],
+    "releases": [
+      {
+        "tag": "v1.4.2",
+        "date": "2026-10-15"
+      },
+      {
+        "tag": "v1.4.1",
+        "date": "2026-10-11"
+      },
+      {
+        "tag": "v1.4.0",
+        "date": "2026-10-11"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-09-11"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-09-10"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-09-10"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-08"
+      }
+    ],
     "family": "yii3-clickhouse-toolkit",
     "dependents": 0
   },
@@ -582,8 +2677,21 @@
     "version": "2.0.0",
     "minMsi": 100,
     "skill": false,
+    "dev": false,
     "category": "Observability",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v2.0.0",
+        "date": "2026-08-22"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-16"
+      }
+    ],
     "family": "yii3-correlation-id",
     "dependents": 0
   },
@@ -594,8 +2702,33 @@
     "version": "1.1.1",
     "minMsi": 94,
     "skill": true,
+    "dev": false,
     "category": "Experiments",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.1.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-14"
+      }
+    ],
     "family": "yii3-feature-flags",
     "dependents": 2
   },
@@ -606,8 +2739,39 @@
     "version": "2.1.0",
     "minMsi": 95,
     "skill": false,
+    "dev": false,
     "category": "Experiments",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-feature-flags"
+    ],
+    "releases": [
+      {
+        "tag": "v2.1.0",
+        "date": "2026-08-23"
+      },
+      {
+        "tag": "v2.0.2",
+        "date": "2026-08-04"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-14"
+      }
+    ],
     "family": "yii3-feature-flags",
     "dependents": 0
   },
@@ -618,8 +2782,39 @@
     "version": "2.0.0",
     "minMsi": 94,
     "skill": false,
+    "dev": false,
     "category": "Experiments",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-feature-flags"
+    ],
+    "releases": [
+      {
+        "tag": "v2.0.0",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v1.0.4",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v1.0.3",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-19"
+      }
+    ],
     "family": "yii3-feature-flags",
     "dependents": 0
   },
@@ -630,8 +2825,45 @@
     "version": "0.7.0",
     "minMsi": 87,
     "skill": true,
+    "dev": false,
     "category": "Files",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v0.7.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.6.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-08-08"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-08"
+      }
+    ],
     "family": "yii3-filestorage",
     "dependents": 5
   },
@@ -642,8 +2874,28 @@
     "version": "0.2.1",
     "minMsi": 94,
     "skill": true,
+    "dev": false,
     "category": "Files",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-filestorage",
+      "yii3-filestorage-db"
+    ],
+    "releases": [
+      {
+        "tag": "v0.2.1",
+        "date": "2026-11-19"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-14"
+      }
+    ],
     "family": "yii3-filestorage",
     "dependents": 0
   },
@@ -654,8 +2906,19 @@
     "version": "0.1.0",
     "minMsi": 89,
     "skill": true,
+    "dev": false,
     "category": "Files",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-filestorage"
+    ],
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-08"
+      }
+    ],
     "family": "yii3-filestorage",
     "dependents": 1
   },
@@ -666,8 +2929,19 @@
     "version": "0.1.0",
     "minMsi": 88,
     "skill": true,
+    "dev": false,
     "category": "Files",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-filestorage"
+    ],
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-10"
+      }
+    ],
     "family": "yii3-filestorage",
     "dependents": 0
   },
@@ -678,8 +2952,39 @@
     "version": "0.5.0",
     "minMsi": 83,
     "skill": true,
+    "dev": false,
     "category": "Files",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-filestorage"
+    ],
+    "releases": [
+      {
+        "tag": "v0.5.0",
+        "date": "2026-10-29"
+      },
+      {
+        "tag": "v0.4.1",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-10-28"
+      }
+    ],
     "family": "yii3-filestorage",
     "dependents": 0
   },
@@ -690,8 +2995,31 @@
     "version": "0.4.0",
     "minMsi": 93,
     "skill": true,
+    "dev": false,
     "category": "Files",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-filestorage"
+    ],
+    "releases": [
+      {
+        "tag": "v0.4.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-10-28"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v0.1.0",
+        "date": "2026-08-10"
+      }
+    ],
     "family": "yii3-filestorage",
     "dependents": 0
   },
@@ -702,8 +3030,37 @@
     "version": "1.1.0",
     "minMsi": 100,
     "skill": false,
+    "dev": false,
     "category": "Observability",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v1.0.4",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v1.0.3",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-02"
+      }
+    ],
     "family": "yii3-health-check",
     "dependents": 0
   },
@@ -714,8 +3071,49 @@
     "version": "2.3.0",
     "minMsi": 98,
     "skill": true,
+    "dev": false,
     "category": "Delivery",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v2.3.0",
+        "date": "2026-10-27"
+      },
+      {
+        "tag": "v2.2.0",
+        "date": "2026-10-26"
+      },
+      {
+        "tag": "v2.1.0",
+        "date": "2026-08-29"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-08-25"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-08-22"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-12"
+      }
+    ],
     "family": "yii3-idempotency",
     "dependents": 2
   },
@@ -726,8 +3124,51 @@
     "version": "3.1.0",
     "minMsi": 97,
     "skill": false,
+    "dev": false,
     "category": "Delivery",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-idempotency"
+    ],
+    "releases": [
+      {
+        "tag": "v3.1.0",
+        "date": "2026-10-26"
+      },
+      {
+        "tag": "v3.0.0",
+        "date": "2026-08-29"
+      },
+      {
+        "tag": "v2.1.1",
+        "date": "2026-08-22"
+      },
+      {
+        "tag": "v2.1.0",
+        "date": "2026-08-22"
+      },
+      {
+        "tag": "v2.0.2",
+        "date": "2026-08-04"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-12"
+      }
+    ],
     "family": "yii3-idempotency",
     "dependents": 0
   },
@@ -738,8 +3179,19 @@
     "version": "1.0.0",
     "minMsi": 98,
     "skill": false,
+    "dev": false,
     "category": "Delivery",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-idempotency"
+    ],
+    "releases": [
+      {
+        "tag": "v1.0.0",
+        "date": "2026-10-26"
+      }
+    ],
     "family": "yii3-idempotency",
     "dependents": 0
   },
@@ -750,8 +3202,41 @@
     "version": "1.2.0",
     "minMsi": 92,
     "skill": false,
+    "dev": false,
     "category": "Infrastructure",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.2.0",
+        "date": "2026-11-13"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-08-04"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-08-02"
+      },
+      {
+        "tag": "v1.0.4",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v1.0.3",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-26"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-02"
+      }
+    ],
     "family": "yii3-maintenance-mode",
     "dependents": 0
   },
@@ -762,8 +3247,117 @@
     "version": "5.0.0",
     "minMsi": 97,
     "skill": true,
+    "dev": false,
     "category": "AI / MCP",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v5.0.0",
+        "date": "2026-11-11"
+      },
+      {
+        "tag": "v4.1.1",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v4.1.0",
+        "date": "2026-10-09"
+      },
+      {
+        "tag": "v4.0.1",
+        "date": "2026-10-08"
+      },
+      {
+        "tag": "v4.0.0",
+        "date": "2026-10-08"
+      },
+      {
+        "tag": "v3.1.1",
+        "date": "2026-10-07"
+      },
+      {
+        "tag": "v3.1.0",
+        "date": "2026-10-07"
+      },
+      {
+        "tag": "v3.0.1",
+        "date": "2026-10-07"
+      },
+      {
+        "tag": "v3.0.0",
+        "date": "2026-10-07"
+      },
+      {
+        "tag": "v2.3.0",
+        "date": "2026-09-08"
+      },
+      {
+        "tag": "v2.2.1",
+        "date": "2026-08-12"
+      },
+      {
+        "tag": "v2.2.0",
+        "date": "2026-07-29"
+      },
+      {
+        "tag": "v2.1.0",
+        "date": "2026-07-29"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-27"
+      },
+      {
+        "tag": "v1.8.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.7.2",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.7.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.7.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.6.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.5.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.4.0",
+        "date": "2026-07-18"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-07-18"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-16"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-05"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-07-04"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-04"
+      }
+    ],
     "family": "yii3-mcp",
     "dependents": 3
   },
@@ -774,8 +3368,48 @@
     "version": "2.3.0",
     "minMsi": 90,
     "skill": false,
+    "dev": false,
     "category": "AI / MCP",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-audit-log",
+      "yii3-mcp"
+    ],
+    "releases": [
+      {
+        "tag": "v2.3.0",
+        "date": "2026-11-11"
+      },
+      {
+        "tag": "v2.2.0",
+        "date": "2026-10-08"
+      },
+      {
+        "tag": "v2.1.1",
+        "date": "2026-10-07"
+      },
+      {
+        "tag": "v2.1.0",
+        "date": "2026-07-27"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-24"
+      }
+    ],
     "family": "yii3-mcp",
     "dependents": 0
   },
@@ -786,8 +3420,39 @@
     "version": "1.4.0",
     "minMsi": 100,
     "skill": false,
+    "dev": false,
     "category": "AI / MCP",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-mcp"
+    ],
+    "releases": [
+      {
+        "tag": "v1.4.0",
+        "date": "2026-11-11"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-10-08"
+      },
+      {
+        "tag": "v1.2.1",
+        "date": "2026-10-07"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-27"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-07"
+      }
+    ],
     "family": "yii3-mcp",
     "dependents": 0
   },
@@ -798,8 +3463,49 @@
     "version": "1.5.0",
     "minMsi": 100,
     "skill": false,
+    "dev": false,
     "category": "AI / MCP",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-mcp",
+      "yii3-metrics",
+      "yii3-telemetry"
+    ],
+    "releases": [
+      {
+        "tag": "v1.5.0",
+        "date": "2026-11-11"
+      },
+      {
+        "tag": "v1.4.0",
+        "date": "2026-10-08"
+      },
+      {
+        "tag": "v1.3.1",
+        "date": "2026-10-07"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-10-07"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-27"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-24"
+      }
+    ],
     "family": "yii3-mcp",
     "dependents": 0
   },
@@ -810,8 +3516,49 @@
     "version": "2.4.0",
     "minMsi": 96,
     "skill": true,
+    "dev": false,
     "category": "Observability",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v2.4.0",
+        "date": "2026-10-02"
+      },
+      {
+        "tag": "v2.3.0",
+        "date": "2026-09-25"
+      },
+      {
+        "tag": "v2.2.1",
+        "date": "2026-09-24"
+      },
+      {
+        "tag": "v2.2.0",
+        "date": "2026-09-24"
+      },
+      {
+        "tag": "v2.1.0",
+        "date": "2026-08-29"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-08-22"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-10"
+      }
+    ],
     "family": "yii3-metrics",
     "dependents": 2
   },
@@ -822,8 +3569,47 @@
     "version": "2.3.0",
     "minMsi": 93,
     "skill": false,
+    "dev": false,
     "category": "Observability",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-metrics"
+    ],
+    "releases": [
+      {
+        "tag": "v2.3.0",
+        "date": "2026-09-25"
+      },
+      {
+        "tag": "v2.2.0",
+        "date": "2026-09-25"
+      },
+      {
+        "tag": "v2.1.0",
+        "date": "2026-09-24"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-08-29"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-08-22"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-10"
+      }
+    ],
     "family": "yii3-metrics",
     "dependents": 0
   },
@@ -834,8 +3620,57 @@
     "version": "1.8.0",
     "minMsi": 99,
     "skill": true,
+    "dev": false,
     "category": "Delivery",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.8.0",
+        "date": "2026-10-03"
+      },
+      {
+        "tag": "v1.7.0",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v1.6.0",
+        "date": "2026-09-16"
+      },
+      {
+        "tag": "v1.5.0",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v1.4.0",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-07-26"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-13"
+      }
+    ],
     "family": "yii3-outbox",
     "dependents": 4
   },
@@ -846,8 +3681,56 @@
     "version": "1.6.1",
     "minMsi": 95,
     "skill": false,
+    "dev": false,
     "category": "Delivery",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "clickhouse-toolkit",
+      "yii3-outbox"
+    ],
+    "releases": [
+      {
+        "tag": "v1.6.1",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v1.6.0",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v1.5.0",
+        "date": "2026-09-16"
+      },
+      {
+        "tag": "v1.4.0",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-26"
+      },
+      {
+        "tag": "v1.1.2",
+        "date": "2026-07-26"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-06-19"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-13"
+      }
+    ],
     "family": "yii3-outbox",
     "dependents": 0
   },
@@ -858,8 +3741,71 @@
     "version": "2.6.1",
     "minMsi": 93,
     "skill": false,
+    "dev": false,
     "category": "Delivery",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-outbox"
+    ],
+    "releases": [
+      {
+        "tag": "v2.6.1",
+        "date": "2026-10-14"
+      },
+      {
+        "tag": "v2.6.0",
+        "date": "2026-10-03"
+      },
+      {
+        "tag": "v2.5.0",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v2.4.0",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v2.3.0",
+        "date": "2026-09-16"
+      },
+      {
+        "tag": "v2.2.0",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v2.1.0",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v2.0.3",
+        "date": "2026-08-04"
+      },
+      {
+        "tag": "v2.0.2",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-07-26"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-13"
+      }
+    ],
     "family": "yii3-outbox",
     "dependents": 0
   },
@@ -870,8 +3816,52 @@
     "version": "1.2.0",
     "minMsi": 95,
     "skill": false,
+    "dev": false,
     "category": "Delivery",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-outbox",
+      "yii3-webhooks"
+    ],
+    "releases": [
+      {
+        "tag": "v1.2.0",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v1.0.6",
+        "date": "2026-09-18"
+      },
+      {
+        "tag": "v1.0.5",
+        "date": "2026-08-29"
+      },
+      {
+        "tag": "v1.0.4",
+        "date": "2026-08-20"
+      },
+      {
+        "tag": "v1.0.3",
+        "date": "2026-07-26"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-19"
+      }
+    ],
     "family": "yii3-outbox",
     "dependents": 0
   },
@@ -882,8 +3872,33 @@
     "version": "2.0.0",
     "minMsi": 100,
     "skill": false,
+    "dev": false,
     "category": "Infrastructure",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-11"
+      },
+      {
+        "tag": "v1.0.3",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-03"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-02"
+      }
+    ],
     "family": "yii3-recaptcha",
     "dependents": 0
   },
@@ -894,8 +3909,21 @@
     "version": "1.0.1",
     "minMsi": 85,
     "skill": false,
+    "dev": false,
     "category": "Infrastructure",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.0.1",
+        "date": "2026-07-03"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-03"
+      }
+    ],
     "family": "yii3-respect-validation",
     "dependents": 0
   },
@@ -906,8 +3934,37 @@
     "version": "1.2.0",
     "minMsi": 99,
     "skill": true,
+    "dev": false,
     "category": "Infrastructure",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-29"
+      },
+      {
+        "tag": "v1.0.3",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-04"
+      }
+    ],
     "family": "yii3-seo",
     "dependents": 0
   },
@@ -918,8 +3975,37 @@
     "version": "1.2.1",
     "minMsi": 99,
     "skill": true,
+    "dev": false,
     "category": "Domain",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.2.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.1.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-06-14"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-13"
+      }
+    ],
     "family": "yii3-settings",
     "dependents": 2
   },
@@ -930,8 +4016,39 @@
     "version": "2.0.2",
     "minMsi": 85,
     "skill": false,
+    "dev": false,
     "category": "Domain",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-settings"
+    ],
+    "releases": [
+      {
+        "tag": "v2.0.2",
+        "date": "2026-08-04"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-06-14"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-13"
+      }
+    ],
     "family": "yii3-settings",
     "dependents": 0
   },
@@ -942,8 +4059,31 @@
     "version": "2.0.0",
     "minMsi": 85,
     "skill": false,
+    "dev": false,
     "category": "Domain",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-settings"
+    ],
+    "releases": [
+      {
+        "tag": "v2.0.0",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-19"
+      }
+    ],
     "family": "yii3-settings",
     "dependents": 0
   },
@@ -954,8 +4094,37 @@
     "version": "1.3.0",
     "minMsi": 99,
     "skill": true,
+    "dev": false,
     "category": "Observability",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.3.0",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v1.2.1",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-10-03"
+      },
+      {
+        "tag": "v1.1.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-10"
+      }
+    ],
     "family": "yii3-telemetry",
     "dependents": 2
   },
@@ -966,8 +4135,51 @@
     "version": "1.3.1",
     "minMsi": 85,
     "skill": false,
+    "dev": false,
     "category": "Observability",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-telemetry"
+    ],
+    "releases": [
+      {
+        "tag": "v1.3.1",
+        "date": "2026-11-01"
+      },
+      {
+        "tag": "v1.3.0",
+        "date": "2026-10-31"
+      },
+      {
+        "tag": "v1.2.2",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v1.2.1",
+        "date": "2026-10-17"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-10-10"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-10-03"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-07-26"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-10"
+      }
+    ],
     "family": "yii3-telemetry",
     "dependents": 0
   },
@@ -978,8 +4190,25 @@
     "version": "1.1.1",
     "minMsi": 85,
     "skill": true,
+    "dev": false,
     "category": "Domain",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.1.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-04"
+      }
+    ],
     "family": "yii3-tenancy",
     "dependents": 1
   },
@@ -990,8 +4219,35 @@
     "version": "2.1.0",
     "minMsi": 89,
     "skill": false,
+    "dev": false,
     "category": "Domain",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-tenancy"
+    ],
+    "releases": [
+      {
+        "tag": "v2.1.0",
+        "date": "2026-08-23"
+      },
+      {
+        "tag": "v2.0.2",
+        "date": "2026-08-04"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-04"
+      }
+    ],
     "family": "yii3-tenancy",
     "dependents": 0
   },
@@ -1002,8 +4258,37 @@
     "version": "1.0.5",
     "minMsi": 98,
     "skill": false,
+    "dev": false,
     "category": "Infrastructure",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.0.5",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.4",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.3",
+        "date": "2026-06-04"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-04"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-03"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-02"
+      }
+    ],
     "family": "yii3-turnstile",
     "dependents": 0
   },
@@ -1014,8 +4299,21 @@
     "version": "1.1.0",
     "minMsi": 97,
     "skill": true,
+    "dev": false,
     "category": "Experiments",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.1.0",
+        "date": "2026-08-22"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-08-03"
+      }
+    ],
     "family": "yii3-utm",
     "dependents": 1
   },
@@ -1026,8 +4324,27 @@
     "version": "1.2.0",
     "minMsi": 94,
     "skill": false,
+    "dev": false,
     "category": "Experiments",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-utm"
+    ],
+    "releases": [
+      {
+        "tag": "v1.2.0",
+        "date": "2026-08-23"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-08-22"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-08-03"
+      }
+    ],
     "family": "yii3-utm",
     "dependents": 0
   },
@@ -1038,8 +4355,45 @@
     "version": "2.0.1",
     "minMsi": 98,
     "skill": true,
+    "dev": false,
     "category": "Delivery",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v2.0.1",
+        "date": "2026-10-23"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-08-22"
+      },
+      {
+        "tag": "v1.2.1",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.2.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.2",
+        "date": "2026-06-30"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-19"
+      }
+    ],
     "family": "yii3-webhooks",
     "dependents": 2
   },
@@ -1050,8 +4404,39 @@
     "version": "3.0.0",
     "minMsi": 100,
     "skill": false,
+    "dev": false,
     "category": "Delivery",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-webhooks"
+    ],
+    "releases": [
+      {
+        "tag": "v3.0.0",
+        "date": "2026-08-22"
+      },
+      {
+        "tag": "v2.0.2",
+        "date": "2026-08-04"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.1",
+        "date": "2026-06-27"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-06-19"
+      }
+    ],
     "family": "yii3-webhooks",
     "dependents": 0
   },
@@ -1062,8 +4447,21 @@
     "version": "1.1.0",
     "minMsi": 100,
     "skill": true,
+    "dev": false,
     "category": "Domain",
     "frozen": false,
+    "replacement": null,
+    "requires": [],
+    "releases": [
+      {
+        "tag": "v1.1.0",
+        "date": "2026-07-24"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-24"
+      }
+    ],
     "family": "yii3-workflow",
     "dependents": 1
   },
@@ -1074,8 +4472,35 @@
     "version": "2.0.3",
     "minMsi": 100,
     "skill": false,
+    "dev": false,
     "category": "Domain",
     "frozen": false,
+    "replacement": null,
+    "requires": [
+      "yii3-workflow"
+    ],
+    "releases": [
+      {
+        "tag": "v2.0.3",
+        "date": "2026-08-04"
+      },
+      {
+        "tag": "v2.0.2",
+        "date": "2026-08-01"
+      },
+      {
+        "tag": "v2.0.1",
+        "date": "2026-07-31"
+      },
+      {
+        "tag": "v2.0.0",
+        "date": "2026-07-25"
+      },
+      {
+        "tag": "v1.0.0",
+        "date": "2026-07-24"
+      }
+    ],
     "family": "yii3-workflow",
     "dependents": 0
   }
