@@ -10,3 +10,11 @@ npm run docs:dev
 ```
 
 Open <http://127.0.0.1:4179/>.
+
+Package versions and mutation gates in `src/.vitepress/data/packages.json` come from the monorepo checkout one level up:
+
+```bash
+npm run data
+```
+
+Run it before a release of the site, then commit the JSON.
