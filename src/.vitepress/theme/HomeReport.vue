@@ -5,7 +5,7 @@ import packages from '../data/packages.json'
 import trace from '../data/shrink-trace.json'
 import { useLocale } from './i18n'
 
-interface Pkg { slug: string; description: string; version: string; minMsi: number | null; category: string; frozen: boolean; dependents: number }
+interface Pkg { slug: string; description: string; version: string; minMsi: number | null; category: string; frozen: boolean; dependents: number; requires: string[] }
 
 const { ru, prefix } = useLocale()
 const all = packages as Pkg[]
@@ -129,9 +129,22 @@ const fig2 = ref<SVGSVGElement>()
 const after = ref(false)
 let setFig2: (v: boolean) => void = () => {}
 
-/* Fig. 3 */
+/* Fig. 3: who depends on whom, both directions */
 const fig3 = ref<SVGSVGElement>()
+const known = new Set(all.map((p) => p.slug))
+const requiresOf = (p: Pkg) => p.requires.filter((s) => known.has(s))
+const requiredBy = (slug: string) => active.filter((p) => p.requires.includes(slug)).map((p) => p.slug).sort()
 const topDeps = [...active].sort((a, b) => b.dependents - a.dependents || a.slug.localeCompare(b.slug)).slice(0, 10)
+const topConsumers = [...active].sort((a, b) => requiresOf(b).length - requiresOf(a).length || a.slug.localeCompare(b.slug)).slice(0, 10)
+const depMode = ref<'required' | 'requires'>('required')
+const picked = ref<string>(topDeps[0].slug)
+const pickedList = computed(() => (depMode.value === 'required' ? requiredBy(picked.value) : requiresOf(all.find((p) => p.slug === picked.value)!)))
+let drawFig3: () => void = () => {}
+function setDepMode(mode: 'required' | 'requires'): void {
+    depMode.value = mode
+    picked.value = (mode === 'required' ? topDeps : topConsumers)[0].slug
+    drawFig3()
+}
 
 /* apropos */
 const query = ref('deadline')
@@ -216,20 +229,61 @@ onMounted(() => {
 
     // Fig. 3
     const s3 = fig3.value!
-    const max = topDeps[0].dependents
-    topDeps.forEach((p, i) => {
-        const y = 14 + i * 26
-        const name = svgEl('text', { x: 200, y: y + 13, class: 'lbl', 'text-anchor': 'end' })
-        name.textContent = p.slug
-        const bar = svgEl('rect', { x: 210, y, width: (p.dependents / max) * 470, height: 18, class: i === 0 ? 'inv' : 'vis' })
-        const n = svgEl('text', { x: 216 + (p.dependents / max) * 470, y: y + 13, class: 'tick' })
-        n.textContent = String(p.dependents)
-        s3.append(name, bar, n)
-    })
-    s3.setAttribute('viewBox', `0 0 760 ${16 + topDeps.length * 26}`)
+    drawFig3 = () => {
+        s3.replaceChildren()
+        const list = depMode.value === 'required' ? topDeps : topConsumers
+        const count = (p: Pkg) => (depMode.value === 'required' ? p.dependents : requiresOf(p).length)
+        const max = Math.max(...list.map(count))
+        list.forEach((p, i) => {
+            const y = 14 + i * 26
+            const g = svgEl('g', { class: `dep${p.slug === picked.value ? ' on' : ''}`, tabindex: 0, role: 'button', 'aria-label': `${p.slug}: ${count(p)}` })
+            const name = svgEl('text', { x: 200, y: y + 13, class: 'lbl', 'text-anchor': 'end' })
+            name.textContent = p.slug
+            const bar = svgEl('rect', { x: 210, y, width: Math.max(2, (count(p) / max) * 470), height: 18, class: p.slug === picked.value ? 'inv' : 'vis' })
+            const n = svgEl('text', { x: 216 + (count(p) / max) * 470, y: y + 13, class: 'tick' })
+            n.textContent = String(count(p))
+            const hit = svgEl('rect', { x: 0, y: y - 4, width: 760, height: 26, fill: 'transparent' })
+            g.append(hit, name, bar, n)
+            const pick = () => {
+                picked.value = p.slug
+                drawFig3()
+                ;(s3.querySelector(`[aria-label^="${p.slug}:"]`) as SVGElement | null)?.focus()
+            }
+            g.addEventListener('click', pick)
+            g.addEventListener('keydown', (e) => {
+                if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
+                    e.preventDefault()
+                    pick()
+                }
+            })
+            g.addEventListener('mouseenter', () => {
+                if (picked.value !== p.slug) {
+                    picked.value = p.slug
+                    drawFig3()
+                }
+            })
+            s3.append(g)
+        })
+        s3.setAttribute('viewBox', `0 0 760 ${16 + list.length * 26}`)
+    }
+    drawFig3()
 })
 
-onUnmounted(() => clearInterval(timer))
+function focusApropos(e: KeyboardEvent): void {
+    const target = e.target as HTMLElement
+    if (e.key !== '/' || target.closest('input, textarea, select, [contenteditable]') || e.metaKey || e.ctrlKey || e.altKey) return
+    e.preventDefault()
+    e.stopPropagation()
+    const input = document.getElementById('apropos-q') as HTMLInputElement | null
+    input?.focus()
+    input?.select()
+    input?.scrollIntoView({ block: 'center' })
+}
+onMounted(() => document.addEventListener('keydown', focusApropos))
+onUnmounted(() => {
+    clearInterval(timer)
+    document.removeEventListener('keydown', focusApropos)
+})
 </script>
 
 <template>
@@ -283,8 +337,17 @@ onUnmounted(() => clearInterval(timer))
 
     <h2>{{ t('What the rest stands on', 'На чём держится остальное') }}</h2>
     <figure>
-      <svg ref="fig3" viewBox="0 0 760 276" role="img" :aria-label="t('Packages most depended on', 'Пакеты, от которых зависят чаще всего')" />
-      <figcaption><b>{{ t('Fig. 3.', 'Рис. 3.') }}</b> {{ t(`Packages most often required by other rasuvaeff/* packages at their latest tags. context carries the request budget for ${topDeps[0].dependents} of them.`, `Пакеты, которые чаще всего требуют другие rasuvaeff/* на последних тегах. context несёт бюджет запроса для ${topDeps[0].dependents} из них.`) }}</figcaption>
+      <div class="toggles" role="group" :aria-label="t('Direction', 'Направление')">
+        <button type="button" :aria-pressed="depMode === 'required'" @click="setDepMode('required')">{{ t('most required', 'чаще всего требуют') }}</button>
+        <button type="button" :aria-pressed="depMode === 'requires'" @click="setDepMode('requires')">{{ t('requires the most', 'сами требуют больше всех') }}</button>
+      </div>
+      <svg ref="fig3" viewBox="0 0 760 276" role="group" :aria-label="t('Dependencies between packages', 'Зависимости между пакетами')" />
+      <p class="readout deps">
+        <a :href="href(picked)">{{ picked }}(3)</a>
+        {{ depMode === 'required' ? t('is required by', '— от него зависят:') : t('requires', 'требует:') }}
+        <template v-for="(s, i) in pickedList" :key="s"><a :href="href(s)">{{ s }}</a><template v-if="i < pickedList.length - 1">, </template></template>
+      </p>
+      <figcaption><b>{{ t('Fig. 3.', 'Рис. 3.') }}</b> {{ t(`Dependencies between rasuvaeff/* packages at their latest tags. Point at a row to see the packages behind the number. context carries the request budget for ${topDeps[0].dependents} of them.`, `Зависимости между пакетами rasuvaeff/* на последних тегах. Наведите на строку, чтобы увидеть пакеты за числом. context несёт бюджет запроса для ${topDeps[0].dependents} из них.`) }}</figcaption>
     </figure>
 
     <h2 id="worth">{{ t('Worth opening', 'Что стоит открыть') }}</h2>

@@ -100,7 +100,9 @@ onMounted(() => {
         const target = e.target as HTMLElement
         if (target.closest('input, textarea, [contenteditable]') || e.metaKey || e.ctrlKey || e.altKey) return
         if (e.key === '/') {
+            // Keep VitePress's own "/" (site search) from opening on top of the page search.
             e.preventDefault()
+            e.stopPropagation()
             bar!.hidden = false
             input.select()
             input.focus()

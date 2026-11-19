@@ -14,6 +14,7 @@ import ChangesLog from './ChangesLog.vue'
 import HomeReport from './HomeReport.vue'
 import ManInstall from './ManInstall.vue'
 import ManPage from './ManPage.vue'
+import KeyHelp from './KeyHelp.vue'
 import NotFound from './NotFound.vue'
 import PackageCatalog from './PackageCatalog.vue'
 import SkillList from './SkillList.vue'
@@ -21,7 +22,7 @@ import './custom.css'
 
 export default {
     extends: DefaultTheme,
-    Layout: () => h(DefaultTheme.Layout, null, { 'not-found': () => h(NotFound) }),
+    Layout: () => h(DefaultTheme.Layout, null, { 'not-found': () => h(NotFound), 'layout-bottom': () => h(KeyHelp) }),
     enhanceApp({ app }) {
         app.component('HomeReport', HomeReport)
         app.component('ChangesLog', ChangesLog)

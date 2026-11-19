@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { withBase } from 'vitepress'
-import { computed, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useLocale } from './i18n'
 import deep from '../data/deep.json'
 import packages from '../data/packages.json'
@@ -35,13 +35,23 @@ const rows = computed(() => {
         return q === '' || p.slug.includes(q) || p.description.toLowerCase().includes(q)
     })
 })
+const searchBox = ref<HTMLInputElement>()
+const focusSearch = (e: KeyboardEvent) => {
+    const target = e.target as HTMLElement
+    if (e.key !== '/' || target.closest('input, textarea, select, [contenteditable]') || e.metaKey || e.ctrlKey || e.altKey) return
+    e.preventDefault()
+    e.stopPropagation()
+    searchBox.value?.focus()
+}
+onMounted(() => document.addEventListener('keydown', focusSearch))
+onUnmounted(() => document.removeEventListener('keydown', focusSearch))
 const href = (p: Pkg) => withBase(`${prefix.value}/packages/${p.slug}`)
 </script>
 
 <template>
   <div>
     <div class="cat-tools">
-      <input v-model="query" type="search" :placeholder="ru ? 'Поиск пакетов: outbox, retry, ffmpeg' : 'Search packages, e.g. outbox, retry, ffmpeg'" :aria-label="ru ? 'Поиск пакетов' : 'Search packages'" />
+      <input ref="searchBox" v-model="query" type="search" :placeholder="ru ? 'Поиск пакетов: outbox, retry, ffmpeg' : 'Search packages, e.g. outbox, retry, ffmpeg'" :aria-label="ru ? 'Поиск пакетов' : 'Search packages'" />
       <label><input v-model="skillOnly" type="checkbox" /> {{ ru ? 'есть навык для агента' : 'has agent skill' }}</label>
       <label><input v-model="rootsOnly" type="checkbox" /> {{ ru ? 'только ядра семейств' : 'family cores only' }}</label>
     </div>

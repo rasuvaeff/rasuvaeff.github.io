@@ -1010,3 +1010,90 @@ mark.hit.cur {
     border-radius: 3px;
     margin-top: 18px;
 }
+
+/* ——— key help ——— */
+.keyhelp {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-items: center;
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    padding: 16px;
+}
+.keyhelp-box {
+    background: var(--bg);
+    border: 1px solid var(--fg);
+    border-radius: 4px;
+    padding: 18px 22px;
+    font: 14px/1.7 var(--mono);
+    max-width: 440px;
+    width: 100%;
+}
+.keyhelp-title {
+    margin: 0 0 10px;
+    font-weight: 600;
+}
+.keyhelp dl {
+    display: grid;
+    grid-template-columns: 10ch 1fr;
+    gap: 2px 2ch;
+    margin: 0;
+}
+.keyhelp dd {
+    margin: 0;
+    color: var(--soft);
+}
+.keyhelp kbd {
+    font: inherit;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 0 5px;
+}
+.keyhelp-hint {
+    all: unset;
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right, 0px));
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 30;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    font: 600 14px var(--mono);
+    color: var(--dim);
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--bg);
+    cursor: pointer;
+}
+.keyhelp-hint:hover {
+    color: var(--fg);
+    border-color: var(--fg);
+}
+@media (hover: none) {
+    .keyhelp-hint {
+        display: none;
+    }
+}
+@media print {
+    .keyhelp-hint,
+    .keyhelp {
+        display: none !important;
+    }
+}
+.dep {
+    cursor: pointer;
+}
+.dep:focus {
+    outline: none;
+}
+.dep:focus-visible .lbl {
+    text-decoration: underline;
+}
+.dep.on .lbl {
+    font-weight: 600;
+}
+.readout.deps a {
+    color: var(--ink);
+}

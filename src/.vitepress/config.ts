@@ -2,6 +2,7 @@ import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { defineConfig } from 'vitepress'
 import { renderAnnotatedPhp } from './annotated'
+import { type OgPage, ogImageFor, renderOgImages } from './og'
 import packages from './data/packages.json'
 
 const nav = (p: string, t: { packages: string; changes: string; agents: string; resume: string; workflow: string }) => [
@@ -12,6 +13,8 @@ const nav = (p: string, t: { packages: string; changes: string; agents: string; 
     { text: t.workflow, link: `${p}/workflow` },
     { text: 'GitHub', link: 'https://github.com/rasuvaeff' },
 ]
+
+const ogPages = new Map<string, OgPage>()
 
 export default defineConfig({
     title: 'Victor Razuvaev',
@@ -33,7 +36,7 @@ export default defineConfig({
             }
         },
     },
-    buildEnd(siteConfig) {
+    async buildEnd(siteConfig) {
         // RSS feed of the latest releases across all packages.
         const site = 'https://rasuvaeff.github.io'
         const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -45,17 +48,29 @@ export default defineConfig({
             .map((r) => `<item><title>rasuvaeff/${r.slug} ${r.tag}</title><link>https://github.com/rasuvaeff/${r.slug}/releases/tag/${r.tag}</link><guid isPermaLink="false">rasuvaeff/${r.slug}@${r.tag}</guid><pubDate>${new Date(`${r.date}T00:00:00Z`).toUTCString()}</pubDate><description>${esc(r.description)}</description></item>`)
         const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>rasuvaeff/* releases</title><link>${site}/changes</link><description>Every release of every rasuvaeff/* PHP package.</description><language>en</language>${items.join('')}</channel></rss>\n`
         writeFileSync(join(siteConfig.outDir, 'feed.xml'), xml)
+        const images = await renderOgImages(siteConfig.outDir, [...ogPages.values()], packages)
+        console.log(`og images: ${images}`)
     },
     transformPageData(pageData) {
         // Generated manual pages get their identity from the route parameter.
         const slug = pageData.params?.pkg as string | undefined
-        if (!slug) return
+        if (!slug) {
+            if (pageData.relativePath !== '404.md') {
+                ogPages.set(pageData.relativePath, {
+                    relativePath: pageData.relativePath,
+                    title: String(pageData.frontmatter.ogTitle ?? pageData.frontmatter.title ?? pageData.title),
+                    description: String(pageData.frontmatter.description ?? pageData.description ?? ''),
+                })
+            }
+            return
+        }
         const pkg = packages.find((p) => p.slug === slug)
         pageData.title = slug
         pageData.frontmatter.title = slug
         pageData.frontmatter.package = slug
         pageData.frontmatter.description = pkg?.description ?? ''
         pageData.description = pkg?.description ?? ''
+        ogPages.set(pageData.relativePath, { relativePath: pageData.relativePath, title: slug, description: pkg?.description ?? '' })
     },
     transformHead({ pageData, siteData }) {
         const path = pageData.relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '')
@@ -75,7 +90,10 @@ export default defineConfig({
             ['meta', { property: 'og:description', content: description }],
             ['meta', { property: 'og:url', content: url }],
             ['meta', { property: 'og:locale', content: ru ? 'ru_RU' : 'en_US' }],
-            ['meta', { name: 'twitter:card', content: 'summary' }],
+            ['meta', { property: 'og:image', content: `https://rasuvaeff.github.io/${ogImageFor(pageData.relativePath)}` }],
+            ['meta', { property: 'og:image:width', content: '1200' }],
+            ['meta', { property: 'og:image:height', content: '630' }],
+            ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
         ]
     },
     head: [
