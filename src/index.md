@@ -20,7 +20,7 @@ description: Senior backend engineer. High-load PHP and Yii, and 89 published li
     <a class="btn ghost" href="/resume">Resume</a>
   </div>
   <div class="bento">
-    <div class="tile"><small>Packages</small><b>89</b><p>on Packagist, PHP 8.3+</p></div>
+    <div class="tile"><small>Packages</small><b>89</b><p>active on Packagist, PHP 8.3+</p></div>
     <div class="tile"><small>Median minMsi gate</small><b>95%</b><div class="meter"><i style="width: 95%"></i></div></div>
     <div class="tile"><small>Static analysis</small><b>Psalm 1</b><p>no suppressions, no baseline</p></div>
     <div class="tile"><small>Agent skills</small><b>40</b><p>packages ship a SKILL.md</p></div>
@@ -119,13 +119,13 @@ public function status(
     <li><a href="https://github.com/rasuvaeff/rector-named-literals">rector-named-literals</a><p>A Rector rule against the boolean trap: adds parameter names to literal arguments. Used across the whole monorepo.</p></li>
     <li><a href="https://github.com/rasuvaeff/json-ld">json-ld</a><p>JSON-LD 1.1: expand, flatten, the node API, RDF and N-Quads. Tested against the vendored W3C conformance suites and RDFC-1.0 canonicalization.</p></li>
     <li><a href="https://github.com/rasuvaeff/payments">payments</a><p>Money is integer minor units, never a float. Intents, attempts and a replay-protected webhook ingress, with no provider chosen for you. 0.x.</p></li>
-    <li><a href="https://github.com/rasuvaeff/yii3-filestorage">yii3-filestorage</a><p>One storage facade, a deduplication ledger, signed downloads, tenant-scoped attachments, image derivatives. 0.x.</p></li>
-    <li><a href="https://github.com/rasuvaeff/link-preview">link-preview</a><p>OpenGraph and Twitter Cards from a URL you do not trust, fetched through the pinned client.</p></li>
+    <li><a href="https://github.com/rasuvaeff/yii3-filestorage">yii3-filestorage</a><p>One storage facade and a deduplication ledger; signed downloads, tenant-scoped attachments and image derivatives in its sibling packages. 0.x.</p></li>
+    <li><a href="https://github.com/rasuvaeff/link-preview">link-preview</a><p>oEmbed, JSON-LD, OpenGraph and Twitter Cards from a URL you do not trust, with SSRF checks on redirects. The pinned client is the recommended transport.</p></li>
     <li><a href="/packages/resilience">resilience</a><p>Retry, circuit breaker and bulkhead nested in the order that does not amplify overload.</p></li>
     <li><a href="/packages/schema">schema</a><p>One schema validates input and generates test data for it.</p></li>
-    <li><a href="https://github.com/rasuvaeff/yii3-telemetry">yii3-telemetry</a><p>Traces with OpenTelemetry export. Metrics, correlation ids, health and the audit log sit next to it.</p></li>
+    <li><a href="https://github.com/rasuvaeff/yii3-telemetry">yii3-telemetry</a><p>Vendor-neutral tracing; OpenTelemetry export via yii3-telemetry-otel. Metrics, correlation ids, health and the audit log sit next to it.</p></li>
     <li><a href="https://github.com/rasuvaeff/media-converter">media-converter</a><p>A typed ffmpeg/ffprobe pipeline: transcode, remux, filter, retry, bulkhead, progress events.</p></li>
-    <li><a href="https://github.com/rasuvaeff/yii3-webhooks">yii3-webhooks</a><p>HMAC-signed outbound webhooks and inbound verification, delivered through the outbox.</p></li>
+    <li><a href="https://github.com/rasuvaeff/yii3-webhooks">yii3-webhooks</a><p>HMAC-signed outbound webhooks, inbound verification and replay protection. Delivery through the outbox via yii3-outbox-webhooks-bridge.</p></li>
   </ul>
 </section>
 
@@ -140,7 +140,7 @@ public function status(
       <span class="more">cska.in →</span>
     </a>
     <a class="system" href="https://github.com/rasuvaeff/ecosystem-sandbox">
-      <p class="kicker">Runnable · 60+ packages</p>
+      <p class="kicker">Runnable · 56 packages</p>
       <h3>ecosystem-sandbox</h3>
       <p>A Yii3 shop. Checkout and payment run outbox, idempotency, retries, the circuit breaker, webhooks and telemetry in one flow.</p>
       <span class="more">Source →</span>

@@ -19,12 +19,12 @@ outline: [2, 2]
 
 ## Что внутри навыка
 
-Навыки написаны так же, как свод правил самого монорепо: для читателя, который исполняет правила буквально.
+Навыки написаны так же, как свод правил самого монорепо: для читателя, который исполняет правила буквально. В большинстве навыков есть:
 
-- **Триггер в front matter.** В описании перечислены публичные классы и стоит фраза «Use when writing, reviewing or debugging ... in a project that has this package installed», чтобы агент загружал навык под нужную задачу.
+- **Триггер в front matter.** В описании перечислены публичные классы и сказано, когда загружать навык, обычно фразой «Use when writing, reviewing or debugging ... in a project that has this package installed».
 - **Правила безопасности, которые проверяются при каждом изменении.** Ловушки, которые что-то стоили, сформулированные как правила, а не советы.
 - **Канонический пример использования.** Одна конструкция, заведомо верная.
-- **Ссылка на полный API.** «Прочитай `vendor/rasuvaeff/<package>/llms.txt`, прежде чем угадывать имя метода».
+- **Ссылка на полный API.** `llms.txt` пакета, который нужно прочитать, прежде чем угадывать имя метода.
 
 Фрагмент навыка [yii3-idempotency](https://github.com/rasuvaeff/yii3-idempotency):
 
@@ -39,15 +39,23 @@ description: >-
   409/422 conflict responses in a project that has this package installed.
 ---
 
+...
+
 ## Safety rules — verify these on every change
 
-2. **Only 2xx responses are cached.** Any non-2xx handler response releases
-   the claim so the client can retry under the same key. Never "fix" a
-   failing retry by caching an error response.
+...
+
+2. **Only 2xx responses are cached.** Any non-2xx handler response (3xx/4xx —
+   including retryable 409/423/429 — and any 5xx) releases the claim so the
+   client can retry under the same key. Never "fix" a failing retry by caching
+   an error response.
+
+   ...
 
 3. **Conflict semantics are fixed contract.** Same key + different payload
    fingerprint → 422; same key while the first request is still in flight
-   → 409; replay → cached response, handler NOT called.
+   → 409; replay (same key + same fingerprint) → cached response, handler NOT
+   called. ...
 ```
 
 Тот же приём в пакете про конкурентность, из [bulkhead](https://github.com/rasuvaeff/bulkhead):

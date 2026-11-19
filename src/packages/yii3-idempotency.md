@@ -20,7 +20,7 @@ Retried or double-submitted requests run the handler twice. Without caller scopi
 - Same key and a different payload answers `422`; an in-flight duplicate answers `409`.
 - The fingerprint covers method, path, query and body.
 - `scopeResolver` is required: keys are namespaced per caller.
-- Only 2xx handler responses are cached; others release the claim.
+- 2xx responses are cached by default; other statuses release the claim.
 - `DomainFailureRenderer` and `FailureClassifier` cache domain failures, so `InsufficientFunds` is not executed again.
 - `cacheableRedirectStatuses` caches `303` for Post/Redirect/Get forms.
 - `Set-Cookie`, `Date` and hop-by-hop headers are never captured.
@@ -69,13 +69,13 @@ Scopes idempotency keys by caller and endpoint so identical keys never collide.
 
 ```php
 // caller + "METHOD /path" — the wiring the bundled config builds by default
-scopeResolver: new CompositeScopeResolver(
+$scopeResolver = new CompositeScopeResolver(
     new RequestAttributeScopeResolver(attribute: 'user'),
     new RequestTargetScopeResolver(),
 );
 
 // caller + an explicit namespace shared by related endpoints
-scopeResolver: new CompositeScopeResolver(
+$scopeResolver = new CompositeScopeResolver(
     new RequestAttributeScopeResolver(attribute: 'user'),
     new IdempotencyScope('orders'),
 );

@@ -4,6 +4,7 @@ import { useLocale } from './i18n'
 import packages from '../data/packages.json'
 
 const { ru } = useLocale()
+const DEV = new Set(['understudy', 'property-testing-core', 'property-testing-openapi', 'doc-exec'])
 const props = defineProps<{ slug: string; docs?: string; tests?: number; src?: number }>()
 const p = computed(() => (packages as Array<{ slug: string; version: string; minMsi: number | null; skill: boolean }>).find((x) => x.slug === props.slug))
 </script>
@@ -16,6 +17,10 @@ const p = computed(() => (packages as Array<{ slug: string; version: string; min
     <a :href="`https://github.com/rasuvaeff/${slug}`">GitHub</a>
     <a :href="`https://packagist.org/packages/rasuvaeff/${slug}`">Packagist</a>
     <a v-if="docs" :href="docs">{{ ru ? 'Сайт документации' : 'Docs site' }}</a>
+  </div>
+  <div v-if="p" class="pkg-install">
+    <small>{{ ru ? 'Установка' : 'Install' }}</small>
+    <code>composer require {{ DEV.has(slug) ? '--dev ' : '' }}rasuvaeff/{{ slug }}</code>
   </div>
   <div v-if="p && (tests || src)" class="pkg-facts">
     <div v-if="src"><small>{{ ru ? 'Файлов в src' : 'Source files' }}</small><b>{{ src }}</b></div>

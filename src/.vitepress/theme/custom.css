@@ -24,7 +24,7 @@
     --vp-c-brand-2: #45c974;
     --vp-c-brand-3: rgba(94, 227, 138, 0.2);
     --vp-c-brand-soft: var(--accent-soft);
-    --vp-font-family-base: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+    --vp-font-family-base: 'Space Grotesk', 'Manrope', 'Segoe UI', system-ui, sans-serif;
     --vp-font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
     --vp-code-font-size: 13px;
     --vp-code-block-bg: #0b0d11;
@@ -32,7 +32,7 @@
     --vp-code-lang-color: var(--ink-faint);
     --vp-nav-height: 60px;
     --mono: 'JetBrains Mono', ui-monospace, monospace;
-    --sans: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+    --sans: 'Space Grotesk', 'Manrope', 'Segoe UI', system-ui, sans-serif;
     --body: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
     color-scheme: dark;
 }
@@ -532,7 +532,8 @@ input:focus-visible {
 }
 @media (max-width: 720px) {
     .cat-row {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        gap: 4px 10px;
     }
     .cat-row span {
         grid-column: 1 / -1;
@@ -562,6 +563,30 @@ input:focus-visible {
 .pkg-head a:hover {
     border-color: var(--accent);
     color: var(--accent) !important;
+}
+.pkg-install {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 12px;
+    margin: -12px 0 20px;
+    padding: 10px 14px;
+    background: #0b0d11;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+}
+.pkg-install small {
+    font: 500 10px var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+.pkg-install code {
+    font: 500 13px var(--mono);
+    color: var(--ink) !important;
+    background: none !important;
+    padding: 0 !important;
+    overflow-wrap: anywhere;
 }
 .pkg-facts {
     display: grid;
@@ -838,8 +863,75 @@ input:focus-visible {
     color: var(--accent);
 }
 
+code,
+pre,
+pre * {
+    font-variant-ligatures: none;
+    font-feature-settings: 'calt' 0, 'liga' 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
     * {
         transition: none !important;
+    }
+}
+
+/* ——— print (resume PDF) ——— */
+@page {
+    size: A4;
+    margin: 14mm 14mm 16mm;
+}
+@media print {
+    :root {
+        --ink: #111317;
+        --ink-soft: #383d47;
+        --ink-faint: #5d6574;
+        --paper: #ffffff;
+        --tile: #ffffff;
+        --tile-2: #f4f5f7;
+        --rule: #d7dbe2;
+        --rule-2: #c9ced8;
+        --accent: #127a3a;
+        --accent-soft: #e6f4ea;
+        color-scheme: light;
+    }
+    html,
+    body {
+        background: #fff !important;
+    }
+    .VPNav,
+    .VPLocalNav,
+    .VPFooter,
+    .VPSkipLink,
+    .no-print {
+        display: none !important;
+    }
+    .VPContent,
+    .VPPage > div {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: none !important;
+    }
+    .cv {
+        max-width: none;
+        font-size: 12px;
+    }
+    .cv h2 {
+        margin-top: 18px;
+        break-after: avoid;
+    }
+    .cv p,
+    .cv li {
+        font-size: 12.5px;
+        line-height: 1.5;
+    }
+    .cv .caps div,
+    .cv .facts li,
+    .cv .stack-row {
+        break-inside: avoid;
+    }
+    a {
+        color: var(--accent) !important;
+        text-decoration: none !important;
     }
 }

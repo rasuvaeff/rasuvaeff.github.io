@@ -16,7 +16,8 @@ description: Victor Razuvaev, senior backend engineer. High-load PHP and Yii, di
       <a href="https://packagist.org/packages/rasuvaeff/">packagist.org/packages/rasuvaeff</a><br>
       <a href="https://t.me/rasuvaeff">t.me/rasuvaeff</a><br>
       <a href="mailto:rasuvaeff@gmail.com">rasuvaeff@gmail.com</a><br>
-      <a href="/">rasuvaeff.github.io</a>
+      <a href="/">rasuvaeff.github.io</a><br>
+      <a class="no-print" href="/resume-en.pdf" download>Download PDF</a>
     </p>
   </header>
 
@@ -37,7 +38,7 @@ description: Victor Razuvaev, senior backend engineer. High-load PHP and Yii, di
   <ul class="facts">
     <li><strong>cska.in.</strong> A fan community rebuilt on a 20-year-old database and the same domain. Yii3, PHP 8.5, PostgreSQL, Redis, Temporal, Centrifugo. Live match calendar, a long archive of player and head-to-head statistics, stories, private messages, a Telegram bot and mini-app. An MCP door lets a personal agent use the same handlers as the site, with per-key scopes, quotas and an audit log. Runs on 31 of my packages. <a href="https://teletype.in/@rasuvaeff/cskain">Write-up</a> (in Russian).</li>
     <li><strong>Ad-tech, ten years.</strong> Advertising networks with RTB integrations, buying and selling traffic. MySQL for operational data, ClickHouse for impression analytics, Redis and Memcached for caching.</li>
-    <li><strong>ecosystem-sandbox.</strong> A runnable Yii3 shop that puts 60+ packages through one checkout: outbox, idempotency, retries, circuit breaker, webhooks and telemetry together. <a href="https://github.com/rasuvaeff/ecosystem-sandbox">Source</a>.</li>
+    <li><strong>ecosystem-sandbox.</strong> A runnable Yii3 shop on 56 of the packages. Checkout and payment run outbox, idempotency, retries, circuit breaker, webhooks and telemetry together. <a href="https://github.com/rasuvaeff/ecosystem-sandbox">Source</a>.</li>
   </ul>
 
   <h2 id="open-source">Open source</h2>

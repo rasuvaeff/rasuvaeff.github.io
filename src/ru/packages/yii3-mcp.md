@@ -20,7 +20,7 @@ outline: [2, 2]
 - На одном эндпоинте обслуживает ревизии handshake от 2024-11-05 до 2025-11-25 и stateless 2026-07-28.
 - `SharedSecretMiddleware` работает по принципу fail-closed; `BearerTokenMiddleware` превращает сервер в OAuth 2.1 resource server.
 - `tool_call_budget` ограничивает число `tools/call` подряд, чтобы остановить циклы агента.
-- Интерсепторы для rate limit, ограничения размера ответа, кеширования через PSR-16 и маскирования аргументов.
+- Интерсепторы для rate limit, ограничения размера ответа и кеширования через PSR-16, плюс помощник `ArgumentMasker` для маскирования секретов в аргументах.
 - Видимость tools, prompts и resources для каждой сессии.
 - `OpenApiServerConfigurator` пробрасывает REST-операции из allow-list как tools.
 - `McpTester`, `SchemaSnapshot`, `mcp:doctor`, `mcp:list` и stdio `mcp:serve`.

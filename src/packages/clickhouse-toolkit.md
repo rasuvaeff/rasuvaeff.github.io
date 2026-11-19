@@ -87,7 +87,7 @@ $pm->movePartition('events', 'events_archive', '202401');     // MOVE … TO TAB
 |---|---|
 | yii3-clickhouse-toolkit | Yii3 config bridge and console commands |
 | yii3-outbox-clickhouse | Batched outbox exporter |
-| yii3-ab-testing-clickhouse | Exposure and conversion trackers |
+| yii3-ab-testing-clickhouse | A/B analytics schema and migrations |
 | context | Request budget mapped to `max_execution_time` |
 
 ## Limits

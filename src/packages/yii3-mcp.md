@@ -20,7 +20,7 @@ Exposing application operations to AI agents as tools, resources and prompts nee
 - Serves handshake revisions 2024-11-05 to 2025-11-25 and the stateless 2026-07-28 on one endpoint.
 - `SharedSecretMiddleware` is fail-closed; `BearerTokenMiddleware` makes it an OAuth 2.1 resource server.
 - `tool_call_budget` caps `tools/call` in a row to stop agent loops.
-- Interceptors for rate limits, response size limits, PSR-16 caching and argument masking.
+- Interceptors for rate limits, response size limits and PSR-16 caching, plus an `ArgumentMasker` helper for secrets in arguments.
 - Per-session tool, prompt and resource visibility.
 - `OpenApiServerConfigurator` bridges allow-listed REST operations as tools.
 - `McpTester`, `SchemaSnapshot`, `mcp:doctor`, `mcp:list` and stdio `mcp:serve`.

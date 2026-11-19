@@ -20,7 +20,7 @@ description: "Senior backend-разработчик. Высоконагруже�
     <a class="btn ghost" href="/ru/resume">Резюме</a>
   </div>
   <div class="bento">
-    <div class="tile"><small>Пакетов</small><b>89</b><p>на Packagist, PHP 8.3+</p></div>
+    <div class="tile"><small>Пакетов</small><b>89</b><p>активных на Packagist, PHP 8.3+</p></div>
     <div class="tile"><small>Медианный порог minMsi</small><b>95%</b><div class="meter"><i style="width: 95%"></i></div></div>
     <div class="tile"><small>Статический анализ</small><b>Psalm 1</b><p>без подавлений и baseline</p></div>
     <div class="tile"><small>Навыки для агентов</small><b>40</b><p>пакетов с SKILL.md</p></div>
@@ -119,13 +119,13 @@ public function status(
     <li><a href="https://github.com/rasuvaeff/rector-named-literals">rector-named-literals</a><p>Правило Rector против boolean trap: добавляет имена параметров к литеральным аргументам. Используется во всём монорепо.</p></li>
     <li><a href="https://github.com/rasuvaeff/json-ld">json-ld</a><p>JSON-LD 1.1: expand, flatten, node API, RDF и N-Quads. Проверен на vendored-наборах W3C и канонизацией RDFC-1.0.</p></li>
     <li><a href="https://github.com/rasuvaeff/payments">payments</a><p>Деньги как целые минорные единицы, никогда не float. Намерения, попытки и вебхуки с защитой от повтора, провайдер не навязан. 0.x.</p></li>
-    <li><a href="https://github.com/rasuvaeff/yii3-filestorage">yii3-filestorage</a><p>Один фасад хранилища, реестр дедупликации, подписанные загрузки, вложения по арендаторам, производные изображения. 0.x.</p></li>
-    <li><a href="https://github.com/rasuvaeff/link-preview">link-preview</a><p>OpenGraph и Twitter Cards по недоверенному URL, загрузка через pinned-клиент.</p></li>
+    <li><a href="https://github.com/rasuvaeff/yii3-filestorage">yii3-filestorage</a><p>Один фасад хранилища и реестр дедупликации; подписанные загрузки, вложения по арендаторам и производные изображения — в соседних пакетах. 0.x.</p></li>
+    <li><a href="https://github.com/rasuvaeff/link-preview">link-preview</a><p>oEmbed, JSON-LD, OpenGraph и Twitter Cards по недоверенному URL, с SSRF-проверкой редиректов. Рекомендуемый транспорт — pinned-клиент.</p></li>
     <li><a href="/ru/packages/resilience">resilience</a><p>Retry, circuit breaker и bulkhead во вложенности, которая не усиливает перегрузку.</p></li>
     <li><a href="/ru/packages/schema">schema</a><p>Одна схема валидирует вход и порождает для него тестовые данные.</p></li>
-    <li><a href="https://github.com/rasuvaeff/yii3-telemetry">yii3-telemetry</a><p>Трейсы с экспортом в OpenTelemetry. Рядом метрики, correlation id, health и аудит-лог.</p></li>
+    <li><a href="https://github.com/rasuvaeff/yii3-telemetry">yii3-telemetry</a><p>Трейсинг без привязки к вендору; экспорт в OpenTelemetry — через yii3-telemetry-otel. Рядом метрики, correlation id, health и аудит-лог.</p></li>
     <li><a href="https://github.com/rasuvaeff/media-converter">media-converter</a><p>Типизированный конвейер ffmpeg/ffprobe: транскодирование, remux, фильтры, retry, bulkhead, события прогресса.</p></li>
-    <li><a href="https://github.com/rasuvaeff/yii3-webhooks">yii3-webhooks</a><p>Исходящие вебхуки с HMAC-подписью и проверка входящих, доставка через outbox.</p></li>
+    <li><a href="https://github.com/rasuvaeff/yii3-webhooks">yii3-webhooks</a><p>Исходящие вебхуки с HMAC-подписью, проверка входящих и защита от повтора. Доставка через outbox — пакетом yii3-outbox-webhooks-bridge.</p></li>
   </ul>
 </section>
 
@@ -140,7 +140,7 @@ public function status(
       <span class="more">cska.in →</span>
     </a>
     <a class="system" href="https://github.com/rasuvaeff/ecosystem-sandbox">
-      <p class="kicker">Запускается · 60+ пакетов</p>
+      <p class="kicker">Запускается · 56 пакетов</p>
       <h3>ecosystem-sandbox</h3>
       <p>Магазин на Yii3. Оформление заказа и оплата прогоняют outbox, идемпотентность, ретраи, circuit breaker, вебхуки и телеметрию в одном потоке.</p>
       <span class="more">Исходники →</span>

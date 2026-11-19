@@ -22,7 +22,7 @@ Re-resolving an assignment later can return a different variant than the visitor
 - `assign()` is pure. `trackExposure()` and `trackConversion()` are explicit and return events.
 - `AssignmentReceipt` links a conversion to the original exposure in a later request.
 - Targeting rules, with a fallback variant on mismatch.
-- Sticky variants through `AssignmentStore`, which drops stale pins when weights change.
+- Sticky variants through `AssignmentStore`; `ConfigurationAwareAssignmentStore` drops stale pins when weights change.
 - Logger sinks, composite and deduplicating trackers; a reset hook for RoadRunner and Swoole.
 
 ## Example
@@ -67,8 +67,8 @@ Wraps a tracker so the same exposure is emitted at most once per request.
 
 ```php
 $tracker = new DeduplicatingExposureTracker(tracker: $realExposureTracker);
-$tracker->trackExposure($assignment);
-$tracker->trackExposure($assignment); // suppressed in this request
+$tracker->trackExposure($exposureEvent);
+$tracker->trackExposure($exposureEvent); // suppressed in this request
 ```
 
 ## Family
@@ -78,7 +78,7 @@ $tracker->trackExposure($assignment); // suppressed in this request
 | yii3-ab-testing-db | DB provider and sticky store |
 | yii3-ab-testing-web | Cookie sticky store, `SubjectIdMiddleware` |
 | yii3-ab-testing-outbox | Durable delivery of events |
-| yii3-ab-testing-clickhouse | Analytics export |
+| yii3-ab-testing-clickhouse | ClickHouse analytics schema and migrations |
 
 ## Limits
 

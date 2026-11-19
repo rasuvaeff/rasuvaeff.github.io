@@ -23,7 +23,7 @@ DNS может ответить проверке публичным адресо
 - Лимит тела считает распакованные байты, поэтому gzip-бомбы обрываются на лимите.
 - `RedirectFollower` заново резолвит, проверяет и привязывает каждый hop.
 - Игнорирует `HTTP_PROXY` / `HTTPS_PROXY` из окружения; прокси включается явно через `proxy:`.
-- Типизированные ошибки: `RequestRefused`, `ResponseTooLarge`, `TransferFailed`, `TooManyRedirects`.
+- Типизированные ошибки: `RequestRefused`, `ResolutionFailed`, `ResponseTooLarge`, `TransferFailed`, `TooManyRedirects`.
 
 ## Пример
 
@@ -37,33 +37,17 @@ try {
 } catch (ResponseTooLarge $tooLarge) {
     // the body (decompressed) passed maxBodyBytes; the transfer was cut
 } catch (ClientException $failed) {
-    // TransferFailed (connection, TLS, timeout) or TooManyRedirects
+    // TransferFailed (connection, TLS, timeout), ResolutionFailed (DNS) or TooManyRedirects
 }
 ```
 
 ## Где используется
 
-`link-preview` получает через него данные OpenGraph и Twitter Card.
+`link-preview` рекомендует его как PSR-18 клиент для своего `Fetcher`.
 
 ## Ещё примеры
 
-Загрузка недоверенного URL с повторной проверкой каждого редиректа и типизированные ошибки для обработки.
-
-```php
-$client = new PinnedClient(); // public addresses only, IPv4 + IPv6, 8 s / 4 s, body <= 10 MiB, no proxy
-
-try {
-    $response = (new RedirectFollower($client))->sendRequest(new Request('GET', $untrustedUrl));
-} catch (RequestRefused $refused) {
-    $refused->reason; // Refusal::UnsupportedScheme | MissingHost | AddressNotAllowed
-} catch (ResponseTooLarge $tooLarge) {
-    // the body (decompressed) passed maxBodyBytes; the transfer was cut
-} catch (ClientException $failed) {
-    // TransferFailed (connection, TLS, timeout) or TooManyRedirects
-}
-```
-
-Политика по умолчанию пропускает только публичные адреса; частные, loopback, link-local и отображённые отклоняются.
+Политика по умолчанию пропускает только публичные адреса; частные, loopback и link-local отклоняются, а IPv4-mapped адрес оценивается как вложенный в него IPv4.
 
 ```php
 $policy = new PublicAddresses();

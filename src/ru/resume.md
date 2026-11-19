@@ -16,7 +16,8 @@ description: "Виктор Разуваев, senior backend-разработчи
       <a href="https://packagist.org/packages/rasuvaeff/">packagist.org/packages/rasuvaeff</a><br>
       <a href="https://t.me/rasuvaeff">t.me/rasuvaeff</a><br>
       <a href="mailto:rasuvaeff@gmail.com">rasuvaeff@gmail.com</a><br>
-      <a href="/ru/">rasuvaeff.github.io</a>
+      <a href="/ru/">rasuvaeff.github.io</a><br>
+      <a class="no-print" href="/resume-ru.pdf" download>Скачать PDF</a>
     </p>
   </header>
 
@@ -37,7 +38,7 @@ description: "Виктор Разуваев, senior backend-разработчи
   <ul class="facts">
     <li><strong>cska.in.</strong> Фанатское сообщество, пересобранное на 20-летней базе и том же домене. Yii3, PHP 8.5, PostgreSQL, Redis, Temporal, Centrifugo. Календарь матчей со счётом в реальном времени, большой архив статистики игроков и личных встреч, истории, личные сообщения, Telegram-бот и мини-апп. MCP-вход позволяет личному агенту пользоваться теми же обработчиками, что и сайт, с правами по ключам, квотами и аудит-логом. Работает на 31 моём пакете. <a href="https://teletype.in/@rasuvaeff/cskain">Разбор</a>.</li>
     <li><strong>Ad-tech, десять лет.</strong> Рекламные сети с RTB-интеграциями, покупка и продажа трафика. MySQL для операционных данных, ClickHouse для аналитики показов, Redis и Memcached для кеша.</li>
-    <li><strong>ecosystem-sandbox.</strong> Запускаемый магазин на Yii3, который прогоняет 60+ пакетов через одно оформление заказа: outbox, идемпотентность, ретраи, circuit breaker, вебхуки и телеметрию вместе. <a href="https://github.com/rasuvaeff/ecosystem-sandbox">Исходники</a>.</li>
+    <li><strong>ecosystem-sandbox.</strong> Запускаемый магазин на Yii3 на 56 пакетах. Оформление заказа и оплата прогоняют outbox, идемпотентность, ретраи, circuit breaker, вебхуки и телеметрию вместе. <a href="https://github.com/rasuvaeff/ecosystem-sandbox">Исходники</a>.</li>
   </ul>
 
   <h2 id="open-source">Открытый код</h2>

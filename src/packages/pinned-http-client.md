@@ -23,7 +23,7 @@ DNS can answer a public address to the check and `127.0.0.1` or `169.254.169.254
 - The body limit counts decompressed bytes, so gzip bombs are cut at the limit.
 - `RedirectFollower` re-resolves, re-checks and re-pins every hop.
 - Ignores `HTTP_PROXY` / `HTTPS_PROXY` from the environment; a proxy is opt-in via `proxy:`.
-- Typed failures: `RequestRefused`, `ResponseTooLarge`, `TransferFailed`, `TooManyRedirects`.
+- Typed failures: `RequestRefused`, `ResolutionFailed`, `ResponseTooLarge`, `TransferFailed`, `TooManyRedirects`.
 
 ## Example
 
@@ -37,33 +37,17 @@ try {
 } catch (ResponseTooLarge $tooLarge) {
     // the body (decompressed) passed maxBodyBytes; the transfer was cut
 } catch (ClientException $failed) {
-    // TransferFailed (connection, TLS, timeout) or TooManyRedirects
+    // TransferFailed (connection, TLS, timeout), ResolutionFailed (DNS) or TooManyRedirects
 }
 ```
 
 ## Used by
 
-`link-preview` fetches OpenGraph and Twitter Card data through it.
+`link-preview` recommends it as the PSR-18 client for its `Fetcher`.
 
 ## More examples
 
-Fetching an untrusted URL with redirects re-checked on every hop, and the typed failures to handle.
-
-```php
-$client = new PinnedClient(); // public addresses only, IPv4 + IPv6, 8 s / 4 s, body <= 10 MiB, no proxy
-
-try {
-    $response = (new RedirectFollower($client))->sendRequest(new Request('GET', $untrustedUrl));
-} catch (RequestRefused $refused) {
-    $refused->reason; // Refusal::UnsupportedScheme | MissingHost | AddressNotAllowed
-} catch (ResponseTooLarge $tooLarge) {
-    // the body (decompressed) passed maxBodyBytes; the transfer was cut
-} catch (ClientException $failed) {
-    // TransferFailed (connection, TLS, timeout) or TooManyRedirects
-}
-```
-
-The default policy allows only public addresses; private, loopback, link-local and mapped ones are refused.
+The default policy allows only public addresses; private, loopback and link-local ones are refused, and an IPv4-mapped address is judged as the IPv4 it carries.
 
 ```php
 $policy = new PublicAddresses();

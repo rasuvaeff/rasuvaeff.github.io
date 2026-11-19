@@ -15,10 +15,32 @@ export default defineConfig({
         'Senior backend engineer. High-load PHP and Yii, and 89 published libraries: deadlines, delivery, experiments, shrinking, test doubles.',
     lang: 'en-US',
     base: '/',
+    sitemap: { hostname: 'https://rasuvaeff.github.io' },
     cleanUrls: true,
     appearance: false,
     markdown: {
         theme: { light: 'github-dark', dark: 'github-dark' },
+    },
+    transformHead({ pageData, siteData }) {
+        const path = pageData.relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '')
+        const url = `https://rasuvaeff.github.io/${path}`
+        const title = pageData.frontmatter.title ?? pageData.title ?? siteData.title
+        const description = pageData.frontmatter.description ?? pageData.description ?? siteData.description
+        const ru = pageData.relativePath.startsWith('ru/')
+        const twin = ru ? path.replace(/^ru\/?/, '') : `ru/${path}`
+
+        return [
+            ['link', { rel: 'canonical', href: url }],
+            ['link', { rel: 'alternate', hreflang: ru ? 'ru' : 'en', href: url }],
+            ['link', { rel: 'alternate', hreflang: ru ? 'en' : 'ru', href: `https://rasuvaeff.github.io/${twin}` }],
+            ['meta', { property: 'og:type', content: 'website' }],
+            ['meta', { property: 'og:site_name', content: 'Victor Razuvaev' }],
+            ['meta', { property: 'og:title', content: title }],
+            ['meta', { property: 'og:description', content: description }],
+            ['meta', { property: 'og:url', content: url }],
+            ['meta', { property: 'og:locale', content: ru ? 'ru_RU' : 'en_US' }],
+            ['meta', { name: 'twitter:card', content: 'summary' }],
+        ]
     },
     head: [
         ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],

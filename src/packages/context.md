@@ -93,4 +93,4 @@ $context->isExpired();                        // true
 
 ## Limits
 
-The context stops work, it does not interrupt it. Cancellation is cooperative and deadlines are lazy (no background timer), so check before every step. An in-flight PDO or blocking Redis call cannot be aborted.
+The context stops work, it does not interrupt it. Cancellation is cooperative and deadlines are lazy (no background timer), so check before every step. Without `context-db` an in-flight PDO query cannot be aborted, and a blocking Redis call never can.

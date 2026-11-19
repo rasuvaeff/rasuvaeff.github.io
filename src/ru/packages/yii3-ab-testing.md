@@ -22,7 +22,7 @@ outline: [2, 2]
 - `assign()` чистая. `trackExposure()` и `trackConversion()` вызываются явно и возвращают события.
 - `AssignmentReceipt` связывает конверсию с исходным показом в более позднем запросе.
 - Правила таргетинга с запасным вариантом при несовпадении.
-- Закреплённые варианты через `AssignmentStore`, который сбрасывает устаревшие привязки при смене весов.
+- Закреплённые варианты через `AssignmentStore`; `ConfigurationAwareAssignmentStore` сбрасывает устаревшие привязки при смене весов.
 - Logger-приёмники, составные и дедуплицирующие трекеры; reset-хук для RoadRunner и Swoole.
 
 ## Пример
@@ -67,8 +67,8 @@ new AllowListAnalyticsContextPolicy(
 
 ```php
 $tracker = new DeduplicatingExposureTracker(tracker: $realExposureTracker);
-$tracker->trackExposure($assignment);
-$tracker->trackExposure($assignment); // suppressed in this request
+$tracker->trackExposure($exposureEvent);
+$tracker->trackExposure($exposureEvent); // suppressed in this request
 ```
 
 ## Семейство
@@ -78,7 +78,7 @@ $tracker->trackExposure($assignment); // suppressed in this request
 | yii3-ab-testing-db | DB-провайдер и sticky store |
 | yii3-ab-testing-web | Cookie sticky store, `SubjectIdMiddleware` |
 | yii3-ab-testing-outbox | Надёжная доставка событий |
-| yii3-ab-testing-clickhouse | Экспорт для аналитики |
+| yii3-ab-testing-clickhouse | Схема аналитики в ClickHouse и миграции |
 
 ## Ограничения
 

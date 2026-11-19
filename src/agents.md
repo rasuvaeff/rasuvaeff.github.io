@@ -19,12 +19,12 @@ A project that uses the [llm/skills](https://github.com/roxblnfk/skills) Compose
 
 ## What is in a skill
 
-The skills are written the way the monorepo's own rulebook is: for a reader that executes rules literally.
+The skills are written the way the monorepo's own rulebook is: for a reader that executes rules literally. Most skills carry:
 
-- **A trigger in the front matter.** The description lists the public classes and ends with "Use when writing, reviewing or debugging ... in a project that has this package installed", so the agent loads it for the right task.
+- **A trigger in the front matter.** The description lists the public classes and says when to load the skill, usually "Use when writing, reviewing or debugging ... in a project that has this package installed".
 - **Safety rules to verify on every change.** The traps that cost something, stated as rules, not as advice.
 - **Canonical usage.** One construction that is known to be correct.
-- **A pointer to the full API.** "Read `vendor/rasuvaeff/<package>/llms.txt` before guessing a method name."
+- **A pointer to the full API.** The package's `llms.txt`, to read before guessing a method name.
 
 An excerpt from the skill of [yii3-idempotency](https://github.com/rasuvaeff/yii3-idempotency):
 
@@ -39,15 +39,23 @@ description: >-
   409/422 conflict responses in a project that has this package installed.
 ---
 
+...
+
 ## Safety rules — verify these on every change
 
-2. **Only 2xx responses are cached.** Any non-2xx handler response releases
-   the claim so the client can retry under the same key. Never "fix" a
-   failing retry by caching an error response.
+...
+
+2. **Only 2xx responses are cached.** Any non-2xx handler response (3xx/4xx —
+   including retryable 409/423/429 — and any 5xx) releases the claim so the
+   client can retry under the same key. Never "fix" a failing retry by caching
+   an error response.
+
+   ...
 
 3. **Conflict semantics are fixed contract.** Same key + different payload
    fingerprint → 422; same key while the first request is still in flight
-   → 409; replay → cached response, handler NOT called.
+   → 409; replay (same key + same fingerprint) → cached response, handler NOT
+   called. ...
 ```
 
 The same pattern in a package about concurrency, from [bulkhead](https://github.com/rasuvaeff/bulkhead):

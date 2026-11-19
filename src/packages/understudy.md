@@ -17,7 +17,7 @@ String-based mocks break on refactoring and typos, and they add service methods 
 ## What it does
 
 - Specifies calls as real closures: `when(fn () => $repo->find(123))->returns($book)`.
-- `expect()` with `times()`, `verify()`, `never: true` and `nothingElse()`.
+- `expect()` with `times()`; after-the-fact `verify()` (including `never: true`) and `nothingElse()`.
 - Argument matchers: `Arg::any`, `satisfies`, `rest`, and a captor with typed `last()` / `all()`.
 - Doubles several interfaces at once; handles final classes and PHP 8.4 property hooks.
 - `Understudy::delegate()` forwards unstubbed calls to a real object and records them.
@@ -38,7 +38,7 @@ when(fn () => $repository->find(123))->returns($book);
 expect(fn () => $repository->save($book))->times(1);
 ```
 
-Rename `find` and the test stops compiling. `for()` returns the contract's own type.
+Rename `find` and the IDE renames the call with it; a stale call is flagged by static analysis. `for()` returns the contract's own type.
 
 ## More examples
 

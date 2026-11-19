@@ -28,9 +28,9 @@ outline: [2, 2]
 ## Вывод
 
 <pre class="tape">Property falsified after 0 successful run(s); seed=42
-  Original: value=54
-  Shrunk:   value=100 (3 shrink step(s), 11 trial(s))
-  <b>Changed:  value=54 -&gt; 100</b>
+  Original: value=3989
+  Shrunk:   value=100 (9 shrink step(s), 39 trial(s))
+  <b>Changed:  value=3989 -&gt; 100</b>
   Failure:  100 is not below 100</pre>
 
 ## Пример

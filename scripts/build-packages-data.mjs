@@ -1,12 +1,12 @@
-// Builds src/.vitepress/data/packages.json from the monorepo checkout next to this repo.
-// Usage: node scripts/build-packages-data.mjs [monorepoRoot]
-import { execFileSync } from 'node:child_process'
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
+// Builds src/.vitepress/data/packages.json from Packagist and the tagged sources on GitHub.
+// Usage: node scripts/build-packages-data.mjs
+// No monorepo checkout and no GitHub token needed: version, description and the abandoned flag
+// come from Packagist; minMsi and the agent skill are read from the commit of the latest stable tag.
+import { mkdirSync, writeFileSync } from 'node:fs'
+import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const here = dirname(fileURLToPath(import.meta.url))
-const root = resolve(process.argv[2] ?? join(here, '..', '..'))
 const out = join(here, '..', 'src', '.vitepress', 'data', 'packages.json')
 
 const CATEGORIES = {
@@ -25,62 +25,66 @@ const CATEGORIES = {
 }
 const categoryOf = new Map(Object.entries(CATEGORIES).flatMap(([c, list]) => list.map((s) => [s, c])))
 
-// Family root = longest other package slug that is a prefix of this slug.
-const rows = []
-for (const dir of readdirSync(root, { withFileTypes: true })) {
-    if (!dir.isDirectory()) continue
-    const composer = join(root, dir.name, 'composer.json')
-    if (!existsSync(composer)) continue
-    const json = JSON.parse(readFileSync(composer, 'utf8'))
-    if (!String(json.name).startsWith('rasuvaeff/') || /-pr\d+$/.test(dir.name)) continue
-    const git = (...args) => {
-        try {
-            return execFileSync('git', ['-C', join(root, dir.name), ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
-        } catch {
-            return ''
-        }
-    }
-    const version = git('describe', '--tags', '--abbrev=0')
-    if (version === '') continue // no tag: not published
-    const skill = git('ls-tree', '-r', '--name-only', version).split('\n').some((f) => /resources\/skills\/.+\/SKILL\.md$/.test(f))
-    let minMsi = null
-    const inf = join(root, dir.name, 'infection.json5')
-    if (existsSync(inf)) {
-        const m = readFileSync(inf, 'utf8').match(/"minMsi"\s*:\s*(\d+)/)
-        if (m) minMsi = Number(m[1])
-    }
-    rows.push({
-        slug: dir.name,
-        name: json.name,
-        description: String(json.description ?? '').replace(/\s+/g, ' ').trim(),
-        version: version.replace(/^v/, ''),
-        minMsi,
+async function json(url) {
+    const res = await fetch(url)
+    if (!res.ok) throw new Error(`${res.status} ${url}`)
+    return res.json()
+}
+
+async function text(url) {
+    const res = await fetch(url)
+    return res.ok ? res.text() : null
+}
+
+const semver = (v) => v.replace(/^v/, '').split('.').map(Number)
+const newer = (a, b) => {
+    const [x, y] = [semver(a), semver(b)]
+    for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] > y[i]
+    return false
+}
+
+async function describe(name) {
+    const pkg = (await json(`https://packagist.org/packages/${name}.json`)).package
+    const tags = Object.keys(pkg.versions).filter((v) => /^v?\d+\.\d+\.\d+$/.test(v))
+    if (tags.length === 0) return null
+    const tag = tags.reduce((best, v) => (newer(v, best) ? v : best))
+    const slug = name.split('/')[1]
+    const ref = pkg.versions[tag].source?.reference ?? tag
+    const raw = (path) => `https://raw.githubusercontent.com/rasuvaeff/${slug}/${ref}/${path}`
+    const infection = await text(raw('infection.json5'))
+    const msi = infection?.match(/"minMsi"\s*:\s*(\d+)/)
+    const skill = (await text(raw(`resources/skills/rasuvaeff-${slug}/SKILL.md`))) !== null
+    if (!categoryOf.has(slug)) console.log(`no category for ${slug}, using Infrastructure`)
+
+    return {
+        slug,
+        name,
+        description: String(pkg.description ?? '').replace(/\s+/g, ' ').trim(),
+        version: tag.replace(/^v/, ''),
+        minMsi: msi ? Number(msi[1]) : null,
         skill,
-        category: categoryOf.get(dir.name) ?? 'Infrastructure',
-        frozen: dir.name === 'property-testing',
-    })
-}
-
-async function hasRemoteSkill(slug) {
-    try {
-        const res = await fetch(`https://api.github.com/repos/rasuvaeff/${slug}/git/trees/HEAD?recursive=1`)
-        return ((await res.json()).tree ?? []).some((f) => /resources\/skills\/.+\/SKILL\.md$/.test(f.path))
-    } catch {
-        return false
+        category: categoryOf.get(slug) ?? 'Infrastructure',
+        frozen: Boolean(pkg.abandoned),
     }
 }
 
-// Published packages that live in their own repositories, outside the monorepo checkout.
-for (const slug of ['doc-exec']) {
-    try {
-        const res = await fetch(`https://packagist.org/packages/rasuvaeff/${slug}.json`)
-        const pkg = (await res.json()).package
-        const version = Object.keys(pkg.versions).find((v) => /^v?\d+\.\d+\.\d+$/.test(v))
-        if (!version) continue
-        rows.push({ slug, name: pkg.name, description: pkg.description, version: version.replace(/^v/, ''), minMsi: null, skill: await hasRemoteSkill(slug), category: categoryOf.get(slug) ?? 'Testing', frozen: false })
-    } catch {
-        console.log(`could not fetch ${slug} from Packagist, skipped`)
-    }
+async function pool(items, size, fn) {
+    const results = []
+    let next = 0
+    await Promise.all(Array.from({ length: size }, async () => {
+        while (next < items.length) {
+            const i = next++
+            results[i] = await fn(items[i])
+        }
+    }))
+    return results
+}
+
+const names = (await json('https://packagist.org/packages/list.json?vendor=rasuvaeff')).packageNames
+const rows = (await pool(names, 8, describe)).filter(Boolean)
+
+if (rows.length < names.length * 0.8) {
+    throw new Error(`only ${rows.length} of ${names.length} packages described; refusing to write`)
 }
 
 const slugs = rows.map((r) => r.slug)
@@ -90,8 +94,6 @@ for (const r of rows) {
 }
 rows.sort((a, b) => a.slug.localeCompare(b.slug))
 
-const uncategorised = rows.filter((r) => !categoryOf.has(r.slug)).map((r) => r.slug)
 mkdirSync(dirname(out), { recursive: true })
 writeFileSync(out, `${JSON.stringify(rows, null, 2)}\n`)
 console.log(`${rows.length} packages -> ${out}`)
-if (uncategorised.length) console.log(`defaulted to Infrastructure: ${uncategorised.join(', ')}`)

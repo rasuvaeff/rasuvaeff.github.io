@@ -28,7 +28,7 @@ Entries that came from real incidents:
 
 ## Gates
 
-Every package passes the same gate: Psalm level 1 with no suppressions and no baseline, Testo tests, a backward-compatibility check before a major, and a mutation gate. Property tests cover algebraic laws and invariants where they exist.
+Every package passes the same gate: Psalm level 1 with no suppressions and no baseline, Testo tests (PHPUnit for the PHPUnit adapter), a backward-compatibility check before a major, and a mutation gate. Property tests cover algebraic laws and invariants where they exist.
 
 ### The mutation metric lied
 
@@ -71,7 +71,7 @@ Packagist blocks a re-tagged version permanently, so a tag is set once, on a ver
 | `bin/verify-clean-clone` | Clones a package into a temp directory and runs install and build in Docker. |
 | `bin/record-openapi-corpus` | Records generated OpenAPI traffic with its intent, valid or invalid, as the validator's test corpus. |
 | `bin/build-digest` | Writes a full build log to a file and returns one PASS or FAIL line, which saves the agent's context. |
-| Claude Code hooks | A shell guard on dangerous commands and a pre-commit audit that run before every `git commit`. |
+| Claude Code hooks | A guard that checks every shell command for dangerous patterns, and a pre-commit audit that runs before every `git commit`. |
 
 ## What stays with a person
 

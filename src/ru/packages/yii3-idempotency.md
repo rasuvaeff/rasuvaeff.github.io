@@ -20,7 +20,7 @@ PSR-15 middleware для `Idempotency-Key`. Один и тот же ключ с 
 - Тот же ключ с другим payload отвечает `422`; дубликат, который ещё выполняется, отвечает `409`.
 - Отпечаток покрывает метод, путь, query и тело.
 - `scopeResolver` обязателен: ключи разделяются по вызывающим.
-- Кешируются только 2xx-ответы обработчика; остальные снимают claim.
+- По умолчанию кешируются 2xx-ответы; остальные статусы снимают claim.
 - `DomainFailureRenderer` и `FailureClassifier` кешируют доменные ошибки, поэтому `InsufficientFunds` не выполняется повторно.
 - `cacheableRedirectStatuses` кеширует `303` для форм Post/Redirect/Get.
 - `Set-Cookie`, `Date` и hop-by-hop заголовки никогда не сохраняются.
@@ -69,13 +69,13 @@ $middleware = new IdempotencyMiddleware(
 
 ```php
 // caller + "METHOD /path" — the wiring the bundled config builds by default
-scopeResolver: new CompositeScopeResolver(
+$scopeResolver = new CompositeScopeResolver(
     new RequestAttributeScopeResolver(attribute: 'user'),
     new RequestTargetScopeResolver(),
 );
 
 // caller + an explicit namespace shared by related endpoints
-scopeResolver: new CompositeScopeResolver(
+$scopeResolver = new CompositeScopeResolver(
     new RequestAttributeScopeResolver(attribute: 'user'),
     new IdempotencyScope('orders'),
 );

@@ -88,7 +88,9 @@ $pipeline = Pipeline::for('payments')
     ->circuitBreaker($breaker)
     ->build();
 
-// Second call: the open circuit rejects instantly, the glue stops the retry
+// $breaker is already open: a previous failing call tripped it
+// (see examples/02-fallback-on-open-circuit.php).
+// With the circuit open, it rejects instantly, the glue stops the retry
 // loop after zero callback invocations, and the fallback degrades gracefully.
 $calls = 0;
 $result = $pipeline->call(
@@ -102,7 +104,7 @@ $result = $pipeline->call(
         : 'unexpected: ' . $e::class,
 );
 
-printf("second call: %s (callback invoked %d time(s))\n", $result, $calls);
+printf("with the circuit open: %s (callback invoked %d time(s))\n", $result, $calls);
 ```
 
 Runs the pipeline under a request budget; the breaker ignores context expiry as a failure.
