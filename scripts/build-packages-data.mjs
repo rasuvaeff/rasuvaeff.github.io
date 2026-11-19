@@ -44,7 +44,8 @@ const newer = (a, b) => {
 }
 
 async function describe(name) {
-    const pkg = (await json(`https://packagist.org/packages/${name}.json`)).package
+    // The query string bypasses Packagist's CDN cache, which can serve metadata from before the last push.
+    const pkg = (await json(`https://packagist.org/packages/${name}.json?t=${Date.now()}`)).package
     const tags = Object.keys(pkg.versions).filter((v) => /^v?\d+\.\d+\.\d+$/.test(v))
     if (tags.length === 0) return null
     const tag = tags.reduce((best, v) => (newer(v, best) ? v : best))
