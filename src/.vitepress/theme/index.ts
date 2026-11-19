@@ -17,6 +17,7 @@ import ManPage from './ManPage.vue'
 import KeyHelp from './KeyHelp.vue'
 import NotFound from './NotFound.vue'
 import PackageCatalog from './PackageCatalog.vue'
+import RunExamples from './RunExamples.vue'
 import SkillList from './SkillList.vue'
 import './custom.css'
 
@@ -29,6 +30,7 @@ export default {
         app.component('man', ManPage)
         app.component('ManInstall', ManInstall)
         app.component('PackageCatalog', PackageCatalog)
+        app.component('RunExamples', RunExamples)
         app.component('SkillList', SkillList)
 
         if (typeof document !== 'undefined') {

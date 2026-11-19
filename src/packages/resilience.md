@@ -119,6 +119,10 @@ new BreakerConfig(
 );
 ```
 
+## RUNNABLE EXAMPLES
+
+<RunExamples pkg="resilience" />
+
 ## SEE ALSO
 
 `retry`, `circuit-breaker`, `bulkhead`, `duration`, and `context` for the request budget.

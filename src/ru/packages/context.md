@@ -79,6 +79,10 @@ $clock->advanceMs(2_000);
 $context->isExpired();                        // true
 ```
 
+## ЗАПУСКАЕМЫЕ ПРИМЕРЫ
+
+<RunExamples pkg="context" />
+
 ## СМОТРИТЕ ТАКЖЕ
 
 | Package | Layer |

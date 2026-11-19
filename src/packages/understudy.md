@@ -88,6 +88,10 @@ try {
 }
 ```
 
+## RUNNABLE EXAMPLES
+
+<RunExamples pkg="understudy" />
+
 ## SEE ALSO
 
 | Package | Role |

@@ -1,0 +1,26 @@
+{
+    "property-testing-core": [
+        { "file": "basic.php", "en": "a generator, a property that holds, one that fails and is shrunk to a minimal counterexample", "ru": "генератор, свойство, которое выполняется, и упавшее, сжатое до минимального контрпримера" },
+        { "file": "generators.php", "en": "sampling, boundary-biased numbers, dependent values with flatMap", "ru": "выборка, числа со смещением к границам, зависимые значения через flatMap" },
+        { "file": "rule_machine.php", "en": "a rule-based state machine checks a stack against a model", "ru": "конечный автомат из правил сверяет стек с моделью" },
+        { "file": "targeted_search.php", "en": "targeted search reaches a corner that random runs miss", "ru": "направленный поиск доходит до угла, который случайные прогоны пропускают" }
+    ],
+    "understudy": [
+        { "file": "basic-usage.php", "en": "stubbing, verifying and reading the call log, the whole loop without a test runner", "ru": "стабы, проверка вызовов и журнал вызовов — весь цикл без тестового раннера" },
+        { "file": "structured-failures.php", "en": "a verification failure read as data, the way a reporter reads it", "ru": "ошибка проверки, прочитанная как данные, так, как её читает репортёр" },
+        { "file": "where-guard.php", "en": "a constraint over several arguments together with where()", "ru": "ограничение сразу на несколько аргументов через where()" }
+    ],
+    "context": [
+        { "file": "basic.php", "en": "a deadline and a request-scoped value", "ru": "дедлайн и значение в рамках запроса" },
+        { "file": "derivations.php", "en": "derived budgets and typed values carried across a process boundary", "ru": "производные бюджеты и типизированные значения через границу процесса" }
+    ],
+    "schema": [
+        { "file": "event-roundtrip.php", "en": "one schema is the parser, the serializer and the generator of an event", "ru": "одна схема — это парсер, сериализатор и генератор события" },
+        { "file": "queue-payload.php", "en": "validating a queue payload with enums and dates", "ru": "проверка сообщения из очереди с enum и датами" },
+        { "file": "external-api.php", "en": "reading a third-party answer: keep what you need, drop the rest", "ru": "чтение ответа стороннего API: берём нужное, остальное отбрасываем" }
+    ],
+    "resilience": [
+        { "file": "01-full-pipeline.php", "en": "bulkhead, retry and circuit breaker on in-memory backends", "ru": "bulkhead, retry и circuit breaker на хранилищах в памяти" },
+        { "file": "02-fallback-on-open-circuit.php", "en": "an open circuit stops the retries at once and the fallback answers", "ru": "открытый circuit сразу останавливает ретраи, отвечает fallback" }
+    ]
+}

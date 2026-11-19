@@ -88,6 +88,10 @@ try {
 }
 ```
 
+## ЗАПУСКАЕМЫЕ ПРИМЕРЫ
+
+<RunExamples pkg="understudy" />
+
 ## СМОТРИТЕ ТАКЖЕ
 
 | Package | Role |

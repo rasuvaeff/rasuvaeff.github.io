@@ -125,6 +125,10 @@ foreach (Gen::sample(Gen::forClass(Money::class), 3, 7) as $money) {
 $fixed = Gen::forClass(Money::class, ['amount' => Gen::intBetween(500, 510)]);
 ```
 
+## ЗАПУСКАЕМЫЕ ПРИМЕРЫ
+
+<RunExamples pkg="property-testing-core" />
+
 ## СМОТРИТЕ ТАКЖЕ
 
 | Package | Role |

@@ -1099,3 +1099,110 @@ mark.hit.cur {
 .readout.deps a {
     color: var(--ink);
 }
+
+/* ——— runnable examples (PHP in the browser) ——— */
+.runnable .how {
+    margin: 0 0 14px;
+    padding-left: 3ch;
+    color: var(--soft);
+    max-width: 74ch;
+    list-style: decimal;
+}
+.runnable .how li::before {
+    content: none;
+}
+.runnable .run-code .listing {
+    margin: 8px 0 0;
+}
+.runnable .run-more {
+    all: unset;
+    cursor: pointer;
+    font: 12px var(--mono);
+    color: var(--ink);
+    margin-top: 4px;
+}
+.runnable .steps {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    font: 13px/1.8 var(--mono);
+}
+.runnable .steps li::before {
+    content: '○ ';
+    color: var(--dim);
+    margin: 0;
+}
+.runnable .steps li.active::before {
+    content: '◐ ';
+    color: var(--ink);
+}
+.runnable .steps li.done::before {
+    content: '● ';
+    color: var(--ink);
+}
+.runnable .steps li.todo {
+    color: var(--dim);
+}
+.runnable .run-label {
+    margin: 12px 0 0;
+    font: 12px var(--mono);
+    color: var(--dim);
+}
+.runnable .run-item {
+    border-top: 1px solid var(--rule);
+    padding: 10px 0;
+}
+.runnable .run-head {
+    display: flex;
+    gap: 2ch;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+.runnable .run-btn,
+.shrink .live {
+    all: unset;
+    cursor: pointer;
+    font: 600 13px var(--mono);
+    border: 1px solid var(--fg);
+    padding: 3px 12px;
+    border-radius: 3px;
+    color: var(--fg);
+}
+.runnable .run-btn:hover,
+.shrink .live:hover {
+    background: var(--fg);
+    color: var(--bg);
+}
+.runnable .run-btn:disabled,
+.shrink .live:disabled {
+    opacity: 0.5;
+    cursor: progress;
+}
+.runnable .run-out {
+    margin: 4px 0 4px;
+    border-left: 3px solid var(--ink);
+    padding: 12px 14px;
+    background: var(--code-bg);
+    border-radius: 4px;
+    font: 13px/1.6 var(--mono);
+    white-space: pre;
+    overflow-x: auto;
+}
+.runnable .run-out.failed {
+    color: var(--loss);
+}
+.runnable .run-meta {
+    font: 12px var(--mono);
+    color: var(--dim);
+    margin: 4px 0 0;
+}
+.shrink .live {
+    padding: 6px 14px;
+    font-size: 14px;
+}
+.shrink .live-note {
+    font: 12px var(--mono);
+    color: var(--dim);
+    margin-top: 8px;
+}

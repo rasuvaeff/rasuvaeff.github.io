@@ -119,6 +119,10 @@ new BreakerConfig(
 );
 ```
 
+## ЗАПУСКАЕМЫЕ ПРИМЕРЫ
+
+<RunExamples pkg="resilience" />
+
 ## СМОТРИТЕ ТАКЖЕ
 
 `retry`, `circuit-breaker`, `bulkhead`, `duration` и `context` для бюджета запроса.

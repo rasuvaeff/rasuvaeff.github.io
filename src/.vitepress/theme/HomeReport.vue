@@ -4,6 +4,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 import packages from '../data/packages.json'
 import trace from '../data/shrink-trace.json'
 import { useLocale } from './i18n'
+import { runExample } from './php'
 
 interface Pkg { slug: string; description: string; version: string; minMsi: number | null; category: string; frozen: boolean; dependents: number; requires: string[] }
 
@@ -105,7 +106,39 @@ function runShrink(): void {
         }
     }, 140)
 }
+const live = ref<'idle' | 'loading' | 'done' | 'failed'>('idle')
+const liveStage = ref<'php' | 'unpack' | 'run' | null>(null)
+const liveNote = ref('')
+async function runLive(): Promise<void> {
+    resetShrink()
+    finished.value = false
+    live.value = 'loading'
+    const started = performance.now()
+    try {
+        const r = await runExample('property-testing-core', 'examples/readme-sample.php', (s) => (liveStage.value = s))
+        const lines = r.text.trim().split('\n')
+        shrinkLog.value = lines.slice(0, 5).map((text) => ({ text, ok: /Shrunk|Changed/.test(text) }))
+        const shrunk = r.text.match(/Shrunk:\s+value=(\d+)/)
+        if (shrunk) {
+            shrinkValue.value = Number(shrunk[1])
+            shrinkLine.value?.querySelector('#cur')?.setAttribute('cx', String(lx(Number(shrunk[1]))))
+        }
+        const total = ((performance.now() - started) / 1000).toFixed(1)
+        liveNote.value = t(`This is real output. Your browser downloaded PHP 8.4, installed rasuvaeff/property-testing-core, ran the README sample in ${r.ms} ms and printed what PHP printed (${total} s in all). No server was involved.`, `Это настоящий вывод. Браузер скачал PHP 8.4, поставил rasuvaeff/property-testing-core, выполнил сэмпл из README за ${r.ms} мс и показал то, что напечатал PHP (всего ${total} с). Сервер не участвовал.`)
+        live.value = 'done'
+    } catch (e) {
+        liveNote.value = String(e)
+        live.value = 'failed'
+    }
+}
 const shrinkStatus = computed(() => {
+    if (live.value === 'loading') {
+        if (liveStage.value === 'unpack') return t('installing the package…', 'ставим пакет…')
+        if (liveStage.value === 'run') return t('running the sample…', 'выполняем сэмпл…')
+
+        return t('downloading PHP 8.4 (7.7 MB, once)…', 'скачиваем PHP 8.4 (7,7 МБ, один раз)…')
+    }
+    if (live.value === 'done') return t('shrunk live in your browser', 'сжато вживую в вашем браузере')
     if (running.value) return t('shrinking', 'сжимаем')
     if (finished.value) return t(`shrunk in ${accepted} accepted steps, ${trace.trials.length} trials`, `сжато за ${accepted} принятых шагов, ${trace.trials.length} попыток`)
     return t('first failing input', 'первый упавший вход')
@@ -304,13 +337,15 @@ onUnmounted(() => {
       <div class="top">
         <span class="val">{{ shrinkValue }}</span>
         <span class="state">{{ shrinkStatus }}</span>
-        <button class="run" type="button" :disabled="running" @click="runShrink">{{ running ? t('Running…', 'Идёт…') : finished ? t('Replay', 'Ещё раз') : t('Run', 'Запустить') }}</button>
+        <button class="run" type="button" :disabled="running || live === 'loading'" @click="live = 'idle'; runShrink()">{{ running ? t('Running…', 'Идёт…') : finished ? t('Replay', 'Повтор') : t('Replay', 'Повтор') }}</button>
+        <button class="live" type="button" :disabled="running || live === 'loading'" @click="runLive">{{ live === 'loading' ? t('Loading PHP…', 'Загружаем PHP…') : t('Run live', 'Запустить вживую') }}</button>
       </div>
       <svg ref="shrinkLine" viewBox="0 0 760 46" aria-hidden="true" />
       <div class="log" aria-live="polite">
         <template v-if="shrinkLog.length"><div v-for="(l, i) in shrinkLog" :key="i" :class="l.ok ? 'a' : 'r'">{{ l.text }}</div></template>
         <template v-else><div v-for="(l, i) in trace.message.split('\n').slice(0, 5)" :key="i" :class="i === 2 ? 'a' : 'r'">{{ l }}</div></template>
       </div>
+      <p class="live-note" aria-live="polite">{{ liveNote || t('Replay plays back a recording of the run. Run live does the real thing: your browser downloads PHP 8.4 (7.7 MB, once), installs the package and executes the sample in this tab. The code is on the package page.', 'Повтор проигрывает запись прогона. «Запустить вживую» делает его по-настоящему: браузер скачивает PHP 8.4 (7,7 МБ, один раз), ставит пакет и выполняет сэмпл в этой вкладке. Код — на странице пакета.') }}</p>
     </div>
 
     <h2>{{ t('Every package has a mutation gate', 'У каждого пакета есть мутационный порог') }}</h2>

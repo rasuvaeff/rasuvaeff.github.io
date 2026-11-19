@@ -93,6 +93,10 @@ $result->getErrorMessagesIndexedByPath();
 // ['payload.items.1.sku' => ['String length must be at least 1, got 0']]
 ```
 
+## RUNNABLE EXAMPLES
+
+<RunExamples pkg="schema" />
+
 ## SEE ALSO
 
 `property-testing-core` is a runtime dependency (the generator port). Use the generator in property tests through `property-testing-testo`.

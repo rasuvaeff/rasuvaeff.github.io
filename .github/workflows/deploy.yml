@@ -39,6 +39,11 @@ jobs:
       - name: Lint PHP code blocks
         run: npm run lint:php
 
+      # PHP 8.4 compiled to WebAssembly plus one bundle per runnable package (vendor from
+      # Packagist, examples from the tag). Composer is preinstalled on the runner.
+      - name: Build the in-browser PHP runner
+        run: npm run php
+
       - name: Build site
         run: npm run docs:build
 

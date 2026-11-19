@@ -11,6 +11,7 @@ npm run docs:dev        # http://127.0.0.1:4179/
 |---|---|
 | `npm run data` | Rebuilds `src/.vitepress/data/packages.json` from Packagist and the tagged sources on GitHub (version, description, `minMsi`, agent skill). No token needed. |
 | `npm run lint:php` | Syntax-checks every `php` code block in the pages with `php -l` (`node scripts/lint-php-blocks.mjs php83` to pick a binary). |
+| `npm run php` | Builds `src/public/php/`: PHP 8.4 compiled to WebAssembly (from `php-runner/`, other PHP versions removed) and one bundle per package in `src/.vitepress/data/runnable.json` (vendor from Packagist, `examples/` from the tag). Needs Composer, or Docker as a fallback. The runtime loads in the browser only when a visitor presses Run. |
 | `npm run docs:build` | Builds the site into `src/.vitepress/dist`. |
 | `npm run docs:pdf` | After a build, prints `/resume` and `/ru/resume` to `src/public/resume-en.pdf` and `resume-ru.pdf` (committed, so `docs:dev` serves them) and copies them into `dist` (needs Chrome; set `CHROME` if it is not `google-chrome`). |
 
