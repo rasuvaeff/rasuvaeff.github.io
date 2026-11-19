@@ -9,7 +9,7 @@ description: "Doctest for PHP. Executes README code blocks against the current c
 
 ## NAME
 
-doc-exec — doctest for PHP. Executes README code blocks against the current code and diffs the output
+doc-exec — run the code blocks of a README against the current code and diff the output
 
 ## SYNOPSIS
 

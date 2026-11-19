@@ -9,7 +9,7 @@ description: "Generate valid and invalid OpenAPI requests from a contract and ch
 
 ## NAME
 
-property-testing-openapi — generate valid and invalid OpenAPI requests from a contract and check them in-process. With openapi-contract
+property-testing-openapi — valid and invalid OpenAPI requests generated from a contract and checked in-process
 
 ## SYNOPSIS
 

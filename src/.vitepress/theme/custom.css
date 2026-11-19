@@ -174,7 +174,7 @@ input:focus-visible,
 }
 .listing-body {
     margin: 0;
-    padding: 12px 14px;
+    padding: 28px 14px 12px;
     font: 14px/1.65 var(--mono);
     color: var(--fg);
     overflow-x: auto;
@@ -205,12 +205,14 @@ input:focus-visible,
 .listing .copy {
     all: unset;
     cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
     position: absolute;
-    top: 6px;
-    right: 8px;
+    top: 5px;
+    right: 10px;
     font: 12px var(--mono);
     color: var(--dim);
-    opacity: 0;
+    opacity: 0.7;
     transition: opacity 0.15s;
 }
 .listing:hover .copy,
