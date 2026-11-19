@@ -13,7 +13,7 @@ export default defineConfig({
     },
     head: [
         ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
-        ['meta', { name: 'theme-color', content: '#121512' }],
+        ['meta', { name: 'theme-color', content: '#0b0f0d' }],
     ],
     themeConfig: {
         logo: '/logo-mark.svg',
