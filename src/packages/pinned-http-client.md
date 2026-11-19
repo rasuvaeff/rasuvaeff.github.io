@@ -1,31 +1,18 @@
 ---
 title: pinned-http-client
-description: PSR-18 client for untrusted URLs that pins the connection to checked addresses.
-outline: [2, 2]
+package: pinned-http-client
+section: 3
+layout: man
+description: "PSR-18 client for untrusted URLs that pins the connection to checked addresses."
 ---
 
-# pinned-http-client
+## NAME
 
-A PSR-18 client for untrusted URLs. It resolves the host once, checks every address and pins cURL to them.
+pinned-http-client — PSR-18 client for untrusted URLs that pins the connection to checked addresses
 
-<PackageMeta slug="pinned-http-client" :src="14" :tests="6" />
+## SYNOPSIS
 
-## The problem
-
-DNS can answer a public address to the check and `127.0.0.1` or `169.254.169.254` (cloud metadata) to the later request. Checking the host name is not an SSRF defence.
-
-## What it does
-
-- Resolves the host once (IPv4 and IPv6) and checks every address.
-- Passes exactly the checked addresses to cURL. TLS still verifies the host name.
-- `PublicAddresses` default policy refuses private, loopback, link-local, CGNAT and multicast ranges.
-- Custom `AddressPolicy` and `Resolver` interfaces.
-- The body limit counts decompressed bytes, so gzip bombs are cut at the limit.
-- `RedirectFollower` re-resolves, re-checks and re-pins every hop.
-- Ignores `HTTP_PROXY` / `HTTPS_PROXY` from the environment; a proxy is opt-in via `proxy:`.
-- Typed failures: `RequestRefused`, `ResolutionFailed`, `ResponseTooLarge`, `TransferFailed`, `TooManyRedirects`.
-
-## Example
+<ManInstall />
 
 ```php
 $client = new PinnedClient(); // public addresses only, IPv4 + IPv6, 8 s / 4 s, body <= 10 MiB, no proxy
@@ -41,11 +28,22 @@ try {
 }
 ```
 
-## Used by
+## DESCRIPTION
 
-`link-preview` recommends it as the PSR-18 client for its `Fetcher`.
+A PSR-18 client for untrusted URLs. It resolves the host once, checks every address and pins cURL to them.
 
-## More examples
+DNS can answer a public address to the check and `127.0.0.1` or `169.254.169.254` (cloud metadata) to the later request. Checking the host name is not an SSRF defence.
+
+- Resolves the host once (IPv4 and IPv6) and checks every address.
+- Passes exactly the checked addresses to cURL. TLS still verifies the host name.
+- `PublicAddresses` default policy refuses private, loopback, link-local, CGNAT and multicast ranges.
+- Custom `AddressPolicy` and `Resolver` interfaces.
+- The body limit counts decompressed bytes, so gzip bombs are cut at the limit.
+- `RedirectFollower` re-resolves, re-checks and re-pins every hop.
+- Ignores `HTTP_PROXY` / `HTTPS_PROXY` from the environment; a proxy is opt-in via `proxy:`.
+- Typed failures: `RequestRefused`, `ResolutionFailed`, `ResponseTooLarge`, `TransferFailed`, `TooManyRedirects`.
+
+## EXAMPLES
 
 The default policy allows only public addresses; private, loopback and link-local ones are refused, and an IPv4-mapped address is judged as the IPv4 it carries.
 
@@ -73,7 +71,11 @@ final readonly class PublicOrLoopback implements AddressPolicy
 $client = new PinnedClient(policy: new PublicOrLoopback(new PublicAddresses()));
 ```
 
-## Limits
+## SEE ALSO
+
+`link-preview` recommends it as the PSR-18 client for its `Fetcher`.
+
+## BUGS
 
 `timeoutSeconds` does not bound DNS resolution, and a hostile system resolver is out of scope. With an explicit proxy, the proxy becomes your SSRF boundary.
 

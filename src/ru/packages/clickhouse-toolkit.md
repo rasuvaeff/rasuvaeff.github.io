@@ -1,32 +1,18 @@
 ---
 title: clickhouse-toolkit
+package: clickhouse-toolkit
+section: 3
+layout: man
 description: "Framework-agnostic query builder, readers, writers и миграции ClickHouse для PHP."
-outline: [2, 2]
 ---
 
-# clickhouse-toolkit
+## ИМЯ
 
-Framework-agnostic инструменты ClickHouse для PHP на базе `simpod/clickhouse-client`; компоненты запросов и ридеры подключаются к `yiisoft/data`.
+clickhouse-toolkit — framework-agnostic query builder, readers, writers и миграции ClickHouse для PHP
 
-<PackageMeta slug="clickhouse-toolkit" :src="34" :tests="27" />
+## ОБЗОР
 
-## Задача
-
-У ClickHouse свой диалект SQL, асинхронные мутации, партиции и пакетные вставки, а запрос, собранный из пользовательских фильтров, создаёт риск инъекции. Тулкит закрывает эти части параметризованным SQL и allow-list.
-
-## Что умеет
-
-- `ClickHouseClientFactory` и `ClickHouseConfig` собирают клиент поверх любого PSR-18 HTTP-клиента.
-- `ClickHouseQueryBuilder` превращает фильтры и сортировку `yiisoft/data` в параметризованный SQL.
-- Поля из allow-list и `withMandatoryFilter()` для ограничений по tenant или ACL.
-- `ClickHouseDataReader` — неизменяемый `DataReaderInterface` для пагинаторов `yiisoft/data`.
-- `ClickHouseKeysetReader` стримит большие выборки с ограниченной памятью.
-- `ClickHouseBatchWriter` выполняет буферизованные пакетные вставки.
-- `ClickHouseTableBuilder` для fluent `CREATE TABLE`; `ClickHousePartitionManager` для партиций.
-- `ClickHouseMutationBuilder` для асинхронных `ALTER UPDATE` / `DELETE` с отслеживанием мутаций.
-- `ClickHouseMigrationRunner`: идемпотентные `.sql` миграции с проверкой контрольных сумм.
-
-## Пример
+<ManInstall />
 
 ```php
 $qb = new ClickHouseQueryBuilder(
@@ -40,7 +26,23 @@ $orderBy = $qb->buildOrderBy(Sort::only(['created_at'])->withOrder(['created_at'
 $sql = $qb->buildSelect(table: 'events', columns: ['id', 'status'], where: $where->sql, orderBy: $orderBy, limit: 20);
 ```
 
-## Ещё примеры
+## ОПИСАНИЕ
+
+Framework-agnostic инструменты ClickHouse для PHP на базе `simpod/clickhouse-client`; компоненты запросов и ридеры подключаются к `yiisoft/data`.
+
+У ClickHouse свой диалект SQL, асинхронные мутации, партиции и пакетные вставки, а запрос, собранный из пользовательских фильтров, создаёт риск инъекции. Тулкит закрывает эти части параметризованным SQL и allow-list.
+
+- `ClickHouseClientFactory` и `ClickHouseConfig` собирают клиент поверх любого PSR-18 HTTP-клиента.
+- `ClickHouseQueryBuilder` превращает фильтры и сортировку `yiisoft/data` в параметризованный SQL.
+- Поля из allow-list и `withMandatoryFilter()` для ограничений по tenant или ACL.
+- `ClickHouseDataReader` — неизменяемый `DataReaderInterface` для пагинаторов `yiisoft/data`.
+- `ClickHouseKeysetReader` стримит большие выборки с ограниченной памятью.
+- `ClickHouseBatchWriter` выполняет буферизованные пакетные вставки.
+- `ClickHouseTableBuilder` для fluent `CREATE TABLE`; `ClickHousePartitionManager` для партиций.
+- `ClickHouseMutationBuilder` для асинхронных `ALTER UPDATE` / `DELETE` с отслеживанием мутаций.
+- `ClickHouseMigrationRunner`: идемпотентные `.sql` миграции с проверкой контрольных сумм.
+
+## ПРИМЕРЫ
 
 Пакетная вставка строк с настройками async_insert ClickHouse для каждого INSERT.
 
@@ -81,15 +83,15 @@ $pm->dropPartition('events', '202401');
 $pm->movePartition('events', 'events_archive', '202401');     // MOVE … TO TABLE
 ```
 
-## Семейство
+## СМОТРИТЕ ТАКЖЕ
 
 | Пакет | Роль |
 |---|---|
-| yii3-clickhouse-toolkit | Мост конфигурации Yii3 и консольные команды |
-| yii3-outbox-clickhouse | Пакетный экспортёр outbox |
-| yii3-ab-testing-clickhouse | Схема A/B-аналитики и миграции |
-| context | Бюджет запроса, отображаемый в `max_execution_time` |
+| [yii3-clickhouse-toolkit](https://github.com/rasuvaeff/yii3-clickhouse-toolkit)(3) | Мост конфигурации Yii3 и консольные команды |
+| [yii3-outbox-clickhouse](https://github.com/rasuvaeff/yii3-outbox-clickhouse)(3) | Пакетный экспортёр outbox |
+| [yii3-ab-testing-clickhouse](https://github.com/rasuvaeff/yii3-ab-testing-clickhouse)(3) | Схема A/B-аналитики и миграции |
+| [context](https://github.com/rasuvaeff/context)(3) | Бюджет запроса, отображаемый в `max_execution_time` |
 
-## Ограничения
+## ОШИБКИ
 
 Откат миграций намеренно не предусмотрен. Используйте миграции «исправление вперёд» с идемпотентным DDL.

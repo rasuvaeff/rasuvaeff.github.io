@@ -1,30 +1,19 @@
 ---
 title: understudy
-description: Test doubles where the configured call is a real method call, not a method-name string.
-outline: [2, 2]
+package: understudy
+section: 3
+dev: true
+layout: man
+description: "Test doubles where the configured call is a real method call, not a method-name string."
 ---
 
-# understudy
+## NAME
 
-Test doubles where the configured call is a real call, not a method-name string.
+understudy — test doubles where the configured call is a real method call, not a method-name string
 
-<PackageMeta slug="understudy" docs="https://rasuvaeff.github.io/understudy/" :src="86" :tests="310" />
+## SYNOPSIS
 
-## The problem
-
-String-based mocks break on refactoring and typos, and they add service methods (`shouldReceive`, `expects`) to the double that the doubled contract can then never use.
-
-## What it does
-
-- Specifies calls as real closures: `when(fn () => $repo->find(123))->returns($book)`.
-- `expect()` with `times()`; after-the-fact `verify()` (including `never: true`) and `nothingElse()`.
-- Argument matchers: `Arg::any`, `satisfies`, `rest`, and a captor with typed `last()` / `all()`.
-- Doubles several interfaces at once; handles final classes and PHP 8.4 property hooks.
-- `Understudy::delegate()` forwards unstubbed calls to a real object and records them.
-- One context per fiber instead of shared static state.
-- `#[\SensitiveParameter]` arguments are redacted in failure messages and `transcript()`.
-
-## Example
+<ManInstall />
 
 ```php
 use Rasuvaeff\Understudy\Understudy;
@@ -40,7 +29,21 @@ expect(fn () => $repository->save($book))->times(1);
 
 Rename `find` and the IDE renames the call with it; a stale call is flagged by static analysis. `for()` returns the contract's own type.
 
-## More examples
+## DESCRIPTION
+
+Test doubles where the configured call is a real call, not a method-name string.
+
+String-based mocks break on refactoring and typos, and they add service methods (`shouldReceive`, `expects`) to the double that the doubled contract can then never use.
+
+- Specifies calls as real closures: `when(fn () => $repo->find(123))->returns($book)`.
+- `expect()` with `times()`; after-the-fact `verify()` (including `never: true`) and `nothingElse()`.
+- Argument matchers: `Arg::any`, `satisfies`, `rest`, and a captor with typed `last()` / `all()`.
+- Doubles several interfaces at once; handles final classes and PHP 8.4 property hooks.
+- `Understudy::delegate()` forwards unstubbed calls to a real object and records them.
+- One context per fiber instead of shared static state.
+- `#[\SensitiveParameter]` arguments are redacted in failure messages and `transcript()`.
+
+## EXAMPLES
 
 A typed argument captor reads what the code under test actually passed, with no instanceof checks.
 
@@ -85,16 +88,16 @@ try {
 }
 ```
 
-## Family
+## SEE ALSO
 
 | Package | Role |
 |---|---|
-| understudy-testo | Testo adapter |
-| understudy-phpunit | PHPUnit and Pest adapter |
-| understudy-psalm | Psalm plugin |
-| understudy-phpstan | PHPStan extension |
+| [understudy-testo](https://github.com/rasuvaeff/understudy-testo)(3) | Testo adapter |
+| [understudy-phpunit](https://github.com/rasuvaeff/understudy-phpunit)(3) | PHPUnit and Pest adapter |
+| [understudy-psalm](https://github.com/rasuvaeff/understudy-psalm)(3) | Psalm plugin |
+| [understudy-phpstan](https://github.com/rasuvaeff/understudy-phpstan)(3) | PHPStan extension |
 
-## Limits
+## BUGS
 
 A `when()` is permission, not a claim. `expect()` counts only calls matching its own arguments, so add `Understudy::nothingElse()` to catch other calls. Dev dependency only, not for production.
 

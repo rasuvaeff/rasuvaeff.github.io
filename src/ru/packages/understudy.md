@@ -1,30 +1,19 @@
 ---
 title: understudy
+package: understudy
+section: 3
+dev: true
+layout: man
 description: "Тестовые дублёры, где настраиваемый вызов — это настоящий вызов метода, а не строка с его именем."
-outline: [2, 2]
 ---
 
-# understudy
+## ИМЯ
 
-Тестовые дублёры, где настраиваемый вызов — это настоящий вызов, а не строка с именем метода.
+understudy — тестовые дублёры, где настраиваемый вызов — это настоящий вызов метода, а не строка с его именем
 
-<PackageMeta slug="understudy" docs="https://rasuvaeff.github.io/understudy/" :src="86" :tests="310" />
+## ОБЗОР
 
-## Задача
-
-Моки на строках ломаются при рефакторинге и опечатках, а ещё добавляют в дублёр служебные методы (`shouldReceive`, `expects`), которые дублируемый контракт потом никогда не сможет использовать.
-
-## Что умеет
-
-- Описывает вызовы настоящими замыканиями: `when(fn () => $repo->find(123))->returns($book)`.
-- `expect()` с `times()`; проверка постфактум через `verify()` (включая `never: true`) и `nothingElse()`.
-- Матчеры аргументов: `Arg::any`, `satisfies`, `rest` и captor с типизированными `last()` / `all()`.
-- Дублирует сразу несколько интерфейсов; работает с final-классами и property hooks из PHP 8.4.
-- `Understudy::delegate()` передаёт незаглушённые вызовы настоящему объекту и записывает их.
-- Один контекст на файбер вместо общего статического состояния.
-- Аргументы с `#[\SensitiveParameter]` скрываются в сообщениях об ошибках и в `transcript()`.
-
-## Пример
+<ManInstall />
 
 ```php
 use Rasuvaeff\Understudy\Understudy;
@@ -40,7 +29,21 @@ expect(fn () => $repository->save($book))->times(1);
 
 Переименуете `find` — IDE переименует и вызов в тесте, а устаревший вызов поймает статический анализ. `for()` возвращает собственный тип контракта.
 
-## Ещё примеры
+## ОПИСАНИЕ
+
+Тестовые дублёры, где настраиваемый вызов — это настоящий вызов, а не строка с именем метода.
+
+Моки на строках ломаются при рефакторинге и опечатках, а ещё добавляют в дублёр служебные методы (`shouldReceive`, `expects`), которые дублируемый контракт потом никогда не сможет использовать.
+
+- Описывает вызовы настоящими замыканиями: `when(fn () => $repo->find(123))->returns($book)`.
+- `expect()` с `times()`; проверка постфактум через `verify()` (включая `never: true`) и `nothingElse()`.
+- Матчеры аргументов: `Arg::any`, `satisfies`, `rest` и captor с типизированными `last()` / `all()`.
+- Дублирует сразу несколько интерфейсов; работает с final-классами и property hooks из PHP 8.4.
+- `Understudy::delegate()` передаёт незаглушённые вызовы настоящему объекту и записывает их.
+- Один контекст на файбер вместо общего статического состояния.
+- Аргументы с `#[\SensitiveParameter]` скрываются в сообщениях об ошибках и в `transcript()`.
+
+## ПРИМЕРЫ
 
 Типизированный captor достаёт аргумент, реально переданный тестируемым кодом, без instanceof.
 
@@ -85,16 +88,16 @@ try {
 }
 ```
 
-## Семейство
+## СМОТРИТЕ ТАКЖЕ
 
 | Package | Role |
 |---|---|
-| understudy-testo | Адаптер для Testo |
-| understudy-phpunit | Адаптер для PHPUnit и Pest |
-| understudy-psalm | Плагин Psalm |
-| understudy-phpstan | Расширение PHPStan |
+| [understudy-testo](https://github.com/rasuvaeff/understudy-testo)(3) | Адаптер для Testo |
+| [understudy-phpunit](https://github.com/rasuvaeff/understudy-phpunit)(3) | Адаптер для PHPUnit и Pest |
+| [understudy-psalm](https://github.com/rasuvaeff/understudy-psalm)(3) | Плагин Psalm |
+| [understudy-phpstan](https://github.com/rasuvaeff/understudy-phpstan)(3) | Расширение PHPStan |
 
-## Ограничения
+## ОШИБКИ
 
 `when()` — это разрешение, а не утверждение. `expect()` считает только вызовы, подходящие под его собственные аргументы, поэтому для отлова прочих вызовов добавьте `Understudy::nothingElse()`. Только dev-зависимость, не для production.
 

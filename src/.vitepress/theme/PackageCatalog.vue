@@ -54,7 +54,7 @@ const href = (p: Pkg) => (TOP.has(p.slug) ? `${prefix.value}/packages/${p.slug}`
           <a :href="href(p)">{{ p.slug }}</a>
           <span v-if="p.skill" class="tag skill" :title="ru ? 'Есть SKILL.md для агентов' : 'Ships an agent SKILL.md'">skill</span>
           <span v-if="p.frozen" class="tag">{{ ru ? 'заморожен' : 'frozen' }}</span>
-          <span v-else-if="TOP.has(p.slug)" class="tag">{{ ru ? 'разбор' : 'deep dive' }}</span>
+          <span v-else-if="TOP.has(p.slug)" class="tag">{{ ru ? 'man' : 'man' }}</span>
         </div>
         <span>{{ p.description }}</span>
         <em>{{ p.minMsi ? `msi ≥ ${p.minMsi}` : '' }}</em>

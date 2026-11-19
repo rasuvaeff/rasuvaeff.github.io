@@ -1,32 +1,18 @@
 ---
 title: clickhouse-toolkit
-description: Framework-agnostic ClickHouse query builder, readers, writers and migrations for PHP.
-outline: [2, 2]
+package: clickhouse-toolkit
+section: 3
+layout: man
+description: "Framework-agnostic ClickHouse query builder, readers, writers and migrations for PHP."
 ---
 
-# clickhouse-toolkit
+## NAME
 
-Framework-agnostic ClickHouse helpers for PHP, built on `simpod/clickhouse-client`, with query and reader pieces that plug into `yiisoft/data`.
+clickhouse-toolkit — framework-agnostic ClickHouse query builder, readers, writers and migrations for PHP
 
-<PackageMeta slug="clickhouse-toolkit" :src="34" :tests="27" />
+## SYNOPSIS
 
-## The problem
-
-ClickHouse has its own SQL dialect, async mutations, partitions and batch inserts, and a query built from user filters is an injection risk. This toolkit covers those parts with parameterized SQL and an allow-list.
-
-## What it does
-
-- `ClickHouseClientFactory` and `ClickHouseConfig` build a client over any PSR-18 HTTP client.
-- `ClickHouseQueryBuilder` turns `yiisoft/data` filters and sorting into parameterized SQL.
-- Allow-listed fields, and `withMandatoryFilter()` for tenant or ACL constraints.
-- `ClickHouseDataReader` is an immutable `DataReaderInterface` for `yiisoft/data` paginators.
-- `ClickHouseKeysetReader` streams large result sets with bounded memory.
-- `ClickHouseBatchWriter` does buffered, batched inserts.
-- `ClickHouseTableBuilder` for fluent `CREATE TABLE`; `ClickHousePartitionManager` for partitions.
-- `ClickHouseMutationBuilder` for async `ALTER UPDATE` / `DELETE` with mutation tracking.
-- `ClickHouseMigrationRunner`: idempotent, checksum-verified `.sql` migrations.
-
-## Example
+<ManInstall />
 
 ```php
 $qb = new ClickHouseQueryBuilder(
@@ -40,7 +26,23 @@ $orderBy = $qb->buildOrderBy(Sort::only(['created_at'])->withOrder(['created_at'
 $sql = $qb->buildSelect(table: 'events', columns: ['id', 'status'], where: $where->sql, orderBy: $orderBy, limit: 20);
 ```
 
-## More examples
+## DESCRIPTION
+
+Framework-agnostic ClickHouse helpers for PHP, built on `simpod/clickhouse-client`, with query and reader pieces that plug into `yiisoft/data`.
+
+ClickHouse has its own SQL dialect, async mutations, partitions and batch inserts, and a query built from user filters is an injection risk. This toolkit covers those parts with parameterized SQL and an allow-list.
+
+- `ClickHouseClientFactory` and `ClickHouseConfig` build a client over any PSR-18 HTTP client.
+- `ClickHouseQueryBuilder` turns `yiisoft/data` filters and sorting into parameterized SQL.
+- Allow-listed fields, and `withMandatoryFilter()` for tenant or ACL constraints.
+- `ClickHouseDataReader` is an immutable `DataReaderInterface` for `yiisoft/data` paginators.
+- `ClickHouseKeysetReader` streams large result sets with bounded memory.
+- `ClickHouseBatchWriter` does buffered, batched inserts.
+- `ClickHouseTableBuilder` for fluent `CREATE TABLE`; `ClickHousePartitionManager` for partitions.
+- `ClickHouseMutationBuilder` for async `ALTER UPDATE` / `DELETE` with mutation tracking.
+- `ClickHouseMigrationRunner`: idempotent, checksum-verified `.sql` migrations.
+
+## EXAMPLES
 
 Batch-inserts rows with ClickHouse async_insert settings applied to every INSERT.
 
@@ -81,15 +83,15 @@ $pm->dropPartition('events', '202401');
 $pm->movePartition('events', 'events_archive', '202401');     // MOVE … TO TABLE
 ```
 
-## Family
+## SEE ALSO
 
 | Package | Role |
 |---|---|
-| yii3-clickhouse-toolkit | Yii3 config bridge and console commands |
-| yii3-outbox-clickhouse | Batched outbox exporter |
-| yii3-ab-testing-clickhouse | A/B analytics schema and migrations |
-| context | Request budget mapped to `max_execution_time` |
+| [yii3-clickhouse-toolkit](https://github.com/rasuvaeff/yii3-clickhouse-toolkit)(3) | Yii3 config bridge and console commands |
+| [yii3-outbox-clickhouse](https://github.com/rasuvaeff/yii3-outbox-clickhouse)(3) | Batched outbox exporter |
+| [yii3-ab-testing-clickhouse](https://github.com/rasuvaeff/yii3-ab-testing-clickhouse)(3) | A/B analytics schema and migrations |
+| [context](https://github.com/rasuvaeff/context)(3) | Request budget mapped to `max_execution_time` |
 
-## Limits
+## BUGS
 
 Migration rollback is intentionally not included. Use forward-fix migrations with idempotent DDL.

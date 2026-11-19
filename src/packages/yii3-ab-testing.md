@@ -1,31 +1,18 @@
 ---
 title: yii3-ab-testing
-description: Deterministic, stateless A/B testing for Yii3 with explicit exposure tracking.
-outline: [2, 2]
+package: yii3-ab-testing
+section: 3
+layout: man
+description: "Deterministic, stateless A/B testing for Yii3 with explicit exposure tracking."
 ---
 
-# yii3-ab-testing
+## NAME
 
-Deterministic, stateless A/B testing for Yii3 with explicit exposure tracking.
+yii3-ab-testing — deterministic, stateless A/B testing for Yii3 with explicit exposure tracking
 
-<PackageMeta slug="yii3-ab-testing" docs="https://rasuvaeff.github.io/yii3-ab-testing/" :src="49" :tests="27" />
+## SYNOPSIS
 
-## The problem
-
-Re-resolving an assignment later can return a different variant than the visitor saw. This package gives stable hash-based assignment, decision reasons, and receipts for later conversions.
-
-## What it does
-
-- The same salt and `subjectId` always give the same variant (`WeightedHashAssignmentStrategy`).
-- Weighted variants, and a forced variant for QA validated against an allow-list.
-- Every `Assignment` carries a `reason` (`assigned`, `forced`, `fallback_*`) and a `source` (`computed`, `store`).
-- `assign()` is pure. `trackExposure()` and `trackConversion()` are explicit and return events.
-- `AssignmentReceipt` links a conversion to the original exposure in a later request.
-- Targeting rules, with a fallback variant on mismatch.
-- Sticky variants through `AssignmentStore`; `ConfigurationAwareAssignmentStore` drops stale pins when weights change.
-- Logger sinks, composite and deduplicating trackers; a reset hook for RoadRunner and Swoole.
-
-## Example
+<ManInstall />
 
 ```php
 $assignment = $ab->assign(experiment: 'checkout-button', subjectId: (string) $userId);
@@ -39,7 +26,22 @@ $exposure = $ab->trackExposure($assignment);
 $ab->trackConversion($assignment, goal: 'purchase', exposure: $exposure);
 ```
 
-## More examples
+## DESCRIPTION
+
+Deterministic, stateless A/B testing for Yii3 with explicit exposure tracking.
+
+Re-resolving an assignment later can return a different variant than the visitor saw. This package gives stable hash-based assignment, decision reasons, and receipts for later conversions.
+
+- The same salt and `subjectId` always give the same variant (`WeightedHashAssignmentStrategy`).
+- Weighted variants, and a forced variant for QA validated against an allow-list.
+- Every `Assignment` carries a `reason` (`assigned`, `forced`, `fallback_*`) and a `source` (`computed`, `store`).
+- `assign()` is pure. `trackExposure()` and `trackConversion()` are explicit and return events.
+- `AssignmentReceipt` links a conversion to the original exposure in a later request.
+- Targeting rules, with a fallback variant on mismatch.
+- Sticky variants through `AssignmentStore`; `ConfigurationAwareAssignmentStore` drops stale pins when weights change.
+- Logger sinks, composite and deduplicating trackers; a reset hook for RoadRunner and Swoole.
+
+## EXAMPLES
 
 Attributes a later conversion to the variant the visitor actually saw, using an assignment receipt.
 
@@ -71,15 +73,15 @@ $tracker->trackExposure($exposureEvent);
 $tracker->trackExposure($exposureEvent); // suppressed in this request
 ```
 
-## Family
+## SEE ALSO
 
 | Package | Role |
 |---|---|
-| yii3-ab-testing-db | DB provider and sticky store |
-| yii3-ab-testing-web | Cookie sticky store, `SubjectIdMiddleware` |
-| yii3-ab-testing-outbox | Durable delivery of events |
-| yii3-ab-testing-clickhouse | ClickHouse analytics schema and migrations |
+| [yii3-ab-testing-db](https://github.com/rasuvaeff/yii3-ab-testing-db)(3) | DB provider and sticky store |
+| [yii3-ab-testing-web](https://github.com/rasuvaeff/yii3-ab-testing-web)(3) | Cookie sticky store, `SubjectIdMiddleware` |
+| [yii3-ab-testing-outbox](https://github.com/rasuvaeff/yii3-ab-testing-outbox)(3) | Durable delivery of events |
+| [yii3-ab-testing-clickhouse](https://github.com/rasuvaeff/yii3-ab-testing-clickhouse)(3) | ClickHouse analytics schema and migrations |
 
-## Limits
+## BUGS
 
 Changing weights or the variant set shifts bucket boundaries and reshuffles some subjects. Only a new salt freezes a cohort. Needs 64-bit PHP.

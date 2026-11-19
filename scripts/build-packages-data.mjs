@@ -51,6 +51,7 @@ async function describe(name) {
     const tag = tags.reduce((best, v) => (newer(v, best) ? v : best))
     const slug = name.split('/')[1]
     const ref = pkg.versions[tag].source?.reference ?? tag
+    const requires = Object.keys(pkg.versions[tag].require ?? {}).filter((n) => n.startsWith('rasuvaeff/')).map((n) => n.split('/')[1])
     const raw = (path) => `https://raw.githubusercontent.com/rasuvaeff/${slug}/${ref}/${path}`
     const infection = await text(raw('infection.json5'))
     const msi = infection?.match(/"minMsi"\s*:\s*(\d+)/)
@@ -66,6 +67,7 @@ async function describe(name) {
         skill,
         category: categoryOf.get(slug) ?? 'Infrastructure',
         frozen: Boolean(pkg.abandoned),
+        requires,
     }
 }
 
@@ -93,6 +95,10 @@ for (const r of rows) {
     const parent = slugs.filter((s) => s !== r.slug && r.slug.startsWith(`${s}-`)).sort((a, b) => b.length - a.length)[0]
     r.family = parent ?? r.slug
 }
+for (const r of rows) {
+    r.dependents = rows.filter((o) => o.slug !== r.slug && o.requires.includes(r.slug)).length
+}
+for (const r of rows) delete r.requires
 rows.sort((a, b) => a.slug.localeCompare(b.slug))
 
 mkdirSync(dirname(out), { recursive: true })

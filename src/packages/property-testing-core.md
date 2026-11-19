@@ -1,39 +1,19 @@
 ---
 title: property-testing-core
-description: Framework-agnostic property-based testing engine with integrated shrinking.
-outline: [2, 2]
+package: property-testing-core
+section: 3
+dev: true
+layout: man
+description: "Framework-agnostic property-based testing engine with integrated shrinking."
 ---
 
-# property-testing-core
+## NAME
 
-A property-based testing engine with integrated shrinking, no test-framework dependency.
+property-testing-core — framework-agnostic property-based testing engine with integrated shrinking
 
-<PackageMeta slug="property-testing-core" docs="https://rasuvaeff.github.io/property-testing-core/" :src="141" :tests="108" />
+## SYNOPSIS
 
-## The problem
-
-Hand-picked example inputs miss edge cases. The engine generates hundreds of random inputs, finds a failing one and shrinks it to a minimal, readable counterexample.
-
-## What it does
-
-- `Gen` facade: ints, floats, strings, bytes, `naughtyString`, `mixed`, arrays, records.
-- Integrated shrinking through transformed generators.
-- `PropertyRunner` returns structured results. It never prints, exits or throws to report an outcome.
-- `FilesystemCorpus` replays recorded failures before the random phase.
-- Flaky detection re-executes the minimised input `flakyReplays` times.
-- Stateful and model-based testing, plus rule-based machines (`Gen::rules`).
-- `Assume`, `Classify` distribution gates, targeted search, derandomized runs.
-- Every counterexample carries a replayable seed and shrink path.
-
-## Output
-
-<pre class="tape">Property falsified after 0 successful run(s); seed=42
-  Original: value=3989
-  Shrunk:   value=100 (9 shrink step(s), 39 trial(s))
-  <b>Changed:  value=3989 -&gt; 100</b>
-  Failure:  100 is not below 100</pre>
-
-## Example
+<ManInstall />
 
 ```php
 $definition = new PropertyDefinition(
@@ -53,7 +33,30 @@ $result = (new PropertyRunner())->run($definition, new CallableTrialExecutor(
 ));
 ```
 
-## More examples
+## DESCRIPTION
+
+A property-based testing engine with integrated shrinking, no test-framework dependency.
+
+Hand-picked example inputs miss edge cases. The engine generates hundreds of random inputs, finds a failing one and shrinks it to a minimal, readable counterexample.
+
+- `Gen` facade: ints, floats, strings, bytes, `naughtyString`, `mixed`, arrays, records.
+- Integrated shrinking through transformed generators.
+- `PropertyRunner` returns structured results. It never prints, exits or throws to report an outcome.
+- `FilesystemCorpus` replays recorded failures before the random phase.
+- Flaky detection re-executes the minimised input `flakyReplays` times.
+- Stateful and model-based testing, plus rule-based machines (`Gen::rules`).
+- `Assume`, `Classify` distribution gates, targeted search, derandomized runs.
+- Every counterexample carries a replayable seed and shrink path.
+
+## OUTPUT
+
+<pre class="tape">Property falsified after 0 successful run(s); seed=42
+  Original: value=3989
+  Shrunk:   value=100 (9 shrink step(s), 39 trial(s))
+  <b>Changed:  value=3989 -&gt; 100</b>
+  Failure:  100 is not below 100</pre>
+
+## EXAMPLES
 
 Targeted search climbs a reported score to reach a corner that uniform sampling rarely hits.
 
@@ -122,16 +125,16 @@ foreach (Gen::sample(Gen::forClass(Money::class), 3, 7) as $money) {
 $fixed = Gen::forClass(Money::class, ['amount' => Gen::intBetween(500, 510)]);
 ```
 
-## Family
+## SEE ALSO
 
 | Package | Role |
 |---|---|
-| property-testing-testo | `#[Property]` for Testo |
-| property-testing-phpunit | Fluent `forAll()->check()` for PHPUnit |
-| property-testing-openapi | Requests generated from an OpenAPI document |
-| property-testing-names | Human-name generators |
+| [property-testing-testo](https://github.com/rasuvaeff/property-testing-testo)(3) | `#[Property]` for Testo |
+| [property-testing-phpunit](https://github.com/rasuvaeff/property-testing-phpunit)(3) | Fluent `forAll()->check()` for PHPUnit |
+| [property-testing-openapi](https://github.com/rasuvaeff/property-testing-openapi)(3) | Requests generated from an OpenAPI document |
+| [property-testing-names](https://github.com/rasuvaeff/property-testing-names)(3) | Human-name generators |
 
-## Limits
+## BUGS
 
 Values come from MT19937 seeded by the reported seed: a PRNG, not a CSPRNG. Seeds are reproducibility handles, not secrets. The corpus persists failing inputs as plain JSON.
 

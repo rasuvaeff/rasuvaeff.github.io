@@ -7,7 +7,7 @@ description: Victor Razuvaev, senior backend engineer. High-load PHP and Yii, di
 <article class="cv">
   <header class="cv-top">
     <div>
-      <p class="eyebrow"><span>Resume</span><span>Senior backend</span></p>
+      <p class="kicker">Resume · Senior backend</p>
       <h1>Victor Razuvaev</h1>
       <p class="role">Senior backend engineer. High-load PHP and Yii services, and the reliability libraries underneath them.</p>
     </div>

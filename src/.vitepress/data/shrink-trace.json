@@ -1,0 +1,163 @@
+{
+ "source": "rasuvaeff/property-testing-core 1.3.0 README sample: Gen::intBetween(0, 10_000), runs 200, seed 42; recorded from ShrinkTried events",
+ "original": 3989,
+ "message": "Property falsified after 0 successful run(s); seed=42\n  Original: value=3989\n  Shrunk:   value=100 (9 shrink step(s), 39 trial(s))\n  Changed:  value=3989 -> 100\n  Failure:  100 is not below 100\n  Path:     value:1/value:1/value:1/value:1/value:1/value:3/value:4/value:5/value:6",
+ "trials": [
+  {
+   "candidate": 0,
+   "accepted": false
+  },
+  {
+   "candidate": 1995,
+   "accepted": true
+  },
+  {
+   "candidate": 0,
+   "accepted": false
+  },
+  {
+   "candidate": 998,
+   "accepted": true
+  },
+  {
+   "candidate": 0,
+   "accepted": false
+  },
+  {
+   "candidate": 499,
+   "accepted": true
+  },
+  {
+   "candidate": 0,
+   "accepted": false
+  },
+  {
+   "candidate": 250,
+   "accepted": true
+  },
+  {
+   "candidate": 0,
+   "accepted": false
+  },
+  {
+   "candidate": 125,
+   "accepted": true
+  },
+  {
+   "candidate": 0,
+   "accepted": false
+  },
+  {
+   "candidate": 63,
+   "accepted": false
+  },
+  {
+   "candidate": 94,
+   "accepted": false
+  },
+  {
+   "candidate": 110,
+   "accepted": true
+  },
+  {
+   "candidate": 0,
+   "accepted": false
+  },
+  {
+   "candidate": 55,
+   "accepted": false
+  },
+  {
+   "candidate": 83,
+   "accepted": false
+  },
+  {
+   "candidate": 97,
+   "accepted": false
+  },
+  {
+   "candidate": 104,
+   "accepted": true
+  },
+  {
+   "candidate": 0,
+   "accepted": false
+  },
+  {
+   "candidate": 52,
+   "accepted": false
+  },
+  {
+   "candidate": 78,
+   "accepted": false
+  },
+  {
+   "candidate": 91,
+   "accepted": false
+  },
+  {
+   "candidate": 98,
+   "accepted": false
+  },
+  {
+   "candidate": 101,
+   "accepted": true
+  },
+  {
+   "candidate": 0,
+   "accepted": false
+  },
+  {
+   "candidate": 51,
+   "accepted": false
+  },
+  {
+   "candidate": 76,
+   "accepted": false
+  },
+  {
+   "candidate": 89,
+   "accepted": false
+  },
+  {
+   "candidate": 95,
+   "accepted": false
+  },
+  {
+   "candidate": 98,
+   "accepted": false
+  },
+  {
+   "candidate": 100,
+   "accepted": true
+  },
+  {
+   "candidate": 0,
+   "accepted": false
+  },
+  {
+   "candidate": 50,
+   "accepted": false
+  },
+  {
+   "candidate": 75,
+   "accepted": false
+  },
+  {
+   "candidate": 88,
+   "accepted": false
+  },
+  {
+   "candidate": 94,
+   "accepted": false
+  },
+  {
+   "candidate": 97,
+   "accepted": false
+  },
+  {
+   "candidate": 99,
+   "accepted": false
+  }
+ ]
+}

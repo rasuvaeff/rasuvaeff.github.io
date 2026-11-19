@@ -1,31 +1,18 @@
 ---
 title: yii3-outbox
+package: yii3-outbox
+section: 3
+layout: man
 description: "Stateless-ядро transactional outbox для Yii3 с политиками повторов и сменным хранилищем."
-outline: [2, 2]
 ---
 
-# yii3-outbox
+## ИМЯ
 
-Stateless-ядро transactional outbox для Yii3 с политиками повторов.
+yii3-outbox — stateless-ядро transactional outbox для Yii3 с политиками повторов и сменным хранилищем
 
-<PackageMeta slug="yii3-outbox" :src="21" :tests="13" />
+## ОБЗОР
 
-## Задача
-
-Запись в базу и публикация сообщения — два шага, и сбой между ними теряет или дублирует сообщение. Outbox записывает сообщение в той же транзакции, что и данные, а публикует позже.
-
-## Что умеет
-
-- `Outbox::record()` с необязательными `aggregateId`, `id` и приоритетом; `recordMany()` читает часы один раз и сохраняет пачкой, если хранилище это умеет.
-- Порядок захвата: приоритет по убыванию, затем `createdAt` по возрастанию (диапазон приоритета от -32768 до 32767).
-- `Processor` захватывает, публикует и применяет `RetryPolicy(maxAttempts, delaySeconds)`.
-- `PublishException::terminal()` сразу помечает сообщение как `Failed`.
-- Параметр `types` у Processor ограничивает потребителя теми типами сообщений, которыми он владеет.
-- Необязательные интерфейсы хранилища: учёт повторов, пакетное подтверждение, пакетное сохранение, requeue, статистика.
-- Подключаемый `MessageIdGeneratorInterface`; реализация по умолчанию не требует библиотеки UUID.
-- Поставляется с тестовым дублёром `InMemoryStorage` и `Serializer`.
-
-## Пример
+<ManInstall />
 
 ```php
 $storage = new InMemoryStorage(); // rasuvaeff/yii3-outbox-db for a real one
@@ -47,7 +34,22 @@ $processor = new Processor(
 $result = $processor->process();
 ```
 
-## Ещё примеры
+## ОПИСАНИЕ
+
+Stateless-ядро transactional outbox для Yii3 с политиками повторов.
+
+Запись в базу и публикация сообщения — два шага, и сбой между ними теряет или дублирует сообщение. Outbox записывает сообщение в той же транзакции, что и данные, а публикует позже.
+
+- `Outbox::record()` с необязательными `aggregateId`, `id` и приоритетом; `recordMany()` читает часы один раз и сохраняет пачкой, если хранилище это умеет.
+- Порядок захвата: приоритет по убыванию, затем `createdAt` по возрастанию (диапазон приоритета от -32768 до 32767).
+- `Processor` захватывает, публикует и применяет `RetryPolicy(maxAttempts, delaySeconds)`.
+- `PublishException::terminal()` сразу помечает сообщение как `Failed`.
+- Параметр `types` у Processor ограничивает потребителя теми типами сообщений, которыми он владеет.
+- Необязательные интерфейсы хранилища: учёт повторов, пакетное подтверждение, пакетное сохранение, requeue, статистика.
+- Подключаемый `MessageIdGeneratorInterface`; реализация по умолчанию не требует библиотеки UUID.
+- Поставляется с тестовым дублёром `InMemoryStorage` и `Serializer`.
+
+## ПРИМЕРЫ
 
 Сообщение outbox записывается в той же транзакции, что и бизнес-изменение: коммит либо у обоих, либо ни у одного.
 
@@ -102,15 +104,15 @@ echo "2 attempts, 30s ago — should retry: " . ($policy->shouldRetry($attempted
 echo "2 attempts, 30s ago — ready (delay=60s): " . ($policy->isReadyForRetry($attempted, $now) ? 'yes' : 'no') . "\n";
 ```
 
-## Семейство
+## СМОТРИТЕ ТАКЖЕ
 
 | Package | Role |
 |---|---|
-| yii3-outbox-db | SQL-хранилище |
-| yii3-outbox-clickhouse | Пакетный экспортёр в ClickHouse |
-| yii3-outbox-webhooks-bridge | Доставка вебхуков через outbox |
-| yii3-ab-testing-outbox | События показов и конверсий A/B |
+| [yii3-outbox-db](https://github.com/rasuvaeff/yii3-outbox-db)(3) | SQL-хранилище |
+| [yii3-outbox-clickhouse](https://github.com/rasuvaeff/yii3-outbox-clickhouse)(3) | Пакетный экспортёр в ClickHouse |
+| [yii3-outbox-webhooks-bridge](https://github.com/rasuvaeff/yii3-outbox-webhooks-bridge)(3) | Доставка вебхуков через outbox |
+| [yii3-ab-testing-outbox](https://github.com/rasuvaeff/yii3-ab-testing-outbox)(3) | События показов и конверсий A/B |
 
-## Ограничения
+## ОШИБКИ
 
 Ядро не открывает транзакцию, поэтому обязанность атомарной записи остаётся на вызывающем. Доставка at-least-once, а Processor без `types` захватывает сообщения всех типов в общем хранилище.

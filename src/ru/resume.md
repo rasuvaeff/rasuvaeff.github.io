@@ -7,7 +7,7 @@ description: "Виктор Разуваев, senior backend-разработчи
 <article class="cv">
   <header class="cv-top">
     <div>
-      <p class="eyebrow"><span>Резюме</span><span>Senior backend</span></p>
+      <p class="kicker">Резюме · Senior backend</p>
       <h1>Виктор Разуваев</h1>
       <p class="role">Senior backend-разработчик. Высоконагруженные сервисы на PHP и Yii и библиотеки надёжности под ними.</p>
     </div>

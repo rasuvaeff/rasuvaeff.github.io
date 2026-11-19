@@ -1,31 +1,18 @@
 ---
 title: schema
-description: One schema that both validates input and generates test data for it.
-outline: [2, 2]
+package: schema
+section: 3
+layout: man
+description: "One schema that both validates input and generates test data for it."
 ---
 
-# schema
+## NAME
 
-One schema parses runtime input and generates test data for it.
+schema — one schema that both validates input and generates test data for it
 
-<PackageMeta slug="schema" :src="43" :tests="36" />
+## SYNOPSIS
 
-## The problem
-
-Validation rules and test generators written apart drift, so tests are blind to what production lets through. Here one schema drives `parse()` and `arbitrary()`, and the package's own property suite pins their parity.
-
-## What it does
-
-- `Schema::object`, `string`, `int`, `float`, `enum`, `arrayOf`, `mapOf`, literals, `dateTime`.
-- `parse()` returns errors with JSONPath and RFC 6901 pointers; also `parseOrThrow` and `parseJson`.
-- Unknown-key modes: `Reject`, `Strip`, `Passthrough`.
-- `requireAnyOf`, `extend`, `pick`, `omit`, `partial` for composing objects.
-- `arbitrary()` yields a property-testing generator for the same value set.
-- Messages state kinds and sizes only, never the offending value.
-- A Psalm plugin infers array shapes from the declaration.
-- `into()` hydrates DTOs; a `yiisoft/validator` bridge is included.
-
-## Example
+<ManInstall />
 
 ```php
 $user = Schema::object([
@@ -40,11 +27,22 @@ $user = Schema::object([
 $result = $user->parse($payload);
 ```
 
-## Built on
+## DESCRIPTION
 
-`property-testing-core` is a runtime dependency (the generator port). Use the generator in property tests through `property-testing-testo`.
+One schema parses runtime input and generates test data for it.
 
-## More examples
+Validation rules and test generators written apart drift, so tests are blind to what production lets through. Here one schema drives `parse()` and `arbitrary()`, and the package's own property suite pins their parity.
+
+- `Schema::object`, `string`, `int`, `float`, `enum`, `arrayOf`, `mapOf`, literals, `dateTime`.
+- `parse()` returns errors with JSONPath and RFC 6901 pointers; also `parseOrThrow` and `parseJson`.
+- Unknown-key modes: `Reject`, `Strip`, `Passthrough`.
+- `requireAnyOf`, `extend`, `pick`, `omit`, `partial` for composing objects.
+- `arbitrary()` yields a property-testing generator for the same value set.
+- Messages state kinds and sizes only, never the offending value.
+- A Psalm plugin infers array shapes from the declaration.
+- `into()` hydrates DTOs; a `yiisoft/validator` bridge is included.
+
+## EXAMPLES
 
 Collects every validation error with its path and JSON pointer, never echoing the offending value.
 
@@ -95,6 +93,10 @@ $result->getErrorMessagesIndexedByPath();
 // ['payload.items.1.sku' => ['String length must be at least 1, got 0']]
 ```
 
-## Limits
+## SEE ALSO
+
+`property-testing-core` is a runtime dependency (the generator port). Use the generator in property tests through `property-testing-testo`.
+
+## BUGS
 
 The Psalm plugin does not encode constraints: `int()->min(0)` infers `int`, not `int<0, max>`, and `string()->min(1)` infers `string`. Narrow by hand.

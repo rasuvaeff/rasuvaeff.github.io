@@ -1,31 +1,18 @@
 ---
 title: resilience
+package: resilience
+section: 3
+layout: man
 description: "Retry, circuit breaker и bulkhead, собранные в правильном порядке."
-outline: [2, 2]
 ---
 
-# resilience
+## ИМЯ
 
-Retry, circuit breaker и bulkhead в правильном порядке, с готовой «склейкой».
+resilience — retry, circuit breaker и bulkhead, собранные в правильном порядке
 
-<PackageMeta slug="resilience" :src="5" :tests="4" />
+## ОБЗОР
 
-## Задача
-
-Три базовых пакета компонуются через замыкания, но неверная склейка означает retry на открытом circuit или полном bulkhead, что усиливает перегрузку. `Pipeline` фиксирует порядок вложенности и добавляет правила остановки.
-
-## Что умеет
-
-- Билдер `Pipeline::for(name)` над retry, circuit breaker и bulkhead; `build()` неизменяем и переиспользуем.
-- Вложенность по умолчанию `retry(circuitBreaker(bulkhead(callback)))`, поэтому сон между retry не удерживает слот.
-- Retry останавливается на `CircuitOpenException` и `StorageFailure` breaker'а.
-- Retry останавливается на `BulkheadFullException`, если не вызван `retryOnBulkheadFull()`.
-- `breakerOutsideRetry()` переключает учёт исходов breaker'а с попытки на операцию.
-- Необязательный fallback получает конечное исключение.
-- `Rejection::is()` и `retryAfter()`; `onRejected()` отображает отказ в доменное исключение.
-- Необязательный бюджет `context` пробрасывается через каждый слой.
-
-## Пример
+<ManInstall />
 
 ```php
 $pipeline = Pipeline::for('billing')
@@ -46,11 +33,22 @@ $pipeline = Pipeline::for('billing')
 
 Пример из README, дополненный breaker'ом, выполняется при каждой сборке через `doc-exec`.
 
-## Из чего собран
+## ОПИСАНИЕ
 
-`retry`, `circuit-breaker`, `bulkhead`, `duration` и `context` для бюджета запроса.
+Retry, circuit breaker и bulkhead в правильном порядке, с готовой «склейкой».
 
-## Ещё примеры
+Три базовых пакета компонуются через замыкания, но неверная склейка означает retry на открытом circuit или полном bulkhead, что усиливает перегрузку. `Pipeline` фиксирует порядок вложенности и добавляет правила остановки.
+
+- Билдер `Pipeline::for(name)` над retry, circuit breaker и bulkhead; `build()` неизменяем и переиспользуем.
+- Вложенность по умолчанию `retry(circuitBreaker(bulkhead(callback)))`, поэтому сон между retry не удерживает слот.
+- Retry останавливается на `CircuitOpenException` и `StorageFailure` breaker'а.
+- Retry останавливается на `BulkheadFullException`, если не вызван `retryOnBulkheadFull()`.
+- `breakerOutsideRetry()` переключает учёт исходов breaker'а с попытки на операцию.
+- Необязательный fallback получает конечное исключение.
+- `Rejection::is()` и `retryAfter()`; `onRejected()` отображает отказ в доменное исключение.
+- Необязательный бюджет `context` пробрасывается через каждый слой.
+
+## ПРИМЕРЫ
 
 Превращает отказ переполненного bulkhead в доменное исключение и читает подсказку Retry-After.
 
@@ -121,6 +119,10 @@ new BreakerConfig(
 );
 ```
 
-## Ограничения
+## СМОТРИТЕ ТАКЖЕ
+
+`retry`, `circuit-breaker`, `bulkhead`, `duration` и `context` для бюджета запроса.
+
+## ОШИБКИ
 
 Положение breaker'а — реальный семантический выбор. С `breakerOutsideRetry()` открытый circuit не может прервать цикл retry.

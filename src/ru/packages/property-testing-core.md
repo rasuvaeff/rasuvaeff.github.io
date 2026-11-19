@@ -1,39 +1,19 @@
 ---
 title: property-testing-core
+package: property-testing-core
+section: 3
+dev: true
+layout: man
 description: "Движок property-based тестирования без привязки к фреймворку, со встроенным shrinking."
-outline: [2, 2]
 ---
 
-# property-testing-core
+## ИМЯ
 
-Движок property-based тестирования со встроенным shrinking, без зависимости от тестового фреймворка.
+property-testing-core — движок property-based тестирования без привязки к фреймворку, со встроенным shrinking
 
-<PackageMeta slug="property-testing-core" docs="https://rasuvaeff.github.io/property-testing-core/" :src="141" :tests="108" />
+## ОБЗОР
 
-## Задача
-
-Вручную подобранные входные данные упускают граничные случаи. Движок генерирует сотни случайных входов, находит падающий и сжимает его (shrinking) до минимального читаемого контрпримера.
-
-## Что умеет
-
-- Фасад `Gen`: int, float, строки, байты, `naughtyString`, `mixed`, массивы, записи.
-- Встроенный shrinking через преобразованные генераторы.
-- `PropertyRunner` возвращает структурированные результаты. Он ничего не печатает, не завершает процесс и не бросает исключений, чтобы сообщить об исходе.
-- `FilesystemCorpus` воспроизводит записанные падения до случайной фазы.
-- Детектор нестабильности повторно выполняет минимизированный вход `flakyReplays` раз.
-- Stateful и model-based тестирование, а также rule-based машины (`Gen::rules`).
-- `Assume`, гейты распределения `Classify`, целевой поиск, детерминированные прогоны.
-- Каждый контрпример несёт seed и путь shrinking для воспроизведения.
-
-## Вывод
-
-<pre class="tape">Property falsified after 0 successful run(s); seed=42
-  Original: value=3989
-  Shrunk:   value=100 (9 shrink step(s), 39 trial(s))
-  <b>Changed:  value=3989 -&gt; 100</b>
-  Failure:  100 is not below 100</pre>
-
-## Пример
+<ManInstall />
 
 ```php
 $definition = new PropertyDefinition(
@@ -53,7 +33,30 @@ $result = (new PropertyRunner())->run($definition, new CallableTrialExecutor(
 ));
 ```
 
-## Ещё примеры
+## ОПИСАНИЕ
+
+Движок property-based тестирования со встроенным shrinking, без зависимости от тестового фреймворка.
+
+Вручную подобранные входные данные упускают граничные случаи. Движок генерирует сотни случайных входов, находит падающий и сжимает его (shrinking) до минимального читаемого контрпримера.
+
+- Фасад `Gen`: int, float, строки, байты, `naughtyString`, `mixed`, массивы, записи.
+- Встроенный shrinking через преобразованные генераторы.
+- `PropertyRunner` возвращает структурированные результаты. Он ничего не печатает, не завершает процесс и не бросает исключений, чтобы сообщить об исходе.
+- `FilesystemCorpus` воспроизводит записанные падения до случайной фазы.
+- Детектор нестабильности повторно выполняет минимизированный вход `flakyReplays` раз.
+- Stateful и model-based тестирование, а также rule-based машины (`Gen::rules`).
+- `Assume`, гейты распределения `Classify`, целевой поиск, детерминированные прогоны.
+- Каждый контрпример несёт seed и путь shrinking для воспроизведения.
+
+## ВЫВОД
+
+<pre class="tape">Property falsified after 0 successful run(s); seed=42
+  Original: value=3989
+  Shrunk:   value=100 (9 shrink step(s), 39 trial(s))
+  <b>Changed:  value=3989 -&gt; 100</b>
+  Failure:  100 is not below 100</pre>
+
+## ПРИМЕРЫ
 
 Целевой поиск поднимает заявленную метрику и доходит до угла, который случайная выборка почти не задевает.
 
@@ -122,16 +125,16 @@ foreach (Gen::sample(Gen::forClass(Money::class), 3, 7) as $money) {
 $fixed = Gen::forClass(Money::class, ['amount' => Gen::intBetween(500, 510)]);
 ```
 
-## Семейство
+## СМОТРИТЕ ТАКЖЕ
 
 | Package | Role |
 |---|---|
-| property-testing-testo | `#[Property]` для Testo |
-| property-testing-phpunit | Fluent `forAll()->check()` для PHPUnit |
-| property-testing-openapi | Запросы, сгенерированные из документа OpenAPI |
-| property-testing-names | Генераторы человеческих имён |
+| [property-testing-testo](https://github.com/rasuvaeff/property-testing-testo)(3) | `#[Property]` для Testo |
+| [property-testing-phpunit](https://github.com/rasuvaeff/property-testing-phpunit)(3) | Fluent `forAll()->check()` для PHPUnit |
+| [property-testing-openapi](https://github.com/rasuvaeff/property-testing-openapi)(3) | Запросы, сгенерированные из документа OpenAPI |
+| [property-testing-names](https://github.com/rasuvaeff/property-testing-names)(3) | Генераторы человеческих имён |
 
-## Ограничения
+## ОШИБКИ
 
 Значения берутся из MT19937 с seed из отчёта: это PRNG, а не CSPRNG. Seed — это способ воспроизвести прогон, а не секрет. Корпус хранит падающие входы как обычный JSON.
 

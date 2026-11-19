@@ -1,20 +1,34 @@
 ---
 title: property-testing-openapi
-description: Generate valid and invalid OpenAPI requests from a contract and check them in-process. With openapi-contract.
-outline: [2, 2]
+package: property-testing-openapi
+section: 3
+dev: true
+layout: man
+description: "Generate valid and invalid OpenAPI requests from a contract and check them in-process. With openapi-contract."
 ---
 
-# property-testing-openapi
+## NAME
+
+property-testing-openapi — generate valid and invalid OpenAPI requests from a contract and check them in-process. With openapi-contract
+
+## SYNOPSIS
+
+<ManInstall />
+
+```php
+$contract = Contract::fromArray($document);
+$operation = $contract->operation('pets.get');
+$case = (new RequestCaseArbitrary())->forOperation($operation)->generate(new Random(42))->value;
+$request = (new RequestMaterializer(new Psr17Factory(), new Psr17Factory()))->materialize($operation, $case);
+
+$contract->validateRequest($request)->assertValid();
+```
+
+## DESCRIPTION
 
 Request cases generated from an OpenAPI document, materialized as PSR-7 and checked by [openapi-contract](https://github.com/rasuvaeff/openapi-contract) before they reach a transport. The idea behind Schemathesis, for PHP.
 
-<PackageMeta slug="property-testing-openapi" :src="60" :tests="47" />
-
-## The problem
-
 Hand-written API tests cover the examples someone thought of. The OpenAPI document already says what a valid request is, so it can also produce the valid ones, and the invalid ones by category, and show whether the handler and the contract agree.
-
-## What it does
 
 - Generates valid scalar, array and object values from the documented JSON Schema subset.
 - Materializes OpenAPI 3 parameter styles and JSON, form-urlencoded and multipart bodies.
@@ -26,18 +40,65 @@ Hand-written API tests cover the examples someone thought of. The OpenAPI docume
 - `OperationCoverage` reports which selected operations actually ran a trial.
 - Unsupported constructs fail closed as `UnsupportedGeneration`.
 
-## Example
+## OPENAPI-CONTRACT
+
+`openapi-contract` is usable on its own. It validates PSR-7 requests and responses against OpenAPI 3.0 and 3.1.
+
+- `validateRequest`, `validateResponse` and `validateExchange` return violation lists with stable codes.
+- Body violations carry the `instancePath` and the failed schema keyword.
+- `ContractMiddleware` for PSR-15: observe-only, strict (400 `problem+json`) or a custom closure.
+- A CLI, `bin/openapi-contract`, validates a directory of JSON fixtures with CI-friendly exit codes.
+- Budgets bound document size, node counts, resolved nodes and message body size.
+- `fromFile` resolves relative `$ref`s but rejects path traversal, URI schemes and symlink escapes.
+- `multipleOf` is judged exactly on the spelled decimal, with or without `ext-bcmath`.
 
 ```php
-$contract = Contract::fromArray($document);
-$operation = $contract->operation('pets.get');
-$case = (new RequestCaseArbitrary())->forOperation($operation)->generate(new Random(42))->value;
-$request = (new RequestMaterializer(new Psr17Factory(), new Psr17Factory()))->materialize($operation, $case);
-
-$contract->validateRequest($request)->assertValid();
+$result = $contract->validateExchange($request, $response);
+$result->assertValid(); // throws ContractViolation when violations exist
 ```
 
-## More examples
+**More examples**
+
+A PSR-15 middleware in two modes: observe-only logs violations, strict refuses the request.
+
+```php
+$contract = Contract::fromFile(__DIR__ . '/openapi/pets.yaml');
+
+$observing = new ContractMiddleware(
+    $contract,
+    static function (array $violations, ServerRequestInterface $request) use ($formatter): ?ResponseInterface {
+        echo 'observed on ', $request->getMethod(), ' ', $request->getUri(), ":\n",
+        $formatter->format(new ValidationResult($violations)), "\n\n";
+
+        return null;
+    },
+);
+$strict = ContractMiddleware::strict($contract, new Psr17Factory());
+```
+
+A CLI runner validates a directory of JSON fixtures against one contract and returns a CI-friendly exit code.
+
+```bash
+vendor/bin/openapi-contract openapi.yaml tests/api-fixtures
+```
+
+Size budgets are caller policy: an oversized body is refused by default, raised on request.
+
+```php
+$result = Contract::fromArray($document)->validateExchange($request, $big);
+printf("default budget      -> %s\n", $result->violations[0]->code);
+
+$raised = Contract::fromArray($document, new Limits(messageBodyBytes: 8 * 1024 * 1024));
+printf("messageBodyBytes 8M -> %s\n", $raised->validateExchange($request, $big)->isValid() ? 'valid' : 'invalid');
+
+try {
+    Contract::fromArray($document, new Limits(documentNodes: 5));
+} catch (InvalidContract $exception) {
+    printf("documentNodes 5     -> %s\n", $exception->getMessage());
+}
+```
+
+## EXAMPLES
 
 A contract suite sends generated valid requests through a PSR-15 handler and checks invalid ones never cause a 5xx.
 
@@ -84,73 +145,15 @@ $suite = $suite->rejectionPolicy(
 );
 ```
 
-## The validator: openapi-contract
-
-`openapi-contract` is usable on its own. It validates PSR-7 requests and responses against OpenAPI 3.0 and 3.1.
-
-- `validateRequest`, `validateResponse` and `validateExchange` return violation lists with stable codes.
-- Body violations carry the `instancePath` and the failed schema keyword.
-- `ContractMiddleware` for PSR-15: observe-only, strict (400 `problem+json`) or a custom closure.
-- A CLI, `bin/openapi-contract`, validates a directory of JSON fixtures with CI-friendly exit codes.
-- Budgets bound document size, node counts, resolved nodes and message body size.
-- `fromFile` resolves relative `$ref`s but rejects path traversal, URI schemes and symlink escapes.
-- `multipleOf` is judged exactly on the spelled decimal, with or without `ext-bcmath`.
-
-```php
-$result = $contract->validateExchange($request, $response);
-$result->assertValid(); // throws ContractViolation when violations exist
-```
-
-## More validator examples
-
-A PSR-15 middleware in two modes: observe-only logs violations, strict refuses the request.
-
-```php
-$contract = Contract::fromFile(__DIR__ . '/openapi/pets.yaml');
-
-$observing = new ContractMiddleware(
-    $contract,
-    static function (array $violations, ServerRequestInterface $request) use ($formatter): ?ResponseInterface {
-        echo 'observed on ', $request->getMethod(), ' ', $request->getUri(), ":\n",
-        $formatter->format(new ValidationResult($violations)), "\n\n";
-
-        return null;
-    },
-);
-$strict = ContractMiddleware::strict($contract, new Psr17Factory());
-```
-
-A CLI runner validates a directory of JSON fixtures against one contract and returns a CI-friendly exit code.
-
-```bash
-vendor/bin/openapi-contract openapi.yaml tests/api-fixtures
-```
-
-Size budgets are caller policy: an oversized body is refused by default, raised on request.
-
-```php
-$result = Contract::fromArray($document)->validateExchange($request, $big);
-printf("default budget      -> %s\n", $result->violations[0]->code);
-
-$raised = Contract::fromArray($document, new Limits(messageBodyBytes: 8 * 1024 * 1024));
-printf("messageBodyBytes 8M -> %s\n", $raised->validateExchange($request, $big)->isValid() ? 'valid' : 'invalid');
-
-try {
-    Contract::fromArray($document, new Limits(documentNodes: 5));
-} catch (InvalidContract $exception) {
-    printf("documentNodes 5     -> %s\n", $exception->getMessage());
-}
-```
-
-## Family
+## SEE ALSO
 
 | Package | Role |
 |---|---|
-| openapi-contract | The validator |
-| property-testing-core | The engine: generators, shrinking, corpus |
-| property-testing-testo | Testo adapter |
-| property-testing-phpunit | PHPUnit adapter |
+| [openapi-contract](https://github.com/rasuvaeff/openapi-contract)(3) | The validator |
+| [property-testing-core](https://github.com/rasuvaeff/property-testing-core)(3) | The engine: generators, shrinking, corpus |
+| [property-testing-testo](https://github.com/rasuvaeff/property-testing-testo)(3) | Testo adapter |
+| [property-testing-phpunit](https://github.com/rasuvaeff/property-testing-phpunit)(3) | PHPUnit adapter |
 
-## Limits
+## BUGS
 
 The default operation selection is empty. Unsafe-method operations need explicit listing plus `allowUnsafeOperations()`, otherwise `SuiteConfigurationError`. `openapi-contract` does not enforce declared security: a request missing its API key validates clean, only the exchange shape is checked. Both packages are pre-1.0.

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
+import { renderAnnotatedPhp } from './annotated'
 
-const nav = (p: string, t: { deep: string; packages: string; agents: string; resume: string; workflow: string }) => [
-    { text: t.deep, link: `${p}/#work` },
+const nav = (p: string, t: { packages: string; agents: string; resume: string; workflow: string }) => [
     { text: t.packages, link: `${p}/packages` },
     { text: t.agents, link: `${p}/agents` },
     { text: t.resume, link: `${p}/resume` },
@@ -17,9 +17,17 @@ export default defineConfig({
     base: '/',
     sitemap: { hostname: 'https://rasuvaeff.github.io' },
     cleanUrls: true,
-    appearance: false,
+    appearance: true,
     markdown: {
-        theme: { light: 'github-dark', dark: 'github-dark' },
+        theme: { light: 'github-light', dark: 'github-dark' },
+        config(md) {
+            const fence = md.renderer.rules.fence!
+            md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+                const token = tokens[idx]
+
+                return token.info.trim() === 'php' ? renderAnnotatedPhp(token.content) : fence(tokens, idx, options, env, self)
+            }
+        },
     },
     transformHead({ pageData, siteData }) {
         const path = pageData.relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '')
@@ -44,14 +52,15 @@ export default defineConfig({
     },
     head: [
         ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
-        ['meta', { name: 'theme-color', content: '#0f1115' }],
+        ['meta', { name: 'theme-color', content: '#ffffff', media: '(prefers-color-scheme: light)' }],
+        ['meta', { name: 'theme-color', content: '#121417', media: '(prefers-color-scheme: dark)' }],
     ],
     locales: {
         root: {
             label: 'English',
             lang: 'en-US',
             themeConfig: {
-                nav: nav('', { deep: 'Deep dives', packages: 'Packages', agents: 'For agents', resume: 'Resume', workflow: 'Workflow' }),
+                nav: nav('', { packages: 'packages', agents: 'agents', resume: 'resume', workflow: 'workflow' }),
                 outline: { label: 'On this page', level: [2, 3] },
             },
         },
@@ -62,7 +71,7 @@ export default defineConfig({
             description:
                 'Senior backend-разработчик. Высоконагруженный PHP и Yii и 89 опубликованных библиотек: дедлайны, доставка, эксперименты, shrinking, тестовые двойники.',
             themeConfig: {
-                nav: nav('/ru', { deep: 'Разборы', packages: 'Пакеты', agents: 'Агентам', resume: 'Резюме', workflow: 'Процесс' }),
+                nav: nav('/ru', { packages: 'пакеты', agents: 'агентам', resume: 'резюме', workflow: 'процесс' }),
                 outline: { label: 'На этой странице', level: [2, 3] },
                 langMenuLabel: 'Язык',
                 returnToTopLabel: 'Наверх',
@@ -73,8 +82,7 @@ export default defineConfig({
         },
     },
     themeConfig: {
-        logo: '/logo-mark.svg',
-        siteTitle: 'Razuvaev',
+        siteTitle: 'rasuvaeff',
         search: {
             provider: 'local',
             options: {

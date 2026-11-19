@@ -1,16 +1,11 @@
 ---
-layout: page
 title: Packages
-description: Open-source PHP 8.3+ libraries published as rasuvaeff/* on Packagist.
+description: Every rasuvaeff/* package on Packagist, searchable, with version, mutation gate and agent skill.
+aside: false
 ---
 
-<div class="section-head" style="margin-top: 8px;">
-  <h2>All packages</h2>
-  <p>PHP 8.3+, SemVer, backward-compatibility checks, Testo tests (PHPUnit for one adapter) with mutation gates. Every package ships an <code>llms.txt</code>; forty also ship an agent skill that the <a href="https://github.com/roxblnfk/skills">llm/skills</a> Composer plugin installs. Versions and mutation gates are read from the repositories when the site is built.</p>
-</div>
+# All packages
+
+PHP 8.3+, SemVer, backward-compatibility checks, Testo tests (PHPUnit for one adapter) with mutation gates. Every package ships an `llms.txt`; forty also ship an agent skill that the [llm/skills](https://github.com/roxblnfk/skills) Composer plugin installs. Versions, gates and skills are read from Packagist and the tagged sources when the site is built. Packages marked `man` have a manual page here.
 
 <PackageCatalog />
-
-<p class="section-label">Families</p>
-<div class="section-head"><h2>Cores and their adapters.</h2></div>
-<FamilyMap />

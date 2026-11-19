@@ -1,31 +1,18 @@
 ---
 title: yii3-idempotency
+package: yii3-idempotency
+section: 3
+layout: man
 description: "PSR-15 middleware для Idempotency-Key, которое не даёт обработать POST, PUT и PATCH повторно."
-outline: [2, 2]
 ---
 
-# yii3-idempotency
+## ИМЯ
 
-PSR-15 middleware для `Idempotency-Key`. Один и тот же ключ с тем же телом запускает обработчик один раз.
+yii3-idempotency — PSR-15 middleware для Idempotency-Key, которое не даёт обработать POST, PUT и PATCH повторно
 
-<PackageMeta slug="yii3-idempotency" :src="27" :tests="33" />
+## ОБЗОР
 
-## Задача
-
-Повторённые или дважды отправленные запросы запускают обработчик дважды. Без привязки к вызывающему один клиент мог бы ещё и воспроизвести чужой ключ или заблокировать его.
-
-## Что умеет
-
-- Тот же ключ и тот же payload воспроизводят сохранённый ответ с заголовком `Idempotency-Replay: true`.
-- Тот же ключ с другим payload отвечает `422`; дубликат, который ещё выполняется, отвечает `409`.
-- Отпечаток покрывает метод, путь, query и тело.
-- `scopeResolver` обязателен: ключи разделяются по вызывающим.
-- По умолчанию кешируются 2xx-ответы; остальные статусы снимают claim.
-- `DomainFailureRenderer` и `FailureClassifier` кешируют доменные ошибки, поэтому `InsufficientFunds` не выполняется повторно.
-- `cacheableRedirectStatuses` кеширует `303` для форм Post/Redirect/Get.
-- `Set-Cookie`, `Date` и hop-by-hop заголовки никогда не сохраняются.
-
-## Пример
+<ManInstall />
 
 ```php
 $middleware = new IdempotencyMiddleware(
@@ -38,7 +25,22 @@ $middleware = new IdempotencyMiddleware(
 );
 ```
 
-## Ещё примеры
+## ОПИСАНИЕ
+
+PSR-15 middleware для `Idempotency-Key`. Один и тот же ключ с тем же телом запускает обработчик один раз.
+
+Повторённые или дважды отправленные запросы запускают обработчик дважды. Без привязки к вызывающему один клиент мог бы ещё и воспроизвести чужой ключ или заблокировать его.
+
+- Тот же ключ и тот же payload воспроизводят сохранённый ответ с заголовком `Idempotency-Replay: true`.
+- Тот же ключ с другим payload отвечает `422`; дубликат, который ещё выполняется, отвечает `409`.
+- Отпечаток покрывает метод, путь, query и тело.
+- `scopeResolver` обязателен: ключи разделяются по вызывающим.
+- По умолчанию кешируются 2xx-ответы; остальные статусы снимают claim.
+- `DomainFailureRenderer` и `FailureClassifier` кешируют доменные ошибки, поэтому `InsufficientFunds` не выполняется повторно.
+- `cacheableRedirectStatuses` кеширует `303` для форм Post/Redirect/Get.
+- `Set-Cookie`, `Date` и hop-by-hop заголовки никогда не сохраняются.
+
+## ПРИМЕРЫ
 
 Кеширует детерминированные доменные ошибки как воспроизводимые ответы; баги и сбои инфраструктуры остаются повторяемыми.
 
@@ -81,10 +83,10 @@ $scopeResolver = new CompositeScopeResolver(
 );
 ```
 
-## Семейство
+## СМОТРИТЕ ТАКЖЕ
 
 `yii3-idempotency-db` даёт `DbIdempotencyStorage`; `yii3-idempotency-redis` — Redis-backend.
 
-## Ограничения
+## ОШИБКИ
 
 Анонимные вызывающие делят одно пространство имён, поэтому не прячьте приватные данные вызывающего за анонимным идемпотентным эндпоинтом. `SharedKeyspaceScopeResolver` — задокументированный отказ от изоляции, безопасный только для единственного субъекта.

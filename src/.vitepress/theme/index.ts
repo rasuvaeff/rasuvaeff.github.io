@@ -1,28 +1,44 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import '@fontsource/space-grotesk/400.css'
-import '@fontsource/space-grotesk/500.css'
-import '@fontsource/space-grotesk/700.css'
-import '@fontsource/manrope/cyrillic-500.css'
+import '@fontsource/instrument-sans/400.css'
+import '@fontsource/instrument-sans/600.css'
+import '@fontsource/instrument-sans/700.css'
+import '@fontsource/manrope/cyrillic-400.css'
+import '@fontsource/manrope/cyrillic-600.css'
 import '@fontsource/manrope/cyrillic-700.css'
-import '@fontsource/ibm-plex-sans/400.css'
-import '@fontsource/ibm-plex-sans/500.css'
-import '@fontsource/jetbrains-mono/400.css'
-import '@fontsource/jetbrains-mono/500.css'
-import FamilyMap from './FamilyMap.vue'
+import '@fontsource/ibm-plex-mono/400.css'
+import '@fontsource/ibm-plex-mono/500.css'
+import '@fontsource/ibm-plex-mono/600.css'
+import HomeReport from './HomeReport.vue'
+import ManInstall from './ManInstall.vue'
+import ManPage from './ManPage.vue'
 import PackageCatalog from './PackageCatalog.vue'
-import TopCards from './TopCards.vue'
-import PackageMeta from './PackageMeta.vue'
 import SkillList from './SkillList.vue'
 import './custom.css'
 
 export default {
     extends: DefaultTheme,
     enhanceApp({ app }) {
+        app.component('HomeReport', HomeReport)
+        app.component('man', ManPage)
+        app.component('ManInstall', ManInstall)
         app.component('PackageCatalog', PackageCatalog)
-        app.component('FamilyMap', FamilyMap)
-        app.component('PackageMeta', PackageMeta)
-        app.component('TopCards', TopCards)
         app.component('SkillList', SkillList)
+
+        if (typeof document !== 'undefined') {
+            // Copy button on build-time code listings: copies the code column only, without margin notes.
+            document.addEventListener('click', (event) => {
+                const button = (event.target as HTMLElement).closest<HTMLButtonElement>('.listing .copy')
+                if (!button) return
+                const code = [...button.parentElement!.querySelectorAll('.c')].map((c) => c.textContent ?? '').join('\n')
+                navigator.clipboard?.writeText(code.replace(/[ \t]+$/gm, '')).then(
+                    () => {
+                        button.textContent = 'copied'
+                        setTimeout(() => (button.textContent = 'copy'), 1200)
+                    },
+                    () => {},
+                )
+            })
+        }
     },
 } satisfies Theme

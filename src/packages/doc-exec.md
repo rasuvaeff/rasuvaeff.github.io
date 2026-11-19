@@ -1,32 +1,19 @@
 ---
 title: doc-exec
-description: Doctest for PHP. Executes README code blocks against the current code and diffs the output.
-outline: [2, 2]
+package: doc-exec
+section: 1
+dev: true
+layout: man
+description: "Doctest for PHP. Executes README code blocks against the current code and diffs the output."
 ---
 
-# doc-exec
+## NAME
 
-Doctest for PHP: execute the code blocks in your README against the current codebase and diff the result. It does for PHP what `cargo test --doc` does for Rust.
+doc-exec — doctest for PHP. Executes README code blocks against the current code and diffs the output
 
-<PackageMeta slug="doc-exec" :src="25" :tests="11" />
+## SYNOPSIS
 
-## The problem
-
-Documentation examples rot. The API changes and the README keeps showing code that no longer runs. Here the sample is a test, so the build fails when it breaks.
-
-## What it does
-
-- Only blocks with the `php doc-exec` info string run. Plain `php` blocks stay illustrative.
-- Per-statement markers: `// => expr`, `// throws FQCN`, `// outputs text`, `// skip`.
-- Statements are split by a real PHP parser (`nikic/php-parser`), not by pattern matching.
-- Blocks under one Markdown heading share a variable scope, in document order.
-- Each document runs in its own child `php` process. No `eval()`.
-- A wall-clock `--timeout` per scope group (30 s by default) kills blocks that loop forever.
-- Exit code 0 on pass, 1 on failure, 2 on usage error, so it wires into CI.
-- Programmatic API: `DocExec::check()` returns a `DocumentResult` with stable block ids.
-- Zero config: `vendor/bin/doc-exec` checks `./README.md`.
-
-## Example
+<ManInstall />
 
 ````markdown
 ```php doc-exec
@@ -42,11 +29,23 @@ vendor/bin/doc-exec docs/*.md
 vendor/bin/doc-exec --bootstrap=tests/bootstrap.php README.md
 ```
 
-## Used by
+## DESCRIPTION
 
-The `resilience` README sample is executed on every build through it.
+Doctest for PHP: execute the code blocks in your README against the current codebase and diff the result. It does for PHP what `cargo test --doc` does for Rust.
 
-## More examples
+Documentation examples rot. The API changes and the README keeps showing code that no longer runs. Here the sample is a test, so the build fails when it breaks.
+
+- Only blocks with the `php doc-exec` info string run. Plain `php` blocks stay illustrative.
+- Per-statement markers: `// => expr`, `// throws FQCN`, `// outputs text`, `// skip`.
+- Statements are split by a real PHP parser (`nikic/php-parser`), not by pattern matching.
+- Blocks under one Markdown heading share a variable scope, in document order.
+- Each document runs in its own child `php` process. No `eval()`.
+- A wall-clock `--timeout` per scope group (30 s by default) kills blocks that loop forever.
+- Exit code 0 on pass, 1 on failure, 2 on usage error, so it wires into CI.
+- Programmatic API: `DocExec::check()` returns a `DocumentResult` with stable block ids.
+- Zero config: `vendor/bin/doc-exec` checks `./README.md`.
+
+## EXAMPLES
 
 Trailing marker comments assert a value, an exception, printed output, or skip a statement.
 
@@ -89,7 +88,11 @@ foreach ($result->blocks as $block) {
 }
 ```
 
-## Limits
+## SEE ALSO
+
+The `resilience` README sample is executed on every build through it.
+
+## BUGS
 
 Blocks run arbitrary PHP with the caller's permissions. The timeout bounds time only, not memory or filesystem access. It is 0.1.0.
 

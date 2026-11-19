@@ -1,31 +1,18 @@
 ---
 title: pinned-http-client
+package: pinned-http-client
+section: 3
+layout: man
 description: "PSR-18 клиент для недоверенных URL, который привязывает соединение к проверенным адресам."
-outline: [2, 2]
 ---
 
-# pinned-http-client
+## ИМЯ
 
-PSR-18 клиент для недоверенных URL. Он резолвит хост один раз, проверяет каждый адрес и привязывает к ним cURL.
+pinned-http-client — PSR-18 клиент для недоверенных URL, который привязывает соединение к проверенным адресам
 
-<PackageMeta slug="pinned-http-client" :src="14" :tests="6" />
+## ОБЗОР
 
-## Задача
-
-DNS может ответить проверке публичным адресом, а последующему запросу — `127.0.0.1` или `169.254.169.254` (метаданные облака). Проверка имени хоста не защищает от SSRF.
-
-## Что умеет
-
-- Резолвит хост один раз (IPv4 и IPv6) и проверяет каждый адрес.
-- Передаёт cURL ровно проверенные адреса. TLS по-прежнему проверяет имя хоста.
-- Политика по умолчанию `PublicAddresses` отклоняет приватные, loopback, link-local, CGNAT и multicast диапазоны.
-- Собственные интерфейсы `AddressPolicy` и `Resolver`.
-- Лимит тела считает распакованные байты, поэтому gzip-бомбы обрываются на лимите.
-- `RedirectFollower` заново резолвит, проверяет и привязывает каждый hop.
-- Игнорирует `HTTP_PROXY` / `HTTPS_PROXY` из окружения; прокси включается явно через `proxy:`.
-- Типизированные ошибки: `RequestRefused`, `ResolutionFailed`, `ResponseTooLarge`, `TransferFailed`, `TooManyRedirects`.
-
-## Пример
+<ManInstall />
 
 ```php
 $client = new PinnedClient(); // public addresses only, IPv4 + IPv6, 8 s / 4 s, body <= 10 MiB, no proxy
@@ -41,11 +28,22 @@ try {
 }
 ```
 
-## Где используется
+## ОПИСАНИЕ
 
-`link-preview` рекомендует его как PSR-18 клиент для своего `Fetcher`.
+PSR-18 клиент для недоверенных URL. Он резолвит хост один раз, проверяет каждый адрес и привязывает к ним cURL.
 
-## Ещё примеры
+DNS может ответить проверке публичным адресом, а последующему запросу — `127.0.0.1` или `169.254.169.254` (метаданные облака). Проверка имени хоста не защищает от SSRF.
+
+- Резолвит хост один раз (IPv4 и IPv6) и проверяет каждый адрес.
+- Передаёт cURL ровно проверенные адреса. TLS по-прежнему проверяет имя хоста.
+- Политика по умолчанию `PublicAddresses` отклоняет приватные, loopback, link-local, CGNAT и multicast диапазоны.
+- Собственные интерфейсы `AddressPolicy` и `Resolver`.
+- Лимит тела считает распакованные байты, поэтому gzip-бомбы обрываются на лимите.
+- `RedirectFollower` заново резолвит, проверяет и привязывает каждый hop.
+- Игнорирует `HTTP_PROXY` / `HTTPS_PROXY` из окружения; прокси включается явно через `proxy:`.
+- Типизированные ошибки: `RequestRefused`, `ResolutionFailed`, `ResponseTooLarge`, `TransferFailed`, `TooManyRedirects`.
+
+## ПРИМЕРЫ
 
 Политика по умолчанию пропускает только публичные адреса; частные, loopback и link-local отклоняются, а IPv4-mapped адрес оценивается как вложенный в него IPv4.
 
@@ -73,7 +71,11 @@ final readonly class PublicOrLoopback implements AddressPolicy
 $client = new PinnedClient(policy: new PublicOrLoopback(new PublicAddresses()));
 ```
 
-## Ограничения
+## СМОТРИТЕ ТАКЖЕ
+
+`link-preview` рекомендует его как PSR-18 клиент для своего `Fetcher`.
+
+## ОШИБКИ
 
 `timeoutSeconds` не ограничивает DNS-резолвинг, а враждебный системный резолвер вне области защиты. С явным прокси граница SSRF переходит к прокси.
 

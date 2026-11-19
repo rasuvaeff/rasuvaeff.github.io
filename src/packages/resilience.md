@@ -1,31 +1,18 @@
 ---
 title: resilience
-description: Retry, circuit breaker and bulkhead composed in the correct order.
-outline: [2, 2]
+package: resilience
+section: 3
+layout: man
+description: "Retry, circuit breaker and bulkhead composed in the correct order."
 ---
 
-# resilience
+## NAME
 
-Retry, circuit breaker and bulkhead composed in the right order, with the glue built in.
+resilience — retry, circuit breaker and bulkhead composed in the correct order
 
-<PackageMeta slug="resilience" :src="5" :tests="4" />
+## SYNOPSIS
 
-## The problem
-
-The three leaf packages compose with closures, but wrong glue means retrying on an open circuit or a full bulkhead, which amplifies overload. `Pipeline` fixes the nesting order and appends the stop rules.
-
-## What it does
-
-- `Pipeline::for(name)` builder over retry, circuit breaker and bulkhead; `build()` is immutable and reusable.
-- Default nesting is `retry(circuitBreaker(bulkhead(callback)))`, so retry sleeps hold no slot.
-- Retry stops on `CircuitOpenException` and the breaker's `StorageFailure`.
-- Retry stops on `BulkheadFullException` unless `retryOnBulkheadFull()`.
-- `breakerOutsideRetry()` switches breaker outcomes from per-attempt to per-operation.
-- Optional fallback receives the terminal exception.
-- `Rejection::is()` and `retryAfter()`; `onRejected()` maps to a domain exception.
-- An optional `context` budget is threaded through every layer.
-
-## Example
+<ManInstall />
 
 ```php
 $pipeline = Pipeline::for('billing')
@@ -46,11 +33,22 @@ $pipeline = Pipeline::for('billing')
 
 The README sample, with the breaker added, is executed on every build through `doc-exec`.
 
-## Built from
+## DESCRIPTION
 
-`retry`, `circuit-breaker`, `bulkhead`, `duration`, and `context` for the request budget.
+Retry, circuit breaker and bulkhead composed in the right order, with the glue built in.
 
-## More examples
+The three leaf packages compose with closures, but wrong glue means retrying on an open circuit or a full bulkhead, which amplifies overload. `Pipeline` fixes the nesting order and appends the stop rules.
+
+- `Pipeline::for(name)` builder over retry, circuit breaker and bulkhead; `build()` is immutable and reusable.
+- Default nesting is `retry(circuitBreaker(bulkhead(callback)))`, so retry sleeps hold no slot.
+- Retry stops on `CircuitOpenException` and the breaker's `StorageFailure`.
+- Retry stops on `BulkheadFullException` unless `retryOnBulkheadFull()`.
+- `breakerOutsideRetry()` switches breaker outcomes from per-attempt to per-operation.
+- Optional fallback receives the terminal exception.
+- `Rejection::is()` and `retryAfter()`; `onRejected()` maps to a domain exception.
+- An optional `context` budget is threaded through every layer.
+
+## EXAMPLES
 
 Maps a full bulkhead rejection to a domain exception and reads the Retry-After hint.
 
@@ -121,6 +119,10 @@ new BreakerConfig(
 );
 ```
 
-## Limits
+## SEE ALSO
+
+`retry`, `circuit-breaker`, `bulkhead`, `duration`, and `context` for the request budget.
+
+## BUGS
 
 Breaker placement is a real semantic choice. With `breakerOutsideRetry()` an open circuit cannot cut the retry loop short.

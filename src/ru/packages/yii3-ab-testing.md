@@ -1,31 +1,18 @@
 ---
 title: yii3-ab-testing
+package: yii3-ab-testing
+section: 3
+layout: man
 description: "Детерминированное stateless A/B-тестирование для Yii3 с явным учётом показов."
-outline: [2, 2]
 ---
 
-# yii3-ab-testing
+## ИМЯ
 
-Детерминированное stateless A/B-тестирование для Yii3 с явным учётом показов.
+yii3-ab-testing — детерминированное stateless A/B-тестирование для Yii3 с явным учётом показов
 
-<PackageMeta slug="yii3-ab-testing" docs="https://rasuvaeff.github.io/yii3-ab-testing/" :src="49" :tests="27" />
+## ОБЗОР
 
-## Задача
-
-Повторное вычисление назначения позже может вернуть другой вариант, чем видел посетитель. Пакет даёт стабильное хеш-назначение, причины решений и квитанции для последующих конверсий.
-
-## Что умеет
-
-- Один и тот же salt и `subjectId` всегда дают один и тот же вариант (`WeightedHashAssignmentStrategy`).
-- Варианты с весами и принудительный вариант для QA, проверяемый по allow-list.
-- Каждый `Assignment` несёт `reason` (`assigned`, `forced`, `fallback_*`) и `source` (`computed`, `store`).
-- `assign()` чистая. `trackExposure()` и `trackConversion()` вызываются явно и возвращают события.
-- `AssignmentReceipt` связывает конверсию с исходным показом в более позднем запросе.
-- Правила таргетинга с запасным вариантом при несовпадении.
-- Закреплённые варианты через `AssignmentStore`; `ConfigurationAwareAssignmentStore` сбрасывает устаревшие привязки при смене весов.
-- Logger-приёмники, составные и дедуплицирующие трекеры; reset-хук для RoadRunner и Swoole.
-
-## Пример
+<ManInstall />
 
 ```php
 $assignment = $ab->assign(experiment: 'checkout-button', subjectId: (string) $userId);
@@ -39,7 +26,22 @@ $exposure = $ab->trackExposure($assignment);
 $ab->trackConversion($assignment, goal: 'purchase', exposure: $exposure);
 ```
 
-## Ещё примеры
+## ОПИСАНИЕ
+
+Детерминированное stateless A/B-тестирование для Yii3 с явным учётом показов.
+
+Повторное вычисление назначения позже может вернуть другой вариант, чем видел посетитель. Пакет даёт стабильное хеш-назначение, причины решений и квитанции для последующих конверсий.
+
+- Один и тот же salt и `subjectId` всегда дают один и тот же вариант (`WeightedHashAssignmentStrategy`).
+- Варианты с весами и принудительный вариант для QA, проверяемый по allow-list.
+- Каждый `Assignment` несёт `reason` (`assigned`, `forced`, `fallback_*`) и `source` (`computed`, `store`).
+- `assign()` чистая. `trackExposure()` и `trackConversion()` вызываются явно и возвращают события.
+- `AssignmentReceipt` связывает конверсию с исходным показом в более позднем запросе.
+- Правила таргетинга с запасным вариантом при несовпадении.
+- Закреплённые варианты через `AssignmentStore`; `ConfigurationAwareAssignmentStore` сбрасывает устаревшие привязки при смене весов.
+- Logger-приёмники, составные и дедуплицирующие трекеры; reset-хук для RoadRunner и Swoole.
+
+## ПРИМЕРЫ
 
 Привязывает конверсию в следующем запросе к варианту, который реально видел посетитель, через receipt.
 
@@ -71,15 +73,15 @@ $tracker->trackExposure($exposureEvent);
 $tracker->trackExposure($exposureEvent); // suppressed in this request
 ```
 
-## Семейство
+## СМОТРИТЕ ТАКЖЕ
 
 | Пакет | Роль |
 |---|---|
-| yii3-ab-testing-db | DB-провайдер и sticky store |
-| yii3-ab-testing-web | Cookie sticky store, `SubjectIdMiddleware` |
-| yii3-ab-testing-outbox | Надёжная доставка событий |
-| yii3-ab-testing-clickhouse | Схема аналитики в ClickHouse и миграции |
+| [yii3-ab-testing-db](https://github.com/rasuvaeff/yii3-ab-testing-db)(3) | DB-провайдер и sticky store |
+| [yii3-ab-testing-web](https://github.com/rasuvaeff/yii3-ab-testing-web)(3) | Cookie sticky store, `SubjectIdMiddleware` |
+| [yii3-ab-testing-outbox](https://github.com/rasuvaeff/yii3-ab-testing-outbox)(3) | Надёжная доставка событий |
+| [yii3-ab-testing-clickhouse](https://github.com/rasuvaeff/yii3-ab-testing-clickhouse)(3) | Схема аналитики в ClickHouse и миграции |
 
-## Ограничения
+## ОШИБКИ
 
 Изменение весов или набора вариантов сдвигает границы бакетов и перетасовывает часть субъектов. Когорту замораживает только новый salt. Нужен 64-битный PHP.

@@ -1,31 +1,18 @@
 ---
 title: yii3-outbox
-description: Stateless transactional outbox core for Yii3 with retry policies and swappable storage.
-outline: [2, 2]
+package: yii3-outbox
+section: 3
+layout: man
+description: "Stateless transactional outbox core for Yii3 with retry policies and swappable storage."
 ---
 
-# yii3-outbox
+## NAME
 
-A stateless transactional outbox core for Yii3, with retry policies.
+yii3-outbox — stateless transactional outbox core for Yii3 with retry policies and swappable storage
 
-<PackageMeta slug="yii3-outbox" :src="21" :tests="13" />
+## SYNOPSIS
 
-## The problem
-
-Writing to the database and publishing a message are two steps, and a crash between them loses or duplicates the message. The outbox records the message in the same transaction as the data and publishes it afterwards.
-
-## What it does
-
-- `Outbox::record()` with optional `aggregateId`, `id` and priority; `recordMany()` reads the clock once and batch-saves when storage supports it.
-- Claim order is priority descending, then `createdAt` ascending (priority range -32768 to 32767).
-- `Processor` claims, publishes and applies `RetryPolicy(maxAttempts, delaySeconds)`.
-- `PublishException::terminal()` marks a message `Failed` immediately.
-- Processor `types` scopes a consumer to the message types it owns.
-- Optional storage interfaces: retry-aware, batch ack, batch save, requeue, stats.
-- Pluggable `MessageIdGeneratorInterface`; the default needs no UUID library.
-- Ships an `InMemoryStorage` test double and a `Serializer`.
-
-## Example
+<ManInstall />
 
 ```php
 $storage = new InMemoryStorage(); // rasuvaeff/yii3-outbox-db for a real one
@@ -47,7 +34,22 @@ $processor = new Processor(
 $result = $processor->process();
 ```
 
-## More examples
+## DESCRIPTION
+
+A stateless transactional outbox core for Yii3, with retry policies.
+
+Writing to the database and publishing a message are two steps, and a crash between them loses or duplicates the message. The outbox records the message in the same transaction as the data and publishes it afterwards.
+
+- `Outbox::record()` with optional `aggregateId`, `id` and priority; `recordMany()` reads the clock once and batch-saves when storage supports it.
+- Claim order is priority descending, then `createdAt` ascending (priority range -32768 to 32767).
+- `Processor` claims, publishes and applies `RetryPolicy(maxAttempts, delaySeconds)`.
+- `PublishException::terminal()` marks a message `Failed` immediately.
+- Processor `types` scopes a consumer to the message types it owns.
+- Optional storage interfaces: retry-aware, batch ack, batch save, requeue, stats.
+- Pluggable `MessageIdGeneratorInterface`; the default needs no UUID library.
+- Ships an `InMemoryStorage` test double and a `Serializer`.
+
+## EXAMPLES
 
 The outbox message is recorded in the same transaction as the business write, so both commit or neither does.
 
@@ -102,15 +104,15 @@ echo "2 attempts, 30s ago — should retry: " . ($policy->shouldRetry($attempted
 echo "2 attempts, 30s ago — ready (delay=60s): " . ($policy->isReadyForRetry($attempted, $now) ? 'yes' : 'no') . "\n";
 ```
 
-## Family
+## SEE ALSO
 
 | Package | Role |
 |---|---|
-| yii3-outbox-db | SQL storage |
-| yii3-outbox-clickhouse | Batched ClickHouse exporter |
-| yii3-outbox-webhooks-bridge | Webhook delivery through the outbox |
-| yii3-ab-testing-outbox | A/B exposure and conversion events |
+| [yii3-outbox-db](https://github.com/rasuvaeff/yii3-outbox-db)(3) | SQL storage |
+| [yii3-outbox-clickhouse](https://github.com/rasuvaeff/yii3-outbox-clickhouse)(3) | Batched ClickHouse exporter |
+| [yii3-outbox-webhooks-bridge](https://github.com/rasuvaeff/yii3-outbox-webhooks-bridge)(3) | Webhook delivery through the outbox |
+| [yii3-ab-testing-outbox](https://github.com/rasuvaeff/yii3-ab-testing-outbox)(3) | A/B exposure and conversion events |
 
-## Limits
+## BUGS
 
 The core opens no transaction, so the atomic-write obligation stays with the caller. Delivery is at-least-once, and an unscoped `Processor` claims every message type in a shared storage.

@@ -1,31 +1,18 @@
 ---
 title: yii3-idempotency
-description: Idempotency-key PSR-15 middleware that stops duplicate POST, PUT and PATCH processing.
-outline: [2, 2]
+package: yii3-idempotency
+section: 3
+layout: man
+description: "Idempotency-key PSR-15 middleware that stops duplicate POST, PUT and PATCH processing."
 ---
 
-# yii3-idempotency
+## NAME
 
-PSR-15 middleware for `Idempotency-Key`. The same key and body run the handler once.
+yii3-idempotency — idempotency-key PSR-15 middleware that stops duplicate POST, PUT and PATCH processing
 
-<PackageMeta slug="yii3-idempotency" :src="27" :tests="33" />
+## SYNOPSIS
 
-## The problem
-
-Retried or double-submitted requests run the handler twice. Without caller scoping, one client could also replay or lock out another client's key.
-
-## What it does
-
-- Same key and same payload replays the stored response with `Idempotency-Replay: true`.
-- Same key and a different payload answers `422`; an in-flight duplicate answers `409`.
-- The fingerprint covers method, path, query and body.
-- `scopeResolver` is required: keys are namespaced per caller.
-- 2xx responses are cached by default; other statuses release the claim.
-- `DomainFailureRenderer` and `FailureClassifier` cache domain failures, so `InsufficientFunds` is not executed again.
-- `cacheableRedirectStatuses` caches `303` for Post/Redirect/Get forms.
-- `Set-Cookie`, `Date` and hop-by-hop headers are never captured.
-
-## Example
+<ManInstall />
 
 ```php
 $middleware = new IdempotencyMiddleware(
@@ -38,7 +25,22 @@ $middleware = new IdempotencyMiddleware(
 );
 ```
 
-## More examples
+## DESCRIPTION
+
+PSR-15 middleware for `Idempotency-Key`. The same key and body run the handler once.
+
+Retried or double-submitted requests run the handler twice. Without caller scoping, one client could also replay or lock out another client's key.
+
+- Same key and same payload replays the stored response with `Idempotency-Replay: true`.
+- Same key and a different payload answers `422`; an in-flight duplicate answers `409`.
+- The fingerprint covers method, path, query and body.
+- `scopeResolver` is required: keys are namespaced per caller.
+- 2xx responses are cached by default; other statuses release the claim.
+- `DomainFailureRenderer` and `FailureClassifier` cache domain failures, so `InsufficientFunds` is not executed again.
+- `cacheableRedirectStatuses` caches `303` for Post/Redirect/Get forms.
+- `Set-Cookie`, `Date` and hop-by-hop headers are never captured.
+
+## EXAMPLES
 
 Caches deterministic domain failures as replayable responses while bugs and infra errors stay retryable.
 
@@ -81,10 +83,10 @@ $scopeResolver = new CompositeScopeResolver(
 );
 ```
 
-## Family
+## SEE ALSO
 
 `yii3-idempotency-db` provides `DbIdempotencyStorage`; `yii3-idempotency-redis` is the Redis backend.
 
-## Limits
+## BUGS
 
 Anonymous callers share one namespace, so do not put caller-private data behind an anonymous idempotent endpoint. `SharedKeyspaceScopeResolver` is a documented opt-out, safe only for a single principal.
