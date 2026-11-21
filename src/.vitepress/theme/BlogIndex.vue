@@ -7,7 +7,7 @@ const { lang } = useData()
 const ru = computed(() => lang.value.startsWith('ru'))
 const list = computed(() => posts.filter((p) => p.ru === ru.value))
 const date = (d: string) =>
-    new Date(`${d}T00:00:00Z`).toLocaleDateString(ru.value ? 'ru-RU' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+    new Date(d).toLocaleDateString(ru.value ? 'ru-RU' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
 </script>
 
 <template>
