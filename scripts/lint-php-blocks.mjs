@@ -23,7 +23,7 @@ function* markdown(path) {
 function wrap(code) {
     const body = code.trim()
     if (body.startsWith('<?php')) return body
-    const firstLine = body.split('\n').find((l) => l.trim() !== '' && !l.trim().startsWith('//')) ?? ''
+    const firstLine = body.split('\n').find((l) => l.trim() !== '' && !/^(\/\/|\/\*|\*)/.test(l.trim())) ?? ''
     if (/^(#\[|public |private |protected |static function \w)/.test(firstLine.trim()) && !/^\s*(final |abstract |readonly )*class /m.test(body)) {
         return `<?php\nfinal class LintedSnippet\n{\n${body}\n}\n`
     }

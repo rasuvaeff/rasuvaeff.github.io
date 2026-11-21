@@ -5,7 +5,8 @@ import { renderAnnotatedPhp } from './annotated'
 import { type OgPage, ogImageFor, renderOgImages } from './og'
 import packages from './data/packages.json'
 
-const nav = (p: string, t: { packages: string; changes: string; agents: string; resume: string; workflow: string }) => [
+const nav = (p: string, t: { blog: string; packages: string; changes: string; agents: string; resume: string; workflow: string }) => [
+    { text: t.blog, link: `${p}/blog/`, activeMatch: `^${p}/blog/` },
     { text: t.packages, link: `${p}/packages` },
     { text: t.changes, link: `${p}/changes` },
     { text: t.agents, link: `${p}/agents` },
@@ -15,6 +16,7 @@ const nav = (p: string, t: { packages: string; changes: string; agents: string; 
 ]
 
 const ogPages = new Map<string, OgPage>()
+const blogPosts = new Map<string, { url: string; title: string; description: string; date: string; ru: boolean }>()
 
 export default defineConfig({
     title: 'Victor Razuvaev',
@@ -32,7 +34,7 @@ export default defineConfig({
             md.renderer.rules.fence = (tokens, idx, options, env, self) => {
                 const token = tokens[idx]
 
-                return token.info.trim() === 'php' ? renderAnnotatedPhp(token.content) : fence(tokens, idx, options, env, self)
+                return /^php(\s|$)/.test(token.info.trim()) ? renderAnnotatedPhp(token.content) : fence(tokens, idx, options, env, self)
             }
         },
     },
@@ -48,6 +50,15 @@ export default defineConfig({
             .map((r) => `<item><title>rasuvaeff/${r.slug} ${r.tag}</title><link>https://github.com/rasuvaeff/${r.slug}/releases/tag/${r.tag}</link><guid isPermaLink="false">rasuvaeff/${r.slug}@${r.tag}</guid><pubDate>${new Date(`${r.date}T00:00:00Z`).toUTCString()}</pubDate><description>${esc(r.description)}</description></item>`)
         const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>rasuvaeff/* releases</title><link>${site}/changes</link><description>Every release of every rasuvaeff/* PHP package.</description><language>en</language>${items.join('')}</channel></rss>\n`
         writeFileSync(join(siteConfig.outDir, 'feed.xml'), xml)
+        // One blog feed per language: a reader subscribes to the language they read.
+        for (const ru of [false, true]) {
+            const posts = [...blogPosts.values()]
+                .filter((p) => p.ru === ru)
+                .sort((a, b) => b.date.localeCompare(a.date))
+                .map((p) => `<item><title>${esc(p.title)}</title><link>${p.url}</link><guid>${p.url}</guid><pubDate>${new Date(`${p.date}T00:00:00Z`).toUTCString()}</pubDate><description>${esc(p.description)}</description></item>`)
+            const blog = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>${ru ? 'Блог Виктора Разуваева' : 'Victor Razuvaev — blog'}</title><link>${site}/${ru ? 'ru/' : ''}blog/</link><description>${ru ? 'Длинные заметки о пакетах, сайтах на них и работе с агентами.' : 'Long-form notes on the packages, the sites built on them, and working with coding agents.'}</description><language>${ru ? 'ru' : 'en'}</language>${posts.join('')}</channel></rss>\n`
+            writeFileSync(join(siteConfig.outDir, ru ? 'blog-ru.xml' : 'blog.xml'), blog)
+        }
         const images = await renderOgImages(siteConfig.outDir, [...ogPages.values()], packages)
         console.log(`og images: ${images}`)
     },
@@ -56,10 +67,22 @@ export default defineConfig({
         const slug = pageData.params?.pkg as string | undefined
         if (!slug) {
             if (pageData.relativePath !== '404.md') {
+                const blogPath = pageData.relativePath.match(/^(ru\/)?blog\/(?!index\.md$)(.+)\.md$/)
+                if (blogPath && pageData.frontmatter.date) {
+                    blogPosts.set(pageData.relativePath, {
+                        url: `https://rasuvaeff.github.io/${pageData.relativePath.replace(/\.md$/, '')}`,
+                        title: String(pageData.frontmatter.title),
+                        description: String(pageData.frontmatter.description ?? ''),
+                        date: new Date(pageData.frontmatter.date).toISOString().slice(0, 10),
+                        ru: Boolean(blogPath[1]),
+                    })
+                }
                 ogPages.set(pageData.relativePath, {
                     relativePath: pageData.relativePath,
                     title: String(pageData.frontmatter.ogTitle ?? pageData.frontmatter.title ?? pageData.title),
                     description: String(pageData.frontmatter.description ?? pageData.description ?? ''),
+                    date: pageData.frontmatter.date ? new Date(pageData.frontmatter.date).toISOString().slice(0, 10) : undefined,
+                    figures: pageData.frontmatter.figures,
                 })
             }
             return
@@ -99,6 +122,7 @@ export default defineConfig({
     head: [
         ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
         ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'rasuvaeff/* releases', href: '/feed.xml' }],
+        ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'Blog', href: '/blog.xml' }],
         ['meta', { name: 'theme-color', content: '#ffffff', media: '(prefers-color-scheme: light)' }],
         ['meta', { name: 'theme-color', content: '#121417', media: '(prefers-color-scheme: dark)' }],
     ],
@@ -107,7 +131,7 @@ export default defineConfig({
             label: 'English',
             lang: 'en-US',
             themeConfig: {
-                nav: nav('', { packages: 'packages', changes: 'changes', agents: 'agents', resume: 'resume', workflow: 'workflow' }),
+                nav: nav('', { blog: 'blog', packages: 'packages', changes: 'changes', agents: 'agents', resume: 'resume', workflow: 'workflow' }),
                 outline: { label: 'On this page', level: [2, 3] },
             },
         },
@@ -118,7 +142,7 @@ export default defineConfig({
             description:
                 'Senior backend-разработчик. Высоконагруженный PHP и Yii и 89 опубликованных библиотек: дедлайны, доставка, эксперименты, shrinking, тестовые двойники.',
             themeConfig: {
-                nav: nav('/ru', { packages: 'пакеты', changes: 'релизы', agents: 'агентам', resume: 'резюме', workflow: 'процесс' }),
+                nav: nav('/ru', { blog: 'блог', packages: 'пакеты', changes: 'релизы', agents: 'агентам', resume: 'резюме', workflow: 'процесс' }),
                 outline: { label: 'На этой странице', level: [2, 3] },
                 langMenuLabel: 'Язык',
                 returnToTopLabel: 'Наверх',

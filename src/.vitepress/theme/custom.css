@@ -1206,3 +1206,123 @@ mark.hit.cur {
     color: var(--dim);
     margin-top: 8px;
 }
+
+/* ——— blog ——— */
+.vp-doc ol.blog-index,
+.blog-index {
+    list-style: none;
+    padding: 0 !important;
+    margin: 32px 0 0;
+}
+.blog-index li {
+    position: relative;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 24px 28px 22px;
+    margin: 0 0 20px !important;
+    transition: border-color 0.15s;
+}
+.blog-index li:hover {
+    border-color: var(--ink);
+}
+.blog-index .stretched::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+.blog-index .post-figures {
+    margin-top: 20px;
+    padding-top: 16px;
+}
+.blog-index .post-figures dt {
+    font-size: 26px;
+}
+.blog-meta,
+.post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font: 500 13px var(--mono);
+    color: var(--dim);
+}
+.vp-doc .blog-index .blog-title {
+    display: block;
+    margin-top: 6px;
+    font: 700 22px/1.25 var(--sans);
+    letter-spacing: -0.01em;
+    color: var(--fg);
+    text-decoration: none;
+}
+.vp-doc .blog-index .blog-title:hover {
+    color: var(--ink);
+}
+.blog-index p {
+    margin: 6px 0 0 !important;
+    color: var(--soft);
+}
+.post-cover {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 28px 32px 24px;
+    margin-bottom: 36px;
+}
+.post-cover .post-meta a {
+    text-decoration: none;
+}
+.post-cover .post-title {
+    margin: 18px 0 0;
+    font: 700 clamp(30px, 4.6vw, 42px) / 1.08 var(--sans);
+    letter-spacing: -0.025em;
+}
+.post-cover .post-lede {
+    margin: 14px 0 0;
+    color: var(--soft);
+    font-size: 18px;
+    line-height: 1.5;
+}
+.post-figures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 44px;
+    margin: 28px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+}
+.post-figures div {
+    margin: 0;
+}
+.post-figures dt {
+    font: 700 34px/1 var(--sans);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+.post-figures dd {
+    margin: 6px 0 0;
+    font: 500 13px var(--mono);
+    color: var(--dim);
+}
+@media (max-width: 640px) {
+    .post-cover {
+        padding: 20px 18px;
+    }
+    .post-figures dt {
+        font-size: 26px;
+    }
+}
+.post-meta a {
+    color: var(--ink);
+}
+.post-footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font: 15px/1.5 var(--sans);
+    color: var(--soft);
+}
+.post-footer a {
+    color: var(--ink);
+}
+.vp-doc blockquote {
+    border-left: 2px solid var(--ink);
+    color: var(--soft);
+}
