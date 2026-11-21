@@ -6,7 +6,7 @@ import { Resvg } from '@resvg/resvg-js'
 import satori from 'satori'
 
 interface Pkg { slug: string; version: string; minMsi: number | null; dependents: number; frozen: boolean }
-export interface OgPage { relativePath: string; title: string; description: string }
+export interface OgPage { relativePath: string; title: string; description: string; date?: string; figures?: [string, string][] }
 
 const here = dirname(fileURLToPath(import.meta.url))
 const fonts = join(here, '..', '..', 'node_modules', '@fontsource')
@@ -49,6 +49,37 @@ function card(kicker: string, title: string, description: string, footRight: str
     )
 }
 
+/** A blog post cover: date kicker, title, and up to four key figures instead of the description. */
+function post(page: OgPage, ru: boolean): Node {
+    const date = new Date(`${page.date}T00:00:00Z`).toLocaleDateString(ru ? 'ru-RU' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+    const figures = (page.figures ?? []).slice(0, 4)
+
+    return el(
+        'div',
+        { width: 1200, height: 630, background: C.bg, color: C.fg, padding: '64px 72px', flexDirection: 'column', fontFamily: 'Sans, SansCyr' },
+        el('div', { fontFamily: 'Mono, MonoCyr', fontSize: 26, color: C.dim }, `${ru ? 'блог' : 'blog'} · ${date}`),
+        el('div', { fontSize: page.title.length > 48 ? 58 : 68, fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.05, marginTop: 28 }, page.title),
+        el(
+            'div',
+            { marginTop: 'auto', marginBottom: 36, gap: 64 },
+            ...figures.map(([value, label]) =>
+                el(
+                    'div',
+                    { flexDirection: 'column' },
+                    el('div', { fontSize: 60, fontWeight: 700, letterSpacing: '-0.02em', color: C.ink }, value),
+                    el('div', { fontFamily: 'Mono, MonoCyr', fontSize: 22, color: C.dim, marginTop: 6 }, label),
+                ),
+            ),
+        ),
+        el(
+            'div',
+            { justifyContent: 'space-between', alignItems: 'flex-end', borderTop: `2px solid ${C.rule}`, paddingTop: 22, fontFamily: 'Mono, MonoCyr', fontSize: 26 },
+            el('div', { color: C.ink }, 'rasuvaeff.github.io'),
+            el('div', { color: C.dim }, ru ? 'Виктор Разуваев' : 'Victor Razuvaev'),
+        ),
+    )
+}
+
 export async function renderOgImages(outDir: string, pages: OgPage[], packages: Pkg[]): Promise<number> {
     const options = {
         width: 1200,
@@ -72,7 +103,9 @@ export async function renderOgImages(outDir: string, pages: OgPage[], packages: 
         const ru = page.relativePath.startsWith('ru/')
         const slug = file.match(/^og\/packages\/(.+)\.png$/)?.[1]
         let node: Node
-        if (slug) {
+        if (page.date) {
+            node = post(page, ru)
+        } else if (slug) {
             const p = packages.find((x) => x.slug === slug)
             const meta = [p ? `v${p.version}` : '', p?.frozen ? 'frozen' : '', p?.minMsi ? `gate ${p.minMsi}%` : '', p?.dependents ? `used by ${p.dependents}` : ''].filter(Boolean).join(' · ')
             node = card('rasuvaeff PHP Library Manual', `${slug}(3)`, page.description, meta)
