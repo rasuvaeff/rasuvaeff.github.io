@@ -10,7 +10,7 @@ figures:
   - ["41", "waiting on yiisoft"]
 ---
 
-PHP 8.6.0 went GA on November 19. My [monorepo](/blog/ai-agents) holds 90 published Composer packages, and every one of them declares a PHP range as a user-facing contract. By the evening of November 22, 49 of them are released with PHP 8.6 support and a required PHP 8.6 matrix entry in CI; the other 41 are done on the source side and are waiting for a single thing — [yiisoft](https://github.com/yiisoft) releasing the framework packages they depend on. This post is about how the migration ran, and mostly about what the pipelines caught along the way, because that turned out to be the interesting part.
+PHP 8.6.0 went GA on November 19. My [monorepo](/blog/ai-agents) holds 90 published Composer packages, and every one of them declares a PHP range as a user-facing contract. By the evening of November 22, 49 of them are released with PHP 8.6 support and a PHP 8.6 matrix entry in CI; the other 41 are done on the source side and are waiting for a single thing — [yiisoft](https://github.com/yiisoft) releasing the framework packages they depend on. This post is about how the migration ran, and mostly about what the pipelines caught along the way, because that turned out to be the interesting part.
 
 ---
 
@@ -54,7 +54,7 @@ This is the part worth the read. The wave was planned around the tools I control
 
 ## The score
 
-Track A — every package blocked only by my own releases, levels L0 through L7 — is **complete**: 46 packages shipped. Two track B packages unlocked early by yiisoft releasing `di 1.5.0` with `8.1 - 8.6` (their only framework dependency), and one more, [`yii3-respect-validation`](/packages/yii3-respect-validation), never needed the migration at all — its constraint was already the open-ended `>=8.5`. **49 total**, each merged and tagged the same day its CI went green.
+Track A — every package blocked only by my own releases, levels L0 through L7 — is **complete**: 46 packages shipped. Two track B packages unlocked early by yiisoft releasing `di 1.5.0` with `8.1 - 8.6` (their only framework dependency), and one more, [`yii3-respect-validation`](/packages/yii3-respect-validation), never needed the migration at all — its constraint was already the open-ended `>=8.5`. **49 total**, 48 of them merged and tagged in these two days. One nuance worth the read: 48 of the 49 carry a required PHP 8.6 matrix entry, and respect-validation runs 8.6 as an experimental canary until `yiisoft/validator` ships an 8.6-capable release — porting its CI found that `validator ^2.6` cannot resolve on 8.6 at all (verified on the official `php:8.6-cli` image), so it joins track B on validator.
 
 The remaining **41 packages** form track B: they depend on yiisoft packages whose newest releases still say `8.1 - 8.5` — `db`, `cache`, `db-sqlite`, `db-migration`, `validator`, `router`, `html` and friends cover most of them. yiisoft has started its own wave (`di` 1.5.0 landed the day mine finished); one subtlety worth knowing: older yiisoft releases declare no `php` constraint at all, so composer on 8.6 will happily resolve them — that does not count. When yiisoft publishes a package with an explicit range, its dependents can start the same day: the loop is rehearsed, and the next two in line ([maintenance-mode](/packages/yii3-maintenance-mode), [seo](/packages/yii3-seo)) need exactly one and two framework releases respectively.
 
