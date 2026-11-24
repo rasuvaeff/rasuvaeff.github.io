@@ -32,7 +32,7 @@ final readonly class OrderTools
 
 ## DESCRIPTION
 
-A Model Context Protocol server for Yii3, built on the official `mcp/sdk` and served over PSR-15.
+A Model Context Protocol server for Yii3, built on the official `mcp/sdk` and served over PSR-15. Since 6.0 the server itself lives in [mcp](/packages/mcp)(3) and the OpenAPI bridge in [mcp-openapi](/packages/mcp-openapi)(3); this package wires them into Yii3: configuration, DI and `mcp:doctor`.
 
 Exposing application operations to AI agents as tools, resources and prompts needs a Streamable HTTP endpoint, tools resolved through the container, and guardrails around agent loops and secrets.
 
@@ -95,9 +95,11 @@ $tester->readResource('app://x');     // resource contents
 
 | Package | Adds |
 |---|---|
-| [yii3-mcp-rbac-bridge](https://github.com/rasuvaeff/yii3-mcp-rbac-bridge)(3) | Per-user RBAC on tools |
-| [yii3-mcp-audit-log-bridge](https://github.com/rasuvaeff/yii3-mcp-audit-log-bridge)(3) | Audit log for every call |
-| [yii3-mcp-telemetry-bridge](https://github.com/rasuvaeff/yii3-mcp-telemetry-bridge)(3) | Traces for the same calls |
+| [mcp](/packages/mcp)(3) | The server itself, with no framework |
+| [mcp-openapi](/packages/mcp-openapi)(3) | OpenAPI operations as tools |
+| [yii3-mcp-rbac-bridge](/packages/yii3-mcp-rbac-bridge)(3) | Per-user RBAC on tools |
+| [yii3-mcp-audit-log-bridge](/packages/yii3-mcp-audit-log-bridge)(3) | Audit log for every call |
+| [yii3-mcp-telemetry-bridge](/packages/yii3-mcp-telemetry-bridge)(3) | Traces for the same calls |
 
 ## BUGS
 

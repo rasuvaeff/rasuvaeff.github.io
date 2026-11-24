@@ -34,7 +34,9 @@ const groups = [
         ['yii3-idempotency', 'Same key and body run the handler once. Keys are scoped per caller.', 'Тот же ключ и тело запускают обработчик один раз. Ключи привязаны к вызывающему.'],
     ] },
     { title: ['AI and security', 'AI и безопасность'], items: [
-        ['yii3-mcp', 'Domain methods become MCP tools, with a call budget, RBAC and an audit log.', 'Доменные методы становятся MCP-инструментами, с лимитом вызовов, RBAC и аудитом.'],
+        ['mcp', 'Domain methods become MCP tools in any PSR application, with call budgets, visibility and OAuth.', 'Доменные методы становятся MCP-инструментами в любом PSR-приложении, с лимитом вызовов, видимостью и OAuth.'],
+        ['mcp-openapi', 'Allow-listed OpenAPI operations become MCP tools.', 'Операции OpenAPI из allow-list становятся MCP-инструментами.'],
+        ['yii3-mcp', 'The same server in Yii3, with RBAC, an audit log and traces from its bridges.', 'Тот же сервер в Yii3, с RBAC, аудитом и трассировками из мостов.'],
         ['pinned-http-client', 'Resolve once, check every address, pin the connection.', 'Разрешить имя один раз, проверить каждый адрес, закрепить соединение.'],
     ] },
     { title: ['Data and experiments', 'Данные и эксперименты'], items: [

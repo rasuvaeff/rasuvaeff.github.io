@@ -42,7 +42,7 @@ description: Victor Razuvaev, senior backend engineer. High-load PHP and Yii, di
   </ul>
 
   <h2 id="open-source">Open source</h2>
-  <p>The libraries are the portfolio. Thirteen have their own pages, among them <a href="/packages/understudy">understudy</a> (test doubles as real calls), <a href="/packages/property-testing-openapi">property-testing-openapi</a> (contract fuzzing for PHP), <a href="/packages/doc-exec">doc-exec</a>, <a href="/packages/context">context</a>, <a href="/packages/yii3-outbox">yii3-outbox</a> and <a href="/packages/yii3-mcp">yii3-mcp</a>. The <a href="/packages">catalog</a> has the rest. Every package ships an <code>llms.txt</code> reference, and forty ship an agent skill.</p>
+  <p>The libraries are the portfolio. Fifteen have their own pages, among them <a href="/packages/understudy">understudy</a> (test doubles as real calls), <a href="/packages/property-testing-openapi">property-testing-openapi</a> (contract fuzzing for PHP), <a href="/packages/doc-exec">doc-exec</a>, <a href="/packages/context">context</a>, <a href="/packages/yii3-outbox">yii3-outbox</a>, <a href="/packages/mcp">mcp</a> and <a href="/packages/yii3-mcp">yii3-mcp</a>. The <a href="/packages">catalog</a> has the rest. Every package ships an <code>llms.txt</code> reference, and forty-three ship an agent skill.</p>
 
   <h2 id="how">How the work is produced</h2>
   <ul class="facts">
