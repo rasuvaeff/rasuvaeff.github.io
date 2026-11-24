@@ -42,7 +42,7 @@ description: "Виктор Разуваев, senior backend-разработчи
   </ul>
 
   <h2 id="open-source">Открытый код</h2>
-  <p>Библиотеки и есть портфолио. У тринадцати есть свои страницы, среди них <a href="/ru/packages/understudy">understudy</a> (двойники как реальные вызовы), <a href="/ru/packages/property-testing-openapi">property-testing-openapi</a> (фаззинг контракта для PHP), <a href="/ru/packages/doc-exec">doc-exec</a>, <a href="/ru/packages/context">context</a>, <a href="/ru/packages/yii3-outbox">yii3-outbox</a> и <a href="/ru/packages/yii3-mcp">yii3-mcp</a>. В <a href="/ru/packages">каталоге</a> остальные. В каждом пакете есть справочник <code>llms.txt</code>, в сорока ещё и навык для агента.</p>
+  <p>Библиотеки и есть портфолио. У пятнадцати есть свои страницы, среди них <a href="/ru/packages/understudy">understudy</a> (двойники как реальные вызовы), <a href="/ru/packages/property-testing-openapi">property-testing-openapi</a> (фаззинг контракта для PHP), <a href="/ru/packages/doc-exec">doc-exec</a>, <a href="/ru/packages/context">context</a>, <a href="/ru/packages/yii3-outbox">yii3-outbox</a>, <a href="/ru/packages/mcp">mcp</a> и <a href="/ru/packages/yii3-mcp">yii3-mcp</a>. В <a href="/ru/packages">каталоге</a> остальные. В каждом пакете есть справочник <code>llms.txt</code>, в сорока трёх ещё и навык для агента.</p>
 
   <h2 id="how">Как устроена работа</h2>
   <ul class="facts">
