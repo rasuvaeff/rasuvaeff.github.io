@@ -19,7 +19,7 @@ php artisan vendor:publish --tag=rasuvaeff-mcp
 ```
 
 ```php
-// config/rasuvaeff-mcp.php
+// config/rasuvaeff-mcp.php: these keys sit inside the array the published file returns
 'tools' => [App\Mcp\OrderTools::class],
 'endpoint_secret' => env('MCP_SECRET', ''),
 'allowed_hosts' => ['mcp.example.com'],

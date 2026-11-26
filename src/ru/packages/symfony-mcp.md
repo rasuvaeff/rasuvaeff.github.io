@@ -23,6 +23,9 @@ return [
 
 ```yaml
 # config/packages/rasuvaeff_mcp.yaml
+parameters:
+    # without a default an unset variable fails the request instead of the 503 below
+    env(MCP_SECRET): ''
 rasuvaeff_mcp:
     tools: ['App\Mcp\OrderTools']
     endpoint_secret: '%env(MCP_SECRET)%'

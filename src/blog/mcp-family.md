@@ -107,6 +107,8 @@ There are no aliases. Session, cache and configuration keys are the same, and op
 
 ## Next: Laravel and Symfony
 
+**Update, 26 November 2026:** both are released — [laravel-mcp](/packages/laravel-mcp)(3) and [symfony-mcp](/packages/symfony-mcp)(3). The plan below is kept as it was written.
+
 The next stage is `rasuvaeff/laravel-mcp` and `rasuvaeff/symfony-mcp`. They are not written yet and I promise no dates. The plan:
 
 - **Laravel:** a service provider and publishable config, a route and Artisan commands, state reset under Octane, Swoole and RoadRunner.
