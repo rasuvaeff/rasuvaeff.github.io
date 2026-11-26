@@ -80,11 +80,13 @@ $server = $factory->create(
 |---|---|
 | [mcp-openapi](/packages/mcp-openapi)(3) | Allow-listed OpenAPI operations as tools |
 | [yii3-mcp](/packages/yii3-mcp)(3) | Yii3 wiring, configuration and `mcp:doctor` |
+| [laravel-mcp](/packages/laravel-mcp)(3) | Laravel wiring: service provider, route, commands |
+| [symfony-mcp](/packages/symfony-mcp)(3) | Symfony bundle: route, commands |
 | [yii3-mcp-rbac-bridge](/packages/yii3-mcp-rbac-bridge)(3) | Per-user RBAC on tools, over Yii3 |
 | [yii3-mcp-audit-log-bridge](/packages/yii3-mcp-audit-log-bridge)(3) | Audit log for every call, over Yii3 |
 | [yii3-mcp-telemetry-bridge](/packages/yii3-mcp-telemetry-bridge)(3) | Traces and metrics for the same calls, over Yii3 |
 
-The guide and API reference: [rasuvaeff.github.io/mcp](https://rasuvaeff.github.io/mcp/). Laravel and Symfony adapters are the next stage; they are not released yet.
+The guide and API reference: [rasuvaeff.github.io/mcp](https://rasuvaeff.github.io/mcp/).
 
 ## BUGS
 
