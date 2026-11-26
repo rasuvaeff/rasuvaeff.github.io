@@ -80,11 +80,13 @@ $server = $factory->create(
 |---|---|
 | [mcp-openapi](/ru/packages/mcp-openapi)(3) | Операции OpenAPI из allow-list как tools |
 | [yii3-mcp](/ru/packages/yii3-mcp)(3) | Подключение к Yii3, конфигурация и `mcp:doctor` |
+| [laravel-mcp](/ru/packages/laravel-mcp)(3) | Подключение к Laravel: service provider, маршрут, команды |
+| [symfony-mcp](/ru/packages/symfony-mcp)(3) | Бандл Symfony: маршрут, команды |
 | [yii3-mcp-rbac-bridge](/ru/packages/yii3-mcp-rbac-bridge)(3) | RBAC по пользователю на tools, для Yii3 |
 | [yii3-mcp-audit-log-bridge](/ru/packages/yii3-mcp-audit-log-bridge)(3) | Audit log каждого вызова, для Yii3 |
 | [yii3-mcp-telemetry-bridge](/ru/packages/yii3-mcp-telemetry-bridge)(3) | Трассировки и метрики тех же вызовов, для Yii3 |
 
-Руководство и справочник API (на английском): [rasuvaeff.github.io/mcp](https://rasuvaeff.github.io/mcp/). Адаптеры для Laravel и Symfony — следующий этап, они ещё не выпущены.
+Руководство и справочник API (на английском): [rasuvaeff.github.io/mcp](https://rasuvaeff.github.io/mcp/).
 
 ## ОШИБКИ
 

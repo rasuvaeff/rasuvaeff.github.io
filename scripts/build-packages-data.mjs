@@ -15,7 +15,7 @@ const CATEGORIES = {
     Delivery: ['yii3-outbox', 'yii3-outbox-db', 'yii3-outbox-clickhouse', 'yii3-outbox-webhooks-bridge', 'yii3-webhooks', 'yii3-webhooks-db', 'yii3-idempotency', 'yii3-idempotency-db', 'yii3-idempotency-redis', 'yii3-centrifugo'],
     Experiments: ['yii3-feature-flags', 'yii3-feature-flags-db', 'yii3-feature-flags-ui', 'yii3-ab-testing', 'yii3-ab-testing-db', 'yii3-ab-testing-clickhouse', 'yii3-ab-testing-web', 'yii3-ab-testing-outbox', 'yii3-utm', 'yii3-utm-db'],
     Observability: ['yii3-telemetry', 'yii3-telemetry-otel', 'yii3-metrics', 'yii3-metrics-prometheus', 'yii3-metrics-otel', 'yii3-correlation-id', 'yii3-health-check', 'yii3-audit-log', 'yii3-audit-log-db', 'domain-monitor'],
-    'AI / MCP': ['mcp', 'mcp-openapi', 'yii3-mcp', 'yii3-mcp-rbac-bridge', 'yii3-mcp-audit-log-bridge', 'yii3-mcp-telemetry-bridge'],
+    'AI / MCP': ['mcp', 'mcp-openapi', 'yii3-mcp', 'laravel-mcp', 'symfony-mcp', 'yii3-mcp-rbac-bridge', 'yii3-mcp-audit-log-bridge', 'yii3-mcp-telemetry-bridge'],
     Payments: ['payments', 'payments-testing'],
     Files: ['yii3-filestorage', 'yii3-filestorage-db', 'yii3-filestorage-flysystem', 'yii3-filestorage-web', 'yii3-filestorage-attachments', 'yii3-filestorage-images', 'media-converter'],
     HTTP: ['pinned-http-client', 'link-preview', 'json-ld', 'yii3-api-problem'],

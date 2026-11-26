@@ -107,6 +107,8 @@ composer require rasuvaeff/yii3-mcp:^6.0 rasuvaeff/mcp:^0.1
 
 ## Дальше: Laravel и Symfony
 
+**Обновление от 26 ноября 2026:** оба вышли — [laravel-mcp](/ru/packages/laravel-mcp)(3) и [symfony-mcp](/ru/packages/symfony-mcp)(3). План ниже оставлен как был написан.
+
 Следующий этап — `rasuvaeff/laravel-mcp` и `rasuvaeff/symfony-mcp`. Они ещё не написаны, дат не обещаю. План такой:
 
 - **Laravel:** service provider и публикуемый конфиг, маршрут и команды Artisan, сброс состояния в Octane, Swoole и RoadRunner.

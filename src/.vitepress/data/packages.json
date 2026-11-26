@@ -293,7 +293,7 @@
     "slug": "context-db",
     "name": "rasuvaeff/context-db",
     "description": "Database-side statement timeouts from a rasuvaeff/context budget for MySQL, MariaDB and PostgreSQL over PDO",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "minMsi": 88,
     "skill": true,
     "dev": false,
@@ -304,6 +304,10 @@
       "context"
     ],
     "releases": [
+      {
+        "tag": "v0.4.0",
+        "date": "2026-11-26"
+      },
       {
         "tag": "v0.3.0",
         "date": "2026-11-21"
@@ -572,10 +576,34 @@
     "dependents": 1
   },
   {
+    "slug": "laravel-mcp",
+    "name": "rasuvaeff/laravel-mcp",
+    "description": "Laravel integration of the rasuvaeff/mcp server",
+    "version": "0.1.0",
+    "minMsi": 95,
+    "skill": true,
+    "dev": false,
+    "category": "AI / MCP",
+    "frozen": false,
+    "replacement": null,
+    "requires": [
+      "mcp",
+      "mcp-openapi"
+    ],
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "date": "2026-11-26"
+      }
+    ],
+    "family": "laravel-mcp",
+    "dependents": 0
+  },
+  {
     "slug": "link-preview",
     "name": "rasuvaeff/link-preview",
     "description": "Link preview for PHP: SSRF-safe PSR-18 fetching and OpenGraph, Twitter Cards and HTML metadata extraction",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "minMsi": 90,
     "skill": true,
     "dev": false,
@@ -588,6 +616,10 @@
       "schema"
     ],
     "releases": [
+      {
+        "tag": "v1.1.1",
+        "date": "2026-11-25"
+      },
       {
         "tag": "v1.1.0",
         "date": "2026-11-13"
@@ -624,32 +656,48 @@
     "slug": "mcp",
     "name": "rasuvaeff/mcp",
     "description": "Framework-neutral MCP server runtime on the official mcp/sdk: attribute tools, interceptors, visibility, sessions and OAuth over PSR contracts",
-    "version": "0.1.0",
+    "version": "0.1.4",
     "minMsi": 97,
     "skill": true,
     "dev": false,
-    "category": "Infrastructure",
+    "category": "AI / MCP",
     "frozen": false,
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v0.1.4",
+        "date": "2026-11-26"
+      },
+      {
+        "tag": "v0.1.3",
+        "date": "2026-11-25"
+      },
+      {
+        "tag": "v0.1.2",
+        "date": "2026-11-25"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-11-24"
+      },
       {
         "tag": "v0.1.0",
         "date": "2026-11-23"
       }
     ],
     "family": "mcp",
-    "dependents": 5
+    "dependents": 7
   },
   {
     "slug": "mcp-openapi",
     "name": "rasuvaeff/mcp-openapi",
     "description": "Serve allow-listed OpenAPI operations as MCP tools: PSR-18 or in-process PSR-15 execution, no framework required",
-    "version": "0.1.0",
+    "version": "0.1.3",
     "minMsi": 97,
     "skill": true,
     "dev": false,
-    "category": "Infrastructure",
+    "category": "AI / MCP",
     "frozen": false,
     "replacement": null,
     "requires": [
@@ -658,12 +706,24 @@
     ],
     "releases": [
       {
+        "tag": "v0.1.3",
+        "date": "2026-11-25"
+      },
+      {
+        "tag": "v0.1.2",
+        "date": "2026-11-24"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-11-24"
+      },
+      {
         "tag": "v0.1.0",
         "date": "2026-11-23"
       }
     ],
     "family": "mcp",
-    "dependents": 1
+    "dependents": 3
   },
   {
     "slug": "media-converter",
@@ -926,7 +986,7 @@
     "slug": "pinned-http-client",
     "name": "rasuvaeff/pinned-http-client",
     "description": "PSR-18 client for untrusted URLs: resolves the host, checks every address and pins the connection to the checked addresses",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "minMsi": 95,
     "skill": true,
     "dev": false,
@@ -935,6 +995,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.2.0",
+        "date": "2026-11-25"
+      },
       {
         "tag": "v1.1.1",
         "date": "2026-11-22"
@@ -1994,6 +2058,30 @@
     "dependents": 0
   },
   {
+    "slug": "symfony-mcp",
+    "name": "rasuvaeff/symfony-mcp",
+    "description": "Symfony integration of the rasuvaeff/mcp server",
+    "version": "0.1.0",
+    "minMsi": 92,
+    "skill": true,
+    "dev": false,
+    "category": "AI / MCP",
+    "frozen": false,
+    "replacement": null,
+    "requires": [
+      "mcp",
+      "mcp-openapi"
+    ],
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "date": "2026-11-26"
+      }
+    ],
+    "family": "symfony-mcp",
+    "dependents": 0
+  },
+  {
     "slug": "understudy",
     "name": "rasuvaeff/understudy",
     "description": "Test double library for PHP with a call-closure API",
@@ -2774,7 +2862,7 @@
     "slug": "yii3-ab-testing-web",
     "name": "rasuvaeff/yii3-ab-testing-web",
     "description": "Cookie identity and sticky-variant store for Yii3 A/B testing",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "minMsi": 98,
     "skill": true,
     "dev": false,
@@ -2785,6 +2873,10 @@
       "yii3-ab-testing"
     ],
     "releases": [
+      {
+        "tag": "v2.1.2",
+        "date": "2026-11-25"
+      },
       {
         "tag": "v2.1.1",
         "date": "2026-10-15"
@@ -3085,7 +3177,7 @@
     "slug": "yii3-feature-flags",
     "name": "rasuvaeff/yii3-feature-flags",
     "description": "Feature flags, kill switches and percentage rollout for Yii3 applications",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "minMsi": 95,
     "skill": true,
     "dev": false,
@@ -3094,6 +3186,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.2.0",
+        "date": "2026-11-25"
+      },
       {
         "tag": "v1.1.2",
         "date": "2026-11-21"
@@ -3539,7 +3635,7 @@
     "slug": "yii3-idempotency-db",
     "name": "rasuvaeff/yii3-idempotency-db",
     "description": "Database-backed idempotency storage for Yii3 APIs",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "minMsi": 97,
     "skill": false,
     "dev": false,
@@ -3550,6 +3646,10 @@
       "yii3-idempotency"
     ],
     "releases": [
+      {
+        "tag": "v3.1.1",
+        "date": "2026-11-25"
+      },
       {
         "tag": "v3.1.0",
         "date": "2026-10-26"
@@ -3621,7 +3721,7 @@
     "slug": "yii3-maintenance-mode",
     "name": "rasuvaeff/yii3-maintenance-mode",
     "description": "Maintenance mode middleware for Yii3 applications",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "minMsi": 92,
     "skill": false,
     "dev": false,
@@ -3630,6 +3730,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.3.0",
+        "date": "2026-11-26"
+      },
       {
         "tag": "v1.2.0",
         "date": "2026-11-13"
@@ -3666,7 +3770,7 @@
     "slug": "yii3-mcp",
     "name": "rasuvaeff/yii3-mcp",
     "description": "MCP server for Yii3 on the official mcp/sdk: attribute tools, OpenAPI bridge, per-user RBAC and audit log for everything the model touches",
-    "version": "6.0.0",
+    "version": "6.1.1",
     "minMsi": 97,
     "skill": true,
     "dev": false,
@@ -3678,6 +3782,14 @@
       "mcp-openapi"
     ],
     "releases": [
+      {
+        "tag": "v6.1.1",
+        "date": "2026-11-25"
+      },
+      {
+        "tag": "v6.1.0",
+        "date": "2026-11-24"
+      },
       {
         "tag": "v6.0.0",
         "date": "2026-11-24"
