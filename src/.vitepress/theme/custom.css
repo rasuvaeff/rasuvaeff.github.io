@@ -868,6 +868,31 @@ mark.hit.cur {
     font-size: 14px;
     color: var(--soft);
 }
+.cv .job {
+    padding: 14px 0 4px;
+    border-top: 1px solid var(--rule);
+}
+.cv .job h3 {
+    margin: 0;
+    font: 600 16px var(--sans);
+}
+.cv .job .period {
+    margin: 2px 0 8px;
+    font: 13px var(--mono);
+    color: var(--dim);
+}
+.cv .job .sub {
+    margin: 12px 0 4px;
+    font-weight: 600;
+}
+.cv .job ul {
+    margin: 0 0 8px;
+    padding-left: 20px;
+    list-style: disc;
+}
+.cv .job li {
+    margin: 2px 0;
+}
 .cv .stack-row {
     display: grid;
     grid-template-columns: 140px minmax(0, 1fr);
@@ -940,7 +965,21 @@ mark.hit.cur {
         margin-top: 16px;
         break-after: avoid;
     }
+    .cv .job {
+        padding-top: 8px;
+    }
+    .cv .job li {
+        margin: 0;
+    }
+    .cv .facts li {
+        padding: 6px 0;
+    }
+    .cv .stack-row {
+        padding: 4px 0;
+    }
     .cv .caps > div,
+    .cv .job li,
+    .cv .job h3,
     .cv .facts li,
     .cv .stack-row {
         break-inside: avoid;
