@@ -3,7 +3,7 @@
     "slug": "bulkhead",
     "name": "rasuvaeff/bulkhead",
     "description": "Cross-process concurrency limiter (bulkhead) for PHP-FPM, backed by Redis or APCu",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "minMsi": 89,
     "skill": true,
     "dev": false,
@@ -15,6 +15,10 @@
       "duration"
     ],
     "releases": [
+      {
+        "tag": "v1.4.3",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.4.2",
         "date": "2026-11-22"
@@ -122,7 +126,7 @@
     "slug": "clickhouse-toolkit",
     "name": "rasuvaeff/clickhouse-toolkit",
     "description": "Framework-agnostic ClickHouse toolkit for PHP: parameterized query builder, data reader, batch writer, DDL builder, partition manager, mutation builder, and migration runner.",
-    "version": "1.12.1",
+    "version": "1.13.0",
     "minMsi": 95,
     "skill": true,
     "dev": false,
@@ -133,6 +137,14 @@
       "context"
     ],
     "releases": [
+      {
+        "tag": "v1.13.0",
+        "date": "2026-11-28"
+      },
+      {
+        "tag": "v1.12.2",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.12.1",
         "date": "2026-11-21"
@@ -217,7 +229,7 @@
     "slug": "context",
     "name": "rasuvaeff/context",
     "description": "Deadlines, cancellation and request-scoped values for PHP — one budget through HTTP calls, DB statement timeouts, CLI shutdown and subprocesses",
-    "version": "0.5.1",
+    "version": "0.5.3",
     "minMsi": 90,
     "skill": true,
     "dev": false,
@@ -226,6 +238,14 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v0.5.3",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.5.2",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.5.1",
         "date": "2026-11-21"
@@ -258,7 +278,7 @@
     "slug": "context-cli",
     "name": "rasuvaeff/context-cli",
     "description": "Graceful shutdown for PHP CLI workers: OS signals cancel a rasuvaeff/context Context",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "minMsi": 95,
     "skill": true,
     "dev": false,
@@ -269,6 +289,10 @@
       "context"
     ],
     "releases": [
+      {
+        "tag": "v0.1.4",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.1.3",
         "date": "2026-11-22"
@@ -293,7 +317,7 @@
     "slug": "context-db",
     "name": "rasuvaeff/context-db",
     "description": "Database-side statement timeouts from a rasuvaeff/context budget for MySQL, MariaDB and PostgreSQL over PDO",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "minMsi": 88,
     "skill": true,
     "dev": false,
@@ -304,6 +328,14 @@
       "context"
     ],
     "releases": [
+      {
+        "tag": "v0.5.0",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.4.1",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.4.0",
         "date": "2026-11-26"
@@ -332,7 +364,7 @@
     "slug": "context-http",
     "name": "rasuvaeff/context-http",
     "description": "PSR HTTP adapters for rasuvaeff/context",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "minMsi": 85,
     "skill": true,
     "dev": false,
@@ -343,6 +375,10 @@
       "context"
     ],
     "releases": [
+      {
+        "tag": "v0.5.0",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.4.1",
         "date": "2026-11-22"
@@ -383,7 +419,7 @@
     "slug": "context-process",
     "name": "rasuvaeff/context-process",
     "description": "Run external processes under a rasuvaeff/context budget: the timeout follows the deadline, cancellation stops the process (SIGTERM, then SIGKILL)",
-    "version": "0.1.2",
+    "version": "0.1.4",
     "minMsi": 95,
     "skill": true,
     "dev": false,
@@ -394,6 +430,14 @@
       "context"
     ],
     "releases": [
+      {
+        "tag": "v0.1.4",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.1.3",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.1.2",
         "date": "2026-11-22"
@@ -579,7 +623,7 @@
     "slug": "laravel-mcp",
     "name": "rasuvaeff/laravel-mcp",
     "description": "Laravel integration of the rasuvaeff/mcp server",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "minMsi": 95,
     "skill": true,
     "dev": false,
@@ -591,6 +635,10 @@
       "mcp-openapi"
     ],
     "releases": [
+      {
+        "tag": "v0.1.1",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.1.0",
         "date": "2026-11-26"
@@ -656,7 +704,7 @@
     "slug": "mcp",
     "name": "rasuvaeff/mcp",
     "description": "Framework-neutral MCP server runtime on the official mcp/sdk: attribute tools, interceptors, visibility, sessions and OAuth over PSR contracts",
-    "version": "0.1.4",
+    "version": "0.1.6",
     "minMsi": 97,
     "skill": true,
     "dev": false,
@@ -665,6 +713,14 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v0.1.6",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.1.5",
+        "date": "2026-11-26"
+      },
       {
         "tag": "v0.1.4",
         "date": "2026-11-26"
@@ -729,7 +785,7 @@
     "slug": "media-converter",
     "name": "rasuvaeff/media-converter",
     "description": "Type-safe PHP wrapper over the ffmpeg/ffprobe subprocess: compose transcode/remux/filter operations into a pipeline, with retry, bulkhead, progress events, and DRM-aware probing",
-    "version": "1.2.1",
+    "version": "1.2.3",
     "minMsi": 95,
     "skill": true,
     "dev": false,
@@ -742,6 +798,14 @@
       "retry"
     ],
     "releases": [
+      {
+        "tag": "v1.2.3",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v1.2.2",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.2.1",
         "date": "2026-11-22"
@@ -986,7 +1050,7 @@
     "slug": "pinned-http-client",
     "name": "rasuvaeff/pinned-http-client",
     "description": "PSR-18 client for untrusted URLs: resolves the host, checks every address and pins the connection to the checked addresses",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "minMsi": 95,
     "skill": true,
     "dev": false,
@@ -995,6 +1059,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.2.1",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.2.0",
         "date": "2026-11-25"
@@ -1104,7 +1172,7 @@
     "slug": "property-testing-core",
     "name": "rasuvaeff/property-testing-core",
     "description": "Framework-agnostic property-based testing engine: generators, shrinking, runner, regression corpus, events",
-    "version": "1.6.0",
+    "version": "1.6.1",
     "minMsi": 97,
     "skill": true,
     "dev": true,
@@ -1113,6 +1181,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.6.1",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.6.0",
         "date": "2026-11-22"
@@ -1460,7 +1532,7 @@
     "slug": "property-testing-phpunit",
     "name": "rasuvaeff/property-testing-phpunit",
     "description": "PHPUnit adapter for the property-testing engine: a fluent forAll()->check() trait over the framework-agnostic runner",
-    "version": "1.2.1",
+    "version": "1.2.3",
     "minMsi": 95,
     "skill": false,
     "dev": true,
@@ -1471,6 +1543,14 @@
       "property-testing-core"
     ],
     "releases": [
+      {
+        "tag": "v1.2.3",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v1.2.2",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.2.1",
         "date": "2026-11-21"
@@ -1571,7 +1651,7 @@
     "slug": "property-testing-testo",
     "name": "rasuvaeff/property-testing-testo",
     "description": "Testo adapter for the property-testing engine: the #[Property] attribute, drop-in for rasuvaeff/property-testing",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "minMsi": 100,
     "skill": false,
     "dev": true,
@@ -1582,6 +1662,10 @@
       "property-testing-core"
     ],
     "releases": [
+      {
+        "tag": "v1.4.1",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.4.0",
         "date": "2026-11-22"
@@ -1857,7 +1941,7 @@
     "slug": "retry",
     "name": "rasuvaeff/retry",
     "description": "Closure-first retry with backoff, jitter, and PSR-18 support for PHP",
-    "version": "1.7.2",
+    "version": "1.7.3",
     "minMsi": 95,
     "skill": true,
     "dev": false,
@@ -1869,6 +1953,10 @@
       "duration"
     ],
     "releases": [
+      {
+        "tag": "v1.7.3",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.7.2",
         "date": "2026-11-22"
@@ -2061,7 +2149,7 @@
     "slug": "symfony-mcp",
     "name": "rasuvaeff/symfony-mcp",
     "description": "Symfony integration of the rasuvaeff/mcp server",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "minMsi": 92,
     "skill": true,
     "dev": false,
@@ -2074,6 +2162,10 @@
     ],
     "releases": [
       {
+        "tag": "v0.1.1",
+        "date": "2026-11-27"
+      },
+      {
         "tag": "v0.1.0",
         "date": "2026-11-26"
       }
@@ -2085,7 +2177,7 @@
     "slug": "understudy",
     "name": "rasuvaeff/understudy",
     "description": "Test double library for PHP with a call-closure API",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "minMsi": 92,
     "skill": true,
     "dev": true,
@@ -2094,6 +2186,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.2.3",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.2.2",
         "date": "2026-11-21"
@@ -2301,7 +2397,7 @@
     "slug": "understudy-phpunit",
     "name": "rasuvaeff/understudy-phpunit",
     "description": "PHPUnit adapter for the understudy test double library: automatic verification and cleanup after every test",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "minMsi": 95,
     "skill": false,
     "dev": true,
@@ -2312,6 +2408,10 @@
       "understudy"
     ],
     "releases": [
+      {
+        "tag": "v1.1.2",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.1.1",
         "date": "2026-11-22"
@@ -2675,7 +2775,7 @@
     "slug": "yii3-ab-testing-clickhouse",
     "name": "rasuvaeff/yii3-ab-testing-clickhouse",
     "description": "ClickHouse analytics schema and migrations for Yii3 A/B testing",
-    "version": "2.0.1",
+    "version": "2.1.0",
     "minMsi": 100,
     "skill": true,
     "dev": false,
@@ -2687,6 +2787,10 @@
       "yii3-ab-testing"
     ],
     "releases": [
+      {
+        "tag": "v2.1.0",
+        "date": "2026-11-28"
+      },
       {
         "tag": "v2.0.1",
         "date": "2026-10-15"
@@ -2727,7 +2831,7 @@
     "slug": "yii3-ab-testing-db",
     "name": "rasuvaeff/yii3-ab-testing-db",
     "description": "Database-backed experiment provider for Yii3 A/B testing",
-    "version": "3.2.1",
+    "version": "3.2.3",
     "minMsi": 99,
     "skill": true,
     "dev": false,
@@ -2738,6 +2842,14 @@
       "yii3-ab-testing"
     ],
     "releases": [
+      {
+        "tag": "v3.2.3",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v3.2.2",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v3.2.1",
         "date": "2026-10-15"
@@ -2794,7 +2906,7 @@
     "slug": "yii3-ab-testing-outbox",
     "name": "rasuvaeff/yii3-ab-testing-outbox",
     "description": "Outbox producer for Yii3 A/B testing exposure and conversion events",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "minMsi": 100,
     "skill": true,
     "dev": false,
@@ -2806,6 +2918,10 @@
       "yii3-outbox"
     ],
     "releases": [
+      {
+        "tag": "v3.0.2",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v3.0.1",
         "date": "2026-10-15"
@@ -2862,7 +2978,7 @@
     "slug": "yii3-ab-testing-web",
     "name": "rasuvaeff/yii3-ab-testing-web",
     "description": "Cookie identity and sticky-variant store for Yii3 A/B testing",
-    "version": "2.1.2",
+    "version": "2.1.3",
     "minMsi": 98,
     "skill": true,
     "dev": false,
@@ -2873,6 +2989,10 @@
       "yii3-ab-testing"
     ],
     "releases": [
+      {
+        "tag": "v2.1.3",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v2.1.2",
         "date": "2026-11-25"
@@ -2971,7 +3091,7 @@
     "slug": "yii3-audit-log",
     "name": "rasuvaeff/yii3-audit-log",
     "description": "Audit trail for Yii3 applications: who changed what and when, with sensitive value masking",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "minMsi": 100,
     "skill": true,
     "dev": false,
@@ -2980,6 +3100,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.2.2",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.2.1",
         "date": "2026-11-22"
@@ -3092,7 +3216,7 @@
     "slug": "yii3-clickhouse-toolkit",
     "name": "rasuvaeff/yii3-clickhouse-toolkit",
     "description": "Yii3 config bridge for rasuvaeff/clickhouse-toolkit: DI wiring and console commands from environment.",
-    "version": "1.4.3",
+    "version": "1.5.0",
     "minMsi": 100,
     "skill": false,
     "dev": false,
@@ -3104,6 +3228,10 @@
       "context"
     ],
     "releases": [
+      {
+        "tag": "v1.5.0",
+        "date": "2026-11-28"
+      },
       {
         "tag": "v1.4.3",
         "date": "2026-11-21"
@@ -3177,7 +3305,7 @@
     "slug": "yii3-feature-flags",
     "name": "rasuvaeff/yii3-feature-flags",
     "description": "Feature flags, kill switches and percentage rollout for Yii3 applications",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "minMsi": 95,
     "skill": true,
     "dev": false,
@@ -3186,6 +3314,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.2.1",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.2.0",
         "date": "2026-11-25"
@@ -3312,7 +3444,7 @@
     "slug": "yii3-filestorage",
     "name": "rasuvaeff/yii3-filestorage",
     "description": "DI-native file storage for Yii3: one facade over swappable physical and metadata backends, PSR-7 streaming, safe delivery",
-    "version": "0.8.0",
+    "version": "0.10.0",
     "minMsi": 87,
     "skill": true,
     "dev": false,
@@ -3321,6 +3453,30 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v0.10.0",
+        "date": "2026-11-28"
+      },
+      {
+        "tag": "v0.9.0",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.8.4",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.8.3",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.8.2",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.8.1",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.8.0",
         "date": "2026-11-23"
@@ -3365,7 +3521,7 @@
     "slug": "yii3-filestorage-attachments",
     "name": "rasuvaeff/yii3-filestorage-attachments",
     "description": "Tenant-scoped polymorphic file attachments for rasuvaeff/yii3-filestorage",
-    "version": "0.2.1",
+    "version": "0.6.0",
     "minMsi": 94,
     "skill": true,
     "dev": false,
@@ -3377,6 +3533,26 @@
       "yii3-filestorage-db"
     ],
     "releases": [
+      {
+        "tag": "v0.6.0",
+        "date": "2026-11-28"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.3.1",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.2.1",
         "date": "2026-11-19"
@@ -3397,7 +3573,7 @@
     "slug": "yii3-filestorage-db",
     "name": "rasuvaeff/yii3-filestorage-db",
     "description": "Database metadata backend for rasuvaeff/yii3-filestorage: repository, tenant scoping and the deduplication blob ledger",
-    "version": "0.1.0",
+    "version": "0.4.0",
     "minMsi": 89,
     "skill": true,
     "dev": false,
@@ -3408,6 +3584,26 @@
       "yii3-filestorage"
     ],
     "releases": [
+      {
+        "tag": "v0.4.0",
+        "date": "2026-11-28"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.2.1",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.2.0",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.1.1",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.1.0",
         "date": "2026-08-08"
@@ -3420,7 +3616,7 @@
     "slug": "yii3-filestorage-flysystem",
     "name": "rasuvaeff/yii3-filestorage-flysystem",
     "description": "Flysystem object store for rasuvaeff/yii3-filestorage: S3, GCS, Azure and anything else with an adapter",
-    "version": "0.2.0",
+    "version": "0.5.0",
     "minMsi": 88,
     "skill": true,
     "dev": false,
@@ -3431,6 +3627,30 @@
       "yii3-filestorage"
     ],
     "releases": [
+      {
+        "tag": "v0.5.0",
+        "date": "2026-11-28"
+      },
+      {
+        "tag": "v0.4.0",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.3.2",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.3.1",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.3.0",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.2.1",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.2.0",
         "date": "2026-11-24"
@@ -3447,7 +3667,7 @@
     "slug": "yii3-filestorage-images",
     "name": "rasuvaeff/yii3-filestorage-images",
     "description": "Named-preset image derivatives for rasuvaeff/yii3-filestorage",
-    "version": "0.6.0",
+    "version": "0.9.0",
     "minMsi": 83,
     "skill": true,
     "dev": false,
@@ -3458,6 +3678,22 @@
       "yii3-filestorage"
     ],
     "releases": [
+      {
+        "tag": "v0.9.0",
+        "date": "2026-11-28"
+      },
+      {
+        "tag": "v0.8.0",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.7.1",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.7.0",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.6.0",
         "date": "2026-11-24"
@@ -3494,7 +3730,7 @@
     "slug": "yii3-filestorage-web",
     "name": "rasuvaeff/yii3-filestorage-web",
     "description": "Signed download URLs and a safe download action for rasuvaeff/yii3-filestorage",
-    "version": "0.4.1",
+    "version": "0.7.0",
     "minMsi": 93,
     "skill": true,
     "dev": false,
@@ -3505,6 +3741,26 @@
       "yii3-filestorage"
     ],
     "releases": [
+      {
+        "tag": "v0.7.0",
+        "date": "2026-11-28"
+      },
+      {
+        "tag": "v0.6.0",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.5.2",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.5.1",
+        "date": "2026-11-27"
+      },
+      {
+        "tag": "v0.5.0",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v0.4.1",
         "date": "2026-11-23"
@@ -3578,7 +3834,7 @@
     "slug": "yii3-idempotency",
     "name": "rasuvaeff/yii3-idempotency",
     "description": "Idempotency key middleware for Yii3 APIs",
-    "version": "2.3.1",
+    "version": "2.3.2",
     "minMsi": 98,
     "skill": true,
     "dev": false,
@@ -3587,6 +3843,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v2.3.2",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v2.3.1",
         "date": "2026-11-22"
@@ -4078,7 +4338,7 @@
     "slug": "yii3-metrics",
     "name": "rasuvaeff/yii3-metrics",
     "description": "Vendor-neutral metrics facade (counters, gauges, histograms) for Yii3",
-    "version": "2.4.0",
+    "version": "2.4.1",
     "minMsi": 96,
     "skill": true,
     "dev": false,
@@ -4087,6 +4347,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v2.4.1",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v2.4.0",
         "date": "2026-10-02"
@@ -4182,7 +4446,7 @@
     "slug": "yii3-outbox",
     "name": "rasuvaeff/yii3-outbox",
     "description": "Transactional outbox pattern for Yii3",
-    "version": "1.8.1",
+    "version": "1.8.2",
     "minMsi": 99,
     "skill": true,
     "dev": false,
@@ -4191,6 +4455,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.8.2",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.8.1",
         "date": "2026-11-22"
@@ -4553,7 +4821,7 @@
     "slug": "yii3-settings",
     "name": "rasuvaeff/yii3-settings",
     "description": "Typed runtime settings for Yii3 applications",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "minMsi": 99,
     "skill": true,
     "dev": false,
@@ -4562,6 +4830,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.2.3",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.2.2",
         "date": "2026-11-22"
@@ -4688,7 +4960,7 @@
     "slug": "yii3-telemetry",
     "name": "rasuvaeff/yii3-telemetry",
     "description": "OpenTelemetry-based tracing facade for Yii3 applications",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "minMsi": 99,
     "skill": true,
     "dev": false,
@@ -4697,6 +4969,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.3.1",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.3.0",
         "date": "2026-10-17"
@@ -4784,7 +5060,7 @@
     "slug": "yii3-tenancy",
     "name": "rasuvaeff/yii3-tenancy",
     "description": "Multi-tenancy core for Yii3: tenant resolution, request context, and scoping primitives",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "minMsi": 88,
     "skill": true,
     "dev": false,
@@ -4793,6 +5069,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v1.1.3",
+        "date": "2026-11-27"
+      },
       {
         "tag": "v1.1.2",
         "date": "2026-11-21"
