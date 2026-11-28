@@ -990,7 +990,7 @@
     "slug": "payments",
     "name": "rasuvaeff/payments",
     "description": "Provider-neutral payment contracts, PSR-18 transport and webhook pipeline for PHP",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "minMsi": 100,
     "skill": false,
     "dev": false,
@@ -999,6 +999,10 @@
     "replacement": null,
     "requires": [],
     "releases": [
+      {
+        "tag": "v0.3.0",
+        "date": "2026-11-28"
+      },
       {
         "tag": "v0.2.1",
         "date": "2026-11-22"
@@ -1013,13 +1017,60 @@
       }
     ],
     "family": "payments",
-    "dependents": 1
+    "dependents": 3
+  },
+  {
+    "slug": "payments-paypal",
+    "name": "rasuvaeff/payments-paypal",
+    "description": "PayPal Orders, captures, refunds and webhooks adapter for rasuvaeff/payments",
+    "version": "0.1.0",
+    "minMsi": 90,
+    "skill": true,
+    "dev": false,
+    "category": "Payments",
+    "frozen": false,
+    "replacement": null,
+    "requires": [
+      "payments"
+    ],
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "date": "2026-11-28"
+      }
+    ],
+    "family": "payments",
+    "dependents": 0
+  },
+  {
+    "slug": "payments-stripe",
+    "name": "rasuvaeff/payments-stripe",
+    "description": "Stripe PaymentIntent, refund and webhook adapter for rasuvaeff/payments",
+    "version": "0.1.0",
+    "minMsi": 85,
+    "skill": true,
+    "dev": false,
+    "category": "Payments",
+    "frozen": false,
+    "replacement": null,
+    "requires": [
+      "payments",
+      "schema"
+    ],
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "date": "2026-11-28"
+      }
+    ],
+    "family": "payments",
+    "dependents": 0
   },
   {
     "slug": "payments-testing",
     "name": "rasuvaeff/payments-testing",
     "description": "Deterministic fake payment gateways and framework-agnostic contract assertions for testing",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "minMsi": 100,
     "skill": false,
     "dev": true,
@@ -1030,6 +1081,10 @@
       "payments"
     ],
     "releases": [
+      {
+        "tag": "v0.2.0",
+        "date": "2026-11-28"
+      },
       {
         "tag": "v0.1.2",
         "date": "2026-11-22"
@@ -2090,7 +2145,7 @@
       }
     ],
     "family": "schema",
-    "dependents": 1
+    "dependents": 2
   },
   {
     "slug": "specification",

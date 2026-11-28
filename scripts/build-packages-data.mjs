@@ -16,7 +16,7 @@ const CATEGORIES = {
     Experiments: ['yii3-feature-flags', 'yii3-feature-flags-db', 'yii3-feature-flags-ui', 'yii3-ab-testing', 'yii3-ab-testing-db', 'yii3-ab-testing-clickhouse', 'yii3-ab-testing-web', 'yii3-ab-testing-outbox', 'yii3-utm', 'yii3-utm-db'],
     Observability: ['yii3-telemetry', 'yii3-telemetry-otel', 'yii3-metrics', 'yii3-metrics-prometheus', 'yii3-metrics-otel', 'yii3-correlation-id', 'yii3-health-check', 'yii3-audit-log', 'yii3-audit-log-db', 'domain-monitor'],
     'AI / MCP': ['mcp', 'mcp-openapi', 'yii3-mcp', 'laravel-mcp', 'symfony-mcp', 'yii3-mcp-rbac-bridge', 'yii3-mcp-audit-log-bridge', 'yii3-mcp-telemetry-bridge'],
-    Payments: ['payments', 'payments-testing'],
+    Payments: ['payments', 'payments-testing', 'payments-stripe', 'payments-paypal'],
     Files: ['yii3-filestorage', 'yii3-filestorage-db', 'yii3-filestorage-flysystem', 'yii3-filestorage-web', 'yii3-filestorage-attachments', 'yii3-filestorage-images', 'media-converter'],
     HTTP: ['pinned-http-client', 'link-preview', 'json-ld', 'yii3-api-problem'],
     Testing: ['understudy', 'understudy-testo', 'understudy-psalm', 'understudy-phpunit', 'understudy-phpstan', 'property-testing-core', 'property-testing-testo', 'property-testing-phpunit', 'property-testing-names', 'property-testing-openapi', 'property-testing', 'openapi-contract', 'doc-exec', 'quality-ledger', 'mutation-history', 'doc-exec'],
