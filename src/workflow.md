@@ -1,6 +1,6 @@
 ---
 title: Workflow
-description: How one person ships and maintains 95 packages. An agent writes inside a rulebook that records every past incident, behind gates that cannot be talked down.
+description: How one person ships and maintains 97 packages. An agent writes inside a rulebook that records every past incident, behind gates that cannot be talked down.
 outline: [2, 2]
 ---
 

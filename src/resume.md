@@ -23,7 +23,7 @@ description: Victor Razuvaev, senior backend engineer. High-load PHP and Yii, di
 
   <h2 id="profile">Profile</h2>
   <p>Senior backend engineer with 15+ years of commercial PHP, ten of them in advertising and real-time bidding. I design and run high-load services from the domain model to the release: storage, behaviour under failure and load, observability. Currently building a product on Yii3 with Clean Architecture and LLM assistants embedded in the backend through the Model Context Protocol, alongside maintaining a large Yii2 legacy codebase.</p>
-  <p>Recurring problems become libraries: <a href="/packages">95 packages</a> on Packagist with Psalm level 1, no suppressions, a mutation gate on every package (median 95%), SemVer and a backward-compatibility check before a major.</p>
+  <p>Recurring problems become libraries: <a href="/packages">97 packages</a> on Packagist with Psalm level 1, no suppressions, a mutation gate on every package (median 95%), SemVer and a backward-compatibility check before a major.</p>
 
   <h2 id="strengths">What I bring</h2>
   <div class="caps">
